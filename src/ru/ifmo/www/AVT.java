@@ -1,5 +1,6 @@
 package ru.ifmo.www;
 
 public class AVT {
-//TODO запилить. Это main класс
+	//TODO Р·Р°РїРёР»РёС‚СЊ Altium Visualization Tool
+	//Р­С‚Рѕ main РєР»Р°СЃСЃ
 }
