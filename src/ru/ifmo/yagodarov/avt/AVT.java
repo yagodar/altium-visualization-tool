@@ -1,4 +1,4 @@
-package ru.ifmo.www;
+package ru.ifmo.yagodarov.avt;
 
 public class AVT {
 	//TODO запилить Altium Visualization Tool
