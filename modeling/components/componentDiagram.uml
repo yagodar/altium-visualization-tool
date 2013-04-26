@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_O5MEcK56EeKBHOib3qd0Lg" name="model">
+  <packagedElement xmi:type="uml:Component" xmi:id="_PlQgQK56EeKBHOib3qd0Lg" name="GraphicUserInterface">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_X2G8IK56EeKBHOib3qd0Lg" clientDependency="_40Y7EK56EeKBHOib3qd0Lg" name="Port0" visibility="public" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YGkaAK56EeKBHOib3qd0Lg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YGlBEK56EeKBHOib3qd0Lg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_YGloIK56EeKBHOib3qd0Lg">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_dC2GwK56EeKBHOib3qd0Lg" clientDependency="_4ME94K56EeKBHOib3qd0Lg" name="Port1" visibility="public" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dVdgwK56EeKBHOib3qd0Lg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dVeH0K56EeKBHOib3qd0Lg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_dVeH0a56EeKBHOib3qd0Lg">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_SVWpUK56EeKBHOib3qd0Lg" name="AltiumPCBDocParser">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_fVdpoK56EeKBHOib3qd0Lg" clientDependency="_6oxCwK56EeKBHOib3qd0Lg" name="Port0" visibility="public" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fqW7kK56EeKBHOib3qd0Lg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fqW7ka56EeKBHOib3qd0Lg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_fqXioK56EeKBHOib3qd0Lg">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_iTYMQK56EeKBHOib3qd0Lg" clientDependency="_JVy34K57EeKBHOib3qd0Lg" name="Port1" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_ViTGcK56EeKBHOib3qd0Lg" name="PCBAnalyzer">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_a062oK56EeKBHOib3qd0Lg" clientDependency="_6Ib84K56EeKBHOib3qd0Lg" name="Port0" visibility="public" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bT4qkK56EeKBHOib3qd0Lg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bT4qka56EeKBHOib3qd0Lg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_bT5RoK56EeKBHOib3qd0Lg">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_miR1oK56EeKBHOib3qd0Lg" clientDependency="_I2lzYK57EeKBHOib3qd0Lg" name="Port1" visibility="public" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mu58YK56EeKBHOib3qd0Lg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mu58Ya56EeKBHOib3qd0Lg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_mu6jcK56EeKBHOib3qd0Lg">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_ttbNsK56EeKBHOib3qd0Lg" name="AltiumPCBDocFile"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_xzNXUK56EeKBHOib3qd0Lg" name="PCBAnalyzerResult"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_4ME94K56EeKBHOib3qd0Lg" name="Usage0" client="_dC2GwK56EeKBHOib3qd0Lg" supplier="_xzNXUK56EeKBHOib3qd0Lg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_40Y7EK56EeKBHOib3qd0Lg" name="Usage1" client="_X2G8IK56EeKBHOib3qd0Lg" supplier="_ttbNsK56EeKBHOib3qd0Lg"/>
+  <packagedElement xmi:type="uml:InterfaceRealization" xmi:id="_6Ib84K56EeKBHOib3qd0Lg" name="Realization0" client="_a062oK56EeKBHOib3qd0Lg" supplier="_xzNXUK56EeKBHOib3qd0Lg" contract="_xzNXUK56EeKBHOib3qd0Lg"/>
+  <packagedElement xmi:type="uml:InterfaceRealization" xmi:id="_6oxCwK56EeKBHOib3qd0Lg" name="Realization1" client="_fVdpoK56EeKBHOib3qd0Lg" supplier="_ttbNsK56EeKBHOib3qd0Lg" contract="_ttbNsK56EeKBHOib3qd0Lg"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_7jXCwK56EeKBHOib3qd0Lg" name="PCBObject"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_I2lzYK57EeKBHOib3qd0Lg" name="Usage2" client="_miR1oK56EeKBHOib3qd0Lg" supplier="_7jXCwK56EeKBHOib3qd0Lg"/>
+  <packagedElement xmi:type="uml:InterfaceRealization" xmi:id="_JVy34K57EeKBHOib3qd0Lg" name="Realization2" client="_iTYMQK56EeKBHOib3qd0Lg" supplier="_7jXCwK56EeKBHOib3qd0Lg" contract="_7jXCwK56EeKBHOib3qd0Lg"/>
+</uml:Model>
