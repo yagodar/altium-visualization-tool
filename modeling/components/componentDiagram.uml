@@ -16,7 +16,7 @@
       </defaultValue>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_SVWpUK56EeKBHOib3qd0Lg" name="AltiumPCBDocParser">
+  <packagedElement xmi:type="uml:Component" xmi:id="_SVWpUK56EeKBHOib3qd0Lg" name="AltiumPcbDocParser">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_fVdpoK56EeKBHOib3qd0Lg" clientDependency="_6oxCwK56EeKBHOib3qd0Lg" name="Port0" visibility="public" aggregation="composite">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fqW7kK56EeKBHOib3qd0Lg" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fqW7ka56EeKBHOib3qd0Lg" value="1"/>
@@ -26,7 +26,7 @@
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_iTYMQK56EeKBHOib3qd0Lg" clientDependency="_JVy34K57EeKBHOib3qd0Lg" name="Port1" aggregation="composite"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_ViTGcK56EeKBHOib3qd0Lg" name="PCBAnalyzer">
+  <packagedElement xmi:type="uml:Component" xmi:id="_ViTGcK56EeKBHOib3qd0Lg" name="PcbAnalyzer">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_a062oK56EeKBHOib3qd0Lg" clientDependency="_6Ib84K56EeKBHOib3qd0Lg" name="Port0" visibility="public" aggregation="composite">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bT4qkK56EeKBHOib3qd0Lg" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bT4qka56EeKBHOib3qd0Lg" value="1"/>
@@ -42,13 +42,13 @@
       </defaultValue>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_ttbNsK56EeKBHOib3qd0Lg" name="AltiumPCBDocFile"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_xzNXUK56EeKBHOib3qd0Lg" name="PCBAnalyzerResult"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_ttbNsK56EeKBHOib3qd0Lg" name="PcbDocParser"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_xzNXUK56EeKBHOib3qd0Lg" name="PcbAnalyzerResult"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_4ME94K56EeKBHOib3qd0Lg" name="Usage0" client="_dC2GwK56EeKBHOib3qd0Lg" supplier="_xzNXUK56EeKBHOib3qd0Lg"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_40Y7EK56EeKBHOib3qd0Lg" name="Usage1" client="_X2G8IK56EeKBHOib3qd0Lg" supplier="_ttbNsK56EeKBHOib3qd0Lg"/>
   <packagedElement xmi:type="uml:InterfaceRealization" xmi:id="_6Ib84K56EeKBHOib3qd0Lg" name="Realization0" client="_a062oK56EeKBHOib3qd0Lg" supplier="_xzNXUK56EeKBHOib3qd0Lg" contract="_xzNXUK56EeKBHOib3qd0Lg"/>
   <packagedElement xmi:type="uml:InterfaceRealization" xmi:id="_6oxCwK56EeKBHOib3qd0Lg" name="Realization1" client="_fVdpoK56EeKBHOib3qd0Lg" supplier="_ttbNsK56EeKBHOib3qd0Lg" contract="_ttbNsK56EeKBHOib3qd0Lg"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_7jXCwK56EeKBHOib3qd0Lg" name="PCBObject"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_7jXCwK56EeKBHOib3qd0Lg" name="PcbObject"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_I2lzYK57EeKBHOib3qd0Lg" name="Usage2" client="_miR1oK56EeKBHOib3qd0Lg" supplier="_7jXCwK56EeKBHOib3qd0Lg"/>
   <packagedElement xmi:type="uml:InterfaceRealization" xmi:id="_JVy34K57EeKBHOib3qd0Lg" name="Realization2" client="_iTYMQK56EeKBHOib3qd0Lg" supplier="_7jXCwK56EeKBHOib3qd0Lg" contract="_7jXCwK56EeKBHOib3qd0Lg"/>
 </uml:Model>
