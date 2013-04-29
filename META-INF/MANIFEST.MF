@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Acceleo Sample Module Runtime Plug-in
-Bundle-SymbolicName: ru.ifmo.yagodarov.tcta.acceleo
+Bundle-SymbolicName: ru.ifmo.avt.tcta.acceleo
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: ru.ifmo.yagodarov.tcta.acceleo.Activator
+Bundle-Activator: ru.ifmo.avt.acceleo.Activator
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.core.runtime, 
  org.eclipse.uml2.uml, 
