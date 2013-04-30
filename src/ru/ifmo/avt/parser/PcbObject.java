@@ -2,7 +2,7 @@ package ru.ifmo.avt.parser;
 
 import java.util.HashMap;
 
-public class PcbObject implements IPcbObject {
+public class PcbObject implements IPcbModel {
 	@Override
 	public void setParameter(String parameterName, String parameterValue) {
 		pcbObjectParameters.put(parameterName, parameterValue);

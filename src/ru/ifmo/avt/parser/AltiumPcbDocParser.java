@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class AltiumPcbDocParser implements IPcbDocParser {
+public class AltiumPcbDocParser {
 	public static IPcbDocParser getInstance() {
 		if(INSTANCE == null) {
 			INSTANCE = new AltiumPcbDocParser();
@@ -89,5 +89,5 @@ public class AltiumPcbDocParser implements IPcbDocParser {
 	private IPcbObject pcbObject;
 	
 	private static IPcbDocParser INSTANCE;
-	private static final String PCB_DOC_ENCODING = "ASCII";
+	private static final String PCB_DOC_ENCODING = "utf8";
 }
