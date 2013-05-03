@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface Browserable {
 
-	public List<Propertiable> getProperties();
+    public List<Propertiable> getProperties();
 
-	public int getCountPeak();
+    public int getCountPeak();
 
-	public Point2D[] getPeak();
+    public Point2D[] getPeak();
 
-	public Shape makeShape(Point2D[] points);
+    public Shape makeShape(Point2D[] points);
 }

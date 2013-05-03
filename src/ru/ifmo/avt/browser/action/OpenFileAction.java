@@ -14,32 +14,28 @@ import ru.ifmo.avt.browser.tempInstance.BrowserableObject;
 
 public class OpenFileAction extends AbstractAction {
 
-	private static final long serialVersionUID = 2775358860362327685L;
+    private static final long serialVersionUID = 2775358860362327685L;
 
-	public OpenFileAction(String name, Icon smallIcon, String shortDescription) {
-		putValue(Action.NAME, name);
-		putValue(Action.SMALL_ICON, smallIcon);
-		putValue(Action.SHORT_DESCRIPTION, shortDescription);
+    public OpenFileAction(String name, Icon smallIcon, String shortDescription) {
+	putValue(Action.NAME, name);
+	putValue(Action.SMALL_ICON, smallIcon);
+	putValue(Action.SHORT_DESCRIPTION, shortDescription);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+	int answer = openFileDialog.showOpenDialog(EntryPoint.browser);
+
+	if (answer == OpenFileDialog.APPROVE_OPTION) {
+	    Browserable browserableObject = new BrowserableObject();
+
+	    if (browserableObject == null)
+		JOptionPane.showConfirmDialog(EntryPoint.browser, "–û—à–∏–±–∫–∞ —á—Ç–µ–Ω–∏—è —Ñ–∞–π–ª–∞", "–û—à–∏–±–∫–∞", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null);
+	    else
+		EntryPoint.browser.getBrowserWorkPanel().setBrowserableObject(browserableObject);
 	}
+    }
 
-	@Override
-	public void actionPerformed(ActionEvent event) {
-		int answer = openFileDialog.showOpenDialog(EntryPoint.browser);
-
-		if (answer == OpenFileDialog.APPROVE_OPTION) {
-			Browserable browserableObject = new BrowserableObject();
-
-			if (browserableObject == null)
-				JOptionPane.showConfirmDialog(EntryPoint.browser,
-						"Œ¯Ë·Í‡ ˜ÚÂÌËˇ Ù‡ÈÎ‡", "Œ¯Ë·Í‡",
-						JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE,
-						null);
-			else
-				EntryPoint.browser.getBrowserWorkPanel().setBrowserableObject(
-						browserableObject);
-		}
-	}
-
-	private OpenFileDialog openFileDialog = new OpenFileDialog();
+    private OpenFileDialog openFileDialog = new OpenFileDialog();
 
 }
