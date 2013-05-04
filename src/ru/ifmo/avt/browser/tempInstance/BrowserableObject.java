@@ -6,6 +6,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import ru.ifmo.avt.browser.interfaces.Browserable;
 import ru.ifmo.avt.browser.interfaces.Propertiable;
@@ -13,27 +14,22 @@ import ru.ifmo.avt.browser.interfaces.Propertiable;
 public class BrowserableObject implements Browserable {
 
     public BrowserableObject() {
-	list = new ArrayList<Propertiable>();
-	list.add(new PropertiableObject("свойство 1", true));
-	list.add(new PropertiableObject("свойство 1.5", false));
-	list.add(new PropertiableObject("свойство 2", "ololo"));
-	list.add(new PropertiableObject("свойство 3", true));
-	list.add(new PropertiableObject("свойство 3.5", false));
+	listProperties = new ArrayList<Propertiable>();
+	listProperties.add(new PropertiableObject("свойство 1", true));
+	listProperties.add(new PropertiableObject("свойство 1.5", false));
+	listProperties.add(new PropertiableObject("свойство 2", "ololo"));
+	listProperties.add(new PropertiableObject("свойство 3", true));
+	listProperties.add(new PropertiableObject("свойство 3.5", false));
     }
 
     @Override
     public List<Propertiable> getProperties() {
-	return list;
-    }
-
-    @Override
-    public int getCountPeak() {
-	return 2;
+	return listProperties;
     }
 
     @Override
     public Point2D[] getPeak() {
-	Point2D[] points = { new Point(10, 100), new Point(250, 300) };
+	Point2D[] points = { new Point(generator.nextInt(10), generator.nextInt(100)), new Point(generator.nextInt(250), generator.nextInt(300)) };
 	return points;
     }
 
@@ -44,5 +40,16 @@ public class BrowserableObject implements Browserable {
 	return shape;
     }
 
-    private List<Propertiable> list;
+    @Override
+    public List<Browserable> getBrowserableObjects() {
+	return listBrowserableObject;
+    }
+
+    public void setBrowserableObjects(List<Browserable> listBrowserableObjects) {
+	this.listBrowserableObject = listBrowserableObjects;
+    }
+
+    private List<Propertiable> listProperties;
+    private List<Browserable> listBrowserableObject;
+    private static Random generator = new Random();
 }

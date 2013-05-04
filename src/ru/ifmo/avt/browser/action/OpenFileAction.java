@@ -1,6 +1,8 @@
 package ru.ifmo.avt.browser.action;
 
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -27,7 +29,13 @@ public class OpenFileAction extends AbstractAction {
 	int answer = openFileDialog.showOpenDialog(EntryPoint.browser);
 
 	if (answer == OpenFileDialog.APPROVE_OPTION) {
-	    Browserable browserableObject = new BrowserableObject();
+	    BrowserableObject browserableObject = new BrowserableObject();
+
+	    ArrayList<Browserable> listBrowserableObjects = new ArrayList<Browserable>();
+	    listBrowserableObjects.add(new BrowserableObject());
+	    listBrowserableObjects.add(new BrowserableObject());
+
+	    browserableObject.setBrowserableObjects(listBrowserableObjects);
 
 	    if (browserableObject == null)
 		JOptionPane.showConfirmDialog(EntryPoint.browser, "Ошибка чтения файла", "Ошибка", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null);

@@ -8,9 +8,9 @@ public interface Browserable {
 
     public List<Propertiable> getProperties();
 
-    public int getCountPeak();
-
     public Point2D[] getPeak();
 
     public Shape makeShape(Point2D[] points);
+
+    public List<Browserable> getBrowserableObjects();
 }
