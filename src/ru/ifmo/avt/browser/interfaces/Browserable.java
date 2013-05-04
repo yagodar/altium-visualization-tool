@@ -1,16 +1,26 @@
 package ru.ifmo.avt.browser.interfaces;
 
+import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.util.List;
 
 public interface Browserable {
 
+    public Point[] getPeak();
+    
     public List<Propertiable> getProperties();
 
-    public Point2D[] getPeak();
-
-    public Shape makeShape(Point2D[] points);
+    public Shape getVisualizationShape();
 
     public List<Browserable> getBrowserableObjects();
+
+    public String getDescription();
+
+    public Point getLocation();
+
+    public Dimension getDimension();
+
+    public void setLocation(Point point);
 }
