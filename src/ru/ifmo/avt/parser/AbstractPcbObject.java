@@ -102,6 +102,9 @@ public abstract class AbstractPcbObject implements Browserable {
 		if(materialProperty != null) {
 			materialName = (String) materialProperty.getValue();
 		}
+		else {
+			setMaterialName(materialName);
+		}
 		
 		return materialName;
 	}

@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
+import ru.ifmo.avt.browser.interfaces.Browserable;
+
 public class AltiumPcbDocParser {
 	public static AltiumPcbDocParser getInstance() {
 		if(INSTANCE == null) {
@@ -20,7 +22,7 @@ public class AltiumPcbDocParser {
 		return INSTANCE;
 	}
 	
-	public PcbModel createPcbModel(File pcbDocFile) {
+	public Browserable createPcbModel(File pcbDocFile) {
 		pcbModel = null;
 		
 		if(pcbDocFile != null) {
@@ -35,7 +37,7 @@ public class AltiumPcbDocParser {
 		return pcbModel;
 	}
 
-	public PcbModel getPcbModel() {
+	public Browserable getPcbModel() {
 		return pcbModel;
 	}
 	
@@ -321,18 +323,26 @@ public class AltiumPcbDocParser {
 			
 			bufFileReader.close();
 			
-			newPcbModel.getHeight();
 			newPcbModel.getWidth();
+			newPcbModel.getHeight();
 			newPcbModel.getDepth();
+			newPcbModel.getMaterialName();
+			newPcbModel.getName();
 			
 			Point boardLocation = new Point();
 			boardLocation.setLocation(100.0, 100.0);
 			newPcbModel.setLocation(boardLocation);
 			
 			for (PcbElementModel element : newPcbModel.getAllElements()) {
-				element.getHeight();
 				element.getWidth();
+				element.getHeight();
 				element.getDepth();
+				element.getMaterialName();
+				element.getPatternName();
+				element.getDesignatorName();
+				element.getLibraryReference();
+				element.getDescription();
+				element.getFootprintDescription();
 				
 				double elementMinX = element.getVertecesMinX();
 				double elementMinY = element.getVertecesMinY();
@@ -360,10 +370,10 @@ public class AltiumPcbDocParser {
 		}
 	}
 	
-	private PcbModel pcbModel;
+	private Browserable pcbModel;
 	
 	private final HashMap<String, ArrayList<HashMap<String, String>>> overAllProps;
 	
 	private static AltiumPcbDocParser INSTANCE;
-	private static final String PCB_DOC_ENCODING = "utf8";
+	private static final String PCB_DOC_ENCODING = "windows-1251";
 }

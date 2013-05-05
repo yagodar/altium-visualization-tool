@@ -56,6 +56,9 @@ public class PcbModel extends AbstractPcbObject {
 		if(depthProperty != null) {
 			name = (String) depthProperty.getValue();
 		}
+		else {
+			setName(name);
+		}
 		
 		return name;
 	}

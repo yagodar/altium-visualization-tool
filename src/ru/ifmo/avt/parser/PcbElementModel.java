@@ -9,7 +9,7 @@ import ru.ifmo.avt.browser.interfaces.Propertiable;
 public class PcbElementModel extends AbstractPcbObject {
 	@Override
 	public String toString() {
-		return PcbElementModel.class.getSimpleName() + " [id:" + getId() + "]" + " [depth:" + getDepth() + "mil]" + " [srcDesignator:" + getDesignatorName() + "]" + " [srcLibRef:" + getLibraryReference() + "]";
+		return PcbElementModel.class.getSimpleName() + " [id:" + getId() + "]" + " [depth:" + getDepth() + "mil]" + " [designator:" + getDesignatorName() + "]" + " [libRef:" + getLibraryReference() + "]"  + " [descr:" + getDescription() + "]";
 	}
 	
 	@Override
@@ -24,6 +24,9 @@ public class PcbElementModel extends AbstractPcbObject {
 		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.DESCRIPTION.toString());
 		if(property != null) {
 			value = (String) property.getValue();
+		}
+		else {
+			setDescription(value);
 		}
 		
 		return value;
@@ -52,6 +55,9 @@ public class PcbElementModel extends AbstractPcbObject {
 		if(property != null) {
 			value = (String) property.getValue();
 		}
+		else {
+			setPatternName(value);
+		}
 		
 		return value;
 	}
@@ -66,6 +72,9 @@ public class PcbElementModel extends AbstractPcbObject {
 		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.DESIGNATOR.toString());
 		if(property != null) {
 			value = (String) property.getValue();
+		}
+		else {
+			setDesignatorName(value);
 		}
 		
 		return value;
@@ -82,6 +91,9 @@ public class PcbElementModel extends AbstractPcbObject {
 		if(property != null) {
 			value = (String) property.getValue();
 		}
+		else {
+			setLibraryReference(value);
+		}
 		
 		return value;
 	}
@@ -96,6 +108,9 @@ public class PcbElementModel extends AbstractPcbObject {
 		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.FOOTPRINT_DESCRIPTION.toString());
 		if(property != null) {
 			value = (String) property.getValue();
+		}
+		else {
+			setFootprintDescription(value);
 		}
 		
 		return value;
