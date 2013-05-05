@@ -17,7 +17,7 @@ public class BrowserWorkPanel extends JPanel {
 
     public void setBrowserableObject(Browserable browserableObject) {
 	add(new JScrollPane(new PropertyEditorPanel(browserableObject), JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.WEST);
-	add(new JScrollPane(new JScrollPane(new BrowserPaintComponent(browserableObject))), BorderLayout.CENTER);
+	add(new JScrollPane(new BrowserPaintComponent(browserableObject), JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS), BorderLayout.CENTER);
 	revalidate();
     }
 }

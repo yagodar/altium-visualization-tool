@@ -10,7 +10,7 @@ public class OpenFileDialog extends JFileChooser {
     private static final long serialVersionUID = 2274514065835506491L;
 
     public OpenFileDialog() {
-	setFileFilter(new FileNameExtensionFilter("PCBfile", ".pcb"));
+	setFileFilter(new FileNameExtensionFilter("PCBfile", ".PcbDoc"));
 	setCurrentDirectory(new File("."));
     }
 }

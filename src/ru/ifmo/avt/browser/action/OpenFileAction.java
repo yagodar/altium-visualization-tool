@@ -13,6 +13,7 @@ import ru.ifmo.avt.browser.EntryPoint;
 import ru.ifmo.avt.browser.dialog.OpenFileDialog;
 import ru.ifmo.avt.browser.interfaces.Browserable;
 import ru.ifmo.avt.browser.tempInstance.BrowserableObject;
+import ru.ifmo.avt.parser.AltiumPcbDocParser;
 
 public class OpenFileAction extends AbstractAction {
 
@@ -29,18 +30,21 @@ public class OpenFileAction extends AbstractAction {
 	int answer = openFileDialog.showOpenDialog(EntryPoint.browser);
 
 	if (answer == OpenFileDialog.APPROVE_OPTION) {
-	    BrowserableObject browserableObject = new BrowserableObject();
+	    
+	   Browserable browserable = AltiumPcbDocParser.getInstance().createPcbModel(openFileDialog.getSelectedFile());
+	    
+/*	    BrowserableObject browserableObject = new BrowserableObject();
 
 	    ArrayList<Browserable> listBrowserableObjects = new ArrayList<Browserable>();
 	    listBrowserableObjects.add(new BrowserableObject());
 	    listBrowserableObjects.add(new BrowserableObject());
 
-	    browserableObject.setBrowserableObjects(listBrowserableObjects);
+	    browserableObject.setBrowserableObjects(listBrowserableObjects);*/
 
-	    if (browserableObject == null)
+	    if (browserable == null)
 		JOptionPane.showConfirmDialog(EntryPoint.browser, "Ошибка чтения файла", "Ошибка", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null);
 	    else
-		EntryPoint.browser.getBrowserWorkPanel().setBrowserableObject(browserableObject);
+		EntryPoint.browser.getBrowserWorkPanel().setBrowserableObject(browserable);
 	}
     }
 
