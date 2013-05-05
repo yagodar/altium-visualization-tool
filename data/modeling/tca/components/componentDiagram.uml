@@ -42,7 +42,7 @@
       </defaultValue>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_ttbNsK56EeKBHOib3qd0Lg" name="PcbObjectForView "/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_ttbNsK56EeKBHOib3qd0Lg" name="Browserable, Propertiable"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_xzNXUK56EeKBHOib3qd0Lg" name="PcbObjectForAnalysis"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_4ME94K56EeKBHOib3qd0Lg" name="Usage0" client="_dC2GwK56EeKBHOib3qd0Lg" supplier="_xzNXUK56EeKBHOib3qd0Lg"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_40Y7EK56EeKBHOib3qd0Lg" name="Usage1" client="_X2G8IK56EeKBHOib3qd0Lg" supplier="_ttbNsK56EeKBHOib3qd0Lg"/>

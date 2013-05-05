@@ -1,11 +1,14 @@
 package ru.ifmo.avt.parser;
 
+import java.awt.Point;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class AltiumPcbDocParser {
@@ -36,7 +39,17 @@ public class AltiumPcbDocParser {
 		return pcbModel;
 	}
 	
-	private AltiumPcbDocParser() {}
+	public ArrayList<HashMap<String, String>> getOverAllProps(String propsType) {
+		return overAllProps.get(propsType);
+	}
+	
+	public Collection<ArrayList<HashMap<String, String>>> getAllOverAllProps() {
+		return overAllProps.values();
+	}
+	
+	private AltiumPcbDocParser() {
+		overAllProps = new HashMap<String, ArrayList<HashMap<String, String>>>();
+	}
 	
 	private PcbModel parsePcbDocFile(File pcbDocFile) {
 		PcbModel newPcbModel = null;
@@ -71,7 +84,7 @@ public class AltiumPcbDocParser {
 								}
 							}
 							
-							newPcbModel.addAdditionalProps(propsType, props);
+							addAdditionalProps(propsType, props);
 							
 							if(propsType.equals("Board")) {
 								for (String propKey : props.keySet()) {
@@ -81,19 +94,19 @@ public class AltiumPcbDocParser {
 										if(propKey.startsWith("VX") || propKey.startsWith("VY")) {
 											try {
 												int vertexId = Integer.parseInt(propKey.substring(2));
-												float coord = Float.parseFloat(propValue.substring(0, propValue.lastIndexOf("mil")));
+												double coord = Float.parseFloat(propValue.substring(0, propValue.lastIndexOf("mil")));
 												
-												Vertex boardVertex = newPcbModel.getVertex(vertexId);
+												PcbObjectVertex boardVertex = newPcbModel.getVertex(vertexId);
 												if(boardVertex == null) {
-													boardVertex = new Vertex(vertexId);
+													boardVertex = new PcbObjectVertex(vertexId);
 													newPcbModel.addVertex(vertexId, boardVertex);
 												}
 												
 												if(propKey.startsWith("VX")) {
-													boardVertex.setX(coord);
+													boardVertex.setLocation(coord, boardVertex.getY());
 												}
 												else if(propKey.startsWith("VY")) {
-													boardVertex.setY(coord);
+													boardVertex.setLocation(boardVertex.getX(), coord);
 												}
 											}
 											catch(Exception e) {
@@ -244,13 +257,13 @@ public class AltiumPcbDocParser {
 
 									element.setPatternName(props.get("PATTERN"));
 
-									element.setSrcDesignator(props.get("SOURCEDESIGNATOR"));
+									element.setDesignatorName(props.get("SOURCEDESIGNATOR"));
 
-									element.setSrcLibRef(props.get("SOURCELIBREFERENCE"));
+									element.setLibraryReference(props.get("SOURCELIBREFERENCE"));
 
-									element.setSrcDescr(props.get("SOURCEDESCRIPTION"));
+									element.setDescription(props.get("SOURCEDESCRIPTION"));
 
-									element.setFootprintDescr(props.get("FOOTPRINTDESCRIPTION"));
+									element.setFootprintDescription(props.get("FOOTPRINTDESCRIPTION"));
 								}
 								catch(Exception e) {
 									e.printStackTrace();
@@ -275,19 +288,19 @@ public class AltiumPcbDocParser {
 											if(propKey.startsWith("VX") || propKey.startsWith("VY")) {
 												try {
 													int vertexId = Integer.parseInt(propKey.substring(2));
-													float coord = Float.parseFloat(propValue.substring(0, propValue.lastIndexOf("mil")));
+													double coord = Float.parseFloat(propValue.substring(0, propValue.lastIndexOf("mil")));
 													
-													Vertex elementVertex = element.getVertex(vertexId);
+													PcbObjectVertex elementVertex = element.getVertex(vertexId);
 													if(elementVertex == null) {
-														elementVertex = new Vertex(vertexId);
+														elementVertex = new PcbObjectVertex(vertexId);
 														element.addVertex(vertexId, elementVertex);
 													}
 													
 													if(propKey.startsWith("VX")) {
-														elementVertex.setX(coord);
+														elementVertex.setLocation(coord, elementVertex.getY());
 													}
 													else if(propKey.startsWith("VY")) {
-														elementVertex.setY(coord);
+														elementVertex.setLocation(elementVertex.getX(), coord);
 													}
 												}
 												catch(Exception e) {
@@ -308,9 +321,27 @@ public class AltiumPcbDocParser {
 			
 			bufFileReader.close();
 			
-			newPcbModel.getAbsHeight();
-			newPcbModel.getAbsWidth();
+			newPcbModel.getHeight();
+			newPcbModel.getWidth();
 			newPcbModel.getDepth();
+			
+			Point boardLocation = new Point();
+			boardLocation.setLocation(100.0, 100.0);
+			newPcbModel.setLocation(boardLocation);
+			
+			for (PcbElementModel element : newPcbModel.getAllElements()) {
+				element.getHeight();
+				element.getWidth();
+				element.getDepth();
+				
+				double elementMinX = element.getVertecesMinX();
+				double elementMinY = element.getVertecesMinY();
+				if(elementMinX != 0.0) {
+					Point elementLocation = new Point();
+					elementLocation.setLocation(boardLocation.getX() + (elementMinX - newPcbModel.getVertecesMinX()), boardLocation.getY() + (elementMinY - newPcbModel.getVertecesMinY()));
+					element.setLocation(elementLocation);
+				}				
+			}
 		} 
 		catch (IOException e) {
 			e.printStackTrace();
@@ -319,7 +350,19 @@ public class AltiumPcbDocParser {
 		return newPcbModel;
 	}
 	
+	private void addAdditionalProps(String propsType, HashMap<String, String> props) {
+		if(propsType != null && !propsType.isEmpty() && props != null) {
+			if(overAllProps.get(propsType) == null) {
+				overAllProps.put(propsType, new ArrayList<HashMap<String, String>>());
+			}
+			
+			overAllProps.get(propsType).add(props);
+		}
+	}
+	
 	private PcbModel pcbModel;
+	
+	private final HashMap<String, ArrayList<HashMap<String, String>>> overAllProps;
 	
 	private static AltiumPcbDocParser INSTANCE;
 	private static final String PCB_DOC_ENCODING = "utf8";

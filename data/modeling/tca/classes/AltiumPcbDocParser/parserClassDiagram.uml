@@ -27,13 +27,44 @@
         <ownedParameter xmi:id="_cJEhMLBeEeKImc1W9wBjDw" type="_CdOqkLBdEeKImc1W9wBjDw" direction="return"/>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_CdOqkLBdEeKImc1W9wBjDw" name="PcbObjectForView">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_CdOqkLBdEeKImc1W9wBjDw" name="Browserable">
+      <ownedComment xmi:id="_q7JR8LWOEeKJHrh0Rb7Qzg">
+        <body>getProperties()</body>
+      </ownedComment>
       <ownedOperation xmi:id="_2HNToLBdEeKImc1W9wBjDw" name="setParameter">
         <ownedParameter xmi:id="_9IHxoLBdEeKImc1W9wBjDw" name="parameterName"/>
         <ownedParameter xmi:id="_BC6zQLBeEeKImc1W9wBjDw" name="parameterValue"/>
       </ownedOperation>
       <ownedOperation xmi:id="_9tDqsLBdEeKImc1W9wBjDw" name="getParameter">
         <ownedParameter xmi:id="__posILBdEeKImc1W9wBjDw" name="parameterName"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_skiq8LWJEeKJHrh0Rb7Qzg" name="getPeak">
+        <ownedParameter xmi:id="_3ZaiwLWJEeKJHrh0Rb7Qzg" name="" type="_GIls8LWKEeKJHrh0Rb7Qzg" isUnique="false" direction="return" effect="read">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_molNYLWKEeKJHrh0Rb7Qzg" name=""/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mombgLWKEeKJHrh0Rb7Qzg" name="" value="*"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_ENqJ8LWNEeKJHrh0Rb7Qzg" value=""/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_K2sBgLWPEeK6ipMTpJ-62w" name="getProperties">
+        <ownedParameter xmi:id="_N0yKULWPEeK6ipMTpJ-62w" type="_FJit8LWOEeKJHrh0Rb7Qzg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_V0KbsLWPEeK6ipMTpJ-62w" name="getVisualizationShape">
+        <ownedParameter xmi:id="_6xJE0LWPEeKLp8LNVIIdxg" type="_rzpKwLWPEeKE-rrKVtOWxg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_ZE1iQLWPEeK6ipMTpJ-62w" name="getBrowserableObjects">
+        <ownedParameter xmi:id="_9r1UULWPEeKLp8LNVIIdxg" type="_FJit8LWOEeKJHrh0Rb7Qzg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_cTZI8LWPEeK6ipMTpJ-62w" name="getDescription">
+        <ownedParameter xmi:id="_Z0QXkLWQEeKvJKO51iHdqQ" type="_AI7B0LWQEeKLp8LNVIIdxg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_etcwkLWPEeK6ipMTpJ-62w" name="getLocation">
+        <ownedParameter xmi:id="_cHPt4LWQEeKvJKO51iHdqQ" type="_GIls8LWKEeKJHrh0Rb7Qzg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_f7qQILWPEeK6ipMTpJ-62w" name="getDimension">
+        <ownedParameter xmi:id="_eWP8ELWQEeKvJKO51iHdqQ" type="_K8IswLWQEeKLp8LNVIIdxg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_jW19kLWPEeK6ipMTpJ-62w" name="setLocation">
+        <ownedParameter xmi:id="_ikpPILWQEeKvJKO51iHdqQ" type="_GIls8LWKEeKJHrh0Rb7Qzg"/>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_37Gy0LBgEeKImc1W9wBjDw" clientDependency="_qfbbYLBhEeKImc1W9wBjDw" name="PcbModel">
@@ -63,6 +94,11 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wA_KArBiEeKImc1W9wBjDw" value="1"/>
       </ownedEnd>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_GIls8LWKEeKJHrh0Rb7Qzg" name="java.awt.Point"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_FJit8LWOEeKJHrh0Rb7Qzg" name="java.util.List"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_rzpKwLWPEeKE-rrKVtOWxg" name="java.awt.Shape"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_AI7B0LWQEeKLp8LNVIIdxg" name="java.lang.String"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_K8IswLWQEeKLp8LNVIIdxg" name="java.awt.Dimension"/>
   </uml:Model>
   <notation:Diagram xmi:id="_iOPL0LBiEeKImc1W9wBjDw"/>
   <notation:Diagram xmi:id="_iS5CULBiEeKImc1W9wBjDw"/>

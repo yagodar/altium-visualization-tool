@@ -1,120 +1,119 @@
 package ru.ifmo.avt.parser;
 
+import java.util.Collections;
+import java.util.List;
+
+import ru.ifmo.avt.browser.interfaces.Browserable;
+import ru.ifmo.avt.browser.interfaces.Propertiable;
+
 public class PcbElementModel extends AbstractPcbObject {
-	public float getDepth() {
-		return depth;
-	}
-
-	public void setDepth(float depth) {
-		this.depth = depth;
-	}
-
-	public String getPatternName() {
-		return patternName;
-	}
-
-	public void setPatternName(String patternName) {
-		this.patternName = patternName;
-	}
-
-	public String getSrcDesignator() {
-		return srcDesignator;
-	}
-
-	public void setSrcDesignator(String srcDesignator) {
-		this.srcDesignator = srcDesignator;
-	}
-
-	public String getSrcLibRef() {
-		return srcLibRef;
-	}
-
-	public void setSrcLibRef(String srcLibRef) {
-		this.srcLibRef = srcLibRef;
-	}
-
-	public String getSrcDescr() {
-		return srcDescr;
-	}
-
-	public void setSrcDescr(String srcDescr) {
-		this.srcDescr = srcDescr;
-	}
-
-	public String getFootprintDescr() {
-		return footprintDescr;
-	}
-
-	public void setFootprintDescr(String footprintDescr) {
-		this.footprintDescr = footprintDescr;
-	}
-
-	public int getId() {
-		return id;
+	@Override
+	public String toString() {
+		return PcbElementModel.class.getSimpleName() + " [id:" + getId() + "]" + " [depth:" + getDepth() + "mil]" + " [srcDesignator:" + getDesignatorName() + "]" + " [srcLibRef:" + getLibraryReference() + "]";
 	}
 	
 	@Override
-	public String toString() {
-		return PcbElementModel.class.getSimpleName() + " [id:" + getId() + "]" + " [depth:" + getDepth() + "mil]" + " [srcDesignator:" + getSrcDesignator() + "]" + " [srcLibRef:" + getSrcLibRef() + "]";
+	public List<Browserable> getBrowserableObjects() {
+		return Collections.emptyList();
+	}
+	
+	@Override
+	public String getDescription() {
+		String value = "unknown";
+		
+		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.DESCRIPTION.toString());
+		if(property != null) {
+			value = (String) property.getValue();
+		}
+		
+		return value;
+	}
+	
+	public void setDescription(String description) {
+		setProperty(PcbObjectPropertyMark.DESCRIPTION, description);
+	}
+	
+	@Override
+	public double getDepth() {
+		double depth = 0.0;
+		
+		Propertiable depthProperty = getPropertyByMark(PcbObjectPropertyMark.DEPTH.toString());
+		if(depthProperty != null) {
+			depth = (double) depthProperty.getValue();
+		}
+		
+		return depth;
+	}
+
+	public String getPatternName() {
+		String value = "unknown";
+		
+		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.PATTERN.toString());
+		if(property != null) {
+			value = (String) property.getValue();
+		}
+		
+		return value;
+	}
+
+	public void setPatternName(String patternName) {
+		setProperty(PcbObjectPropertyMark.PATTERN, patternName);
+	}
+
+	public String getDesignatorName() {
+		String value = "unknown";
+		
+		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.DESIGNATOR.toString());
+		if(property != null) {
+			value = (String) property.getValue();
+		}
+		
+		return value;
+	}
+
+	public void setDesignatorName(String designatorName) {
+		setProperty(PcbObjectPropertyMark.DESIGNATOR, designatorName);
+	}
+
+	public String getLibraryReference() {
+		String value = "unknown";
+		
+		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.LIBRARY_REFERENCE.toString());
+		if(property != null) {
+			value = (String) property.getValue();
+		}
+		
+		return value;
+	}
+
+	public void setLibraryReference(String libraryReference) {
+		setProperty(PcbObjectPropertyMark.LIBRARY_REFERENCE, libraryReference);
+	}
+
+	public String getFootprintDescription() {
+		String value = "unknown";
+		
+		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.FOOTPRINT_DESCRIPTION.toString());
+		if(property != null) {
+			value = (String) property.getValue();
+		}
+		
+		return value;
+	}
+
+	public void setFootprintDescription(String footprintDescription) {
+		setProperty(PcbObjectPropertyMark.FOOTPRINT_DESCRIPTION, footprintDescription);
 	}
 	
 	protected PcbElementModel(int id) {
-		this(id, -1.0f);
-	}
-
-	protected PcbElementModel(int id, float depth) {
-		this(id, depth, "unknown", "unknown", "unknown", "unknown", "unknown");
-	}
-	
-	protected PcbElementModel(int id, String patternName, String srcDesignator, String srcLibRef, String srcDescr, String footprintDescr) {
-		this(id, -1.0f, patternName, srcDesignator, srcLibRef, srcDescr, footprintDescr);
-	}
-	
-	protected PcbElementModel(int id, float depth, String patternName, String srcDesignator, String srcLibRef, String srcDescr, String footprintDescr) {
+		super();
+		
 		this.id = id;
-		this.depth = depth;
-		
-		if(patternName != null && !patternName.isEmpty()) {
-			this.patternName = patternName;
-		}
-		else {
-			this.patternName = "unknown";
-		}
-		
-		if(srcDesignator != null && !srcDesignator.isEmpty()) {
-			this.srcDesignator = srcDesignator;
-		}
-		else {
-			this.srcDesignator = "unknown";
-		}
-		
-		if(srcLibRef != null && !srcLibRef.isEmpty()) {
-			this.srcLibRef = srcLibRef;
-		}
-		else {
-			this.srcLibRef = "unknown";
-		}
-		
-		if(srcDescr != null && !srcDescr.isEmpty()) {
-			this.srcDescr = srcDescr;
-		}
-		else {
-			this.srcDescr = "unknown";
-		}
-		
-		if(footprintDescr != null && !footprintDescr.isEmpty()) {
-			this.footprintDescr = footprintDescr;
-		}
-		else {
-			this.footprintDescr = "unknown";
-		}
 	}
 	
-	private float depth;
-	private String patternName;
-	private String srcDesignator;
-	private String srcLibRef;
-	private String srcDescr;
-	private String footprintDescr;
+	protected int getId() {
+		return id;
+	}
+	
 	private final int id;
 }
