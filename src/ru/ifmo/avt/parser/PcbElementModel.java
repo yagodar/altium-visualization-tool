@@ -53,6 +53,11 @@ public class PcbElementModel extends AbstractPcbObject {
 		return id;
 	}
 	
+	@Override
+	public String toString() {
+		return PcbElementModel.class.getSimpleName() + " [id:" + getId() + "]" + " [depth:" + getDepth() + "mil]" + " [srcDesignator:" + getSrcDesignator() + "]" + " [srcLibRef:" + getSrcLibRef() + "]";
+	}
+	
 	protected PcbElementModel(int id) {
 		this(id, -1.0f);
 	}

@@ -19,7 +19,7 @@ public abstract class AbstractPcbObject {
 			
 			Vertex vertex;
 			for (int i = 0; i < vertices.size(); i++) {
-				vertex = vertices.get(i);
+				vertex = (Vertex) vertices.values().toArray()[i];
 				
 				if(i == 0) {
 					minX = vertex.getX();
@@ -48,7 +48,7 @@ public abstract class AbstractPcbObject {
 			
 			Vertex vertex;
 			for (int i = 0; i < vertices.size(); i++) {
-				vertex = vertices.get(i);
+				vertex = (Vertex) vertices.values().toArray()[i];
 				
 				if(i == 0) {
 					minY = vertex.getY();

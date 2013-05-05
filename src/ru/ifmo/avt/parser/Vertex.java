@@ -13,6 +13,11 @@ public class Vertex {
 		return y;
 	}
 	
+	@Override
+	public String toString() {
+		return Vertex.class.getSimpleName() + " [x:" + getX() + "mil] [y:" + getY() + "mil]";
+	}
+	
 	protected void setX(float x) {
 		this.x = x;
 	}

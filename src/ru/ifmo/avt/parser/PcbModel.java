@@ -16,19 +16,19 @@ public class PcbModel extends AbstractPcbObject {
 	}
 	
 	public PcbLayer getTopLayer() {
-		return layersById.get(PcbLayer.TOP_LAYER_ID);
+		return layersByMark.get(PcbLayer.TOP_LAYER_MARK);
 	}
 	
-	public PcbLayer getLayer(int layerId) {
-		return layersById.get(layerId);
+	public PcbLayer getLayer(String layerMark) {
+		return layersByMark.get(layerMark);
 	}
 	
 	public PcbLayer getBottomLayer() {
-		return layersById.get(PcbLayer.BOTTOM_LAYER_ID);
+		return layersByMark.get(PcbLayer.BOTTOM_LAYER_MARK);
 	}
 	
 	public Collection<PcbLayer> getAllLayers() {
-		return layersById.values();
+		return layersByMark.values();
 	}
 	
 	public void setDepth(float depth) {
@@ -57,21 +57,26 @@ public class PcbModel extends AbstractPcbObject {
 		return elementsById.values();
 	}
 	
-	public ArrayList<HashMap<String, String>> getAdditionalProps(String propsType) {
-		return additionalProps.get(propsType);
+	public ArrayList<HashMap<String, String>> getOverAllProps(String propsType) {
+		return overAllProps.get(propsType);
 	}
 	
-	public Collection<ArrayList<HashMap<String, String>>> getAllAdditionalProps() {
-		return additionalProps.values();
+	public Collection<ArrayList<HashMap<String, String>>> getAllOverAllProps() {
+		return overAllProps.values();
+	}
+	
+	@Override
+	public String toString() {
+		return PcbModel.class.getSimpleName() + " [name:" + getName() + "]" + " [absWidth:" + getAbsWidth() + "mil]" + " [absHeight:" + getAbsHeight() + "mil]" + " [depth:" + getDepth() + "mil]" + " [elementsCount:" + getAllElements().size() + "]";
 	}
 	
 	protected void addAdditionalProps(String propsType, HashMap<String, String> props) {
 		if(propsType != null && !propsType.isEmpty() && props != null) {
-			if(additionalProps.get(propsType) == null) {
-				additionalProps.put(propsType, new ArrayList<HashMap<String, String>>());
+			if(overAllProps.get(propsType) == null) {
+				overAllProps.put(propsType, new ArrayList<HashMap<String, String>>());
 			}
 			
-			additionalProps.get(propsType).add(props);
+			overAllProps.get(propsType).add(props);
 		}
 	}
 	
@@ -80,16 +85,16 @@ public class PcbModel extends AbstractPcbObject {
 		
 		name = "unknown";
 		
-		layersById = new HashMap<Integer, PcbLayer>();
+		layersByMark = new HashMap<String, PcbLayer>();
 		depth = -1.0f;
 		
 		elementsById = new HashMap<Integer, PcbElementModel>();
 		
-		additionalProps = new HashMap<String, ArrayList<HashMap<String, String>>>();
+		overAllProps = new HashMap<String, ArrayList<HashMap<String, String>>>();
 	}
 	
-	protected void addLayer(int layerId, PcbLayer layer) {
-		layersById.put(layerId, layer);
+	protected void addLayer(String layerMark, PcbLayer layer) {
+		layersByMark.put(layerMark, layer);
 	}
 	
 	protected void addElement(int elementId, PcbElementModel element) {
@@ -98,10 +103,10 @@ public class PcbModel extends AbstractPcbObject {
 	
 	private String name;
 	
-	private HashMap<Integer, PcbLayer> layersById;
+	private HashMap<String, PcbLayer> layersByMark;
 	private float depth;
 	
 	private HashMap<Integer, PcbElementModel> elementsById;
 	
-	private final HashMap<String, ArrayList<HashMap<String, String>>> additionalProps;
+	private final HashMap<String, ArrayList<HashMap<String, String>>> overAllProps;
 }

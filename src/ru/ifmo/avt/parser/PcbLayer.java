@@ -1,8 +1,8 @@
 package ru.ifmo.avt.parser;
 
 public class PcbLayer {	
-	public int getId() {
-		return id;
+	public String getMark() {
+		return mark;
 	}
 	
 	public void setEnabled(boolean isEnabled) {
@@ -14,11 +14,11 @@ public class PcbLayer {
 	}
 	
 	public boolean isTop() {
-		return id == TOP_LAYER_ID;
+		return mark == TOP_LAYER_MARK;
 	}
 	
 	public boolean isBottom() {
-		return id == BOTTOM_LAYER_ID;
+		return mark == BOTTOM_LAYER_MARK;
 	}
 	
 	public void setDepth(float depth) {
@@ -39,12 +39,17 @@ public class PcbLayer {
 		return materialName;
 	}
 	
-	protected PcbLayer(int id) {
-		this(id, false, 0.0f, "unknown");
+	@Override
+	public String toString() {
+		return PcbLayer.class.getSimpleName() + " [mark:" + getMark() + "]" + " [isEnabled:" + isEnabled() + "]" + " [depth:" + getDepth() + "mil]" + " [material:" + getMaterialName() + "]";
 	}
 	
-	protected PcbLayer(int id, boolean isEnabled, float depth, String materialName) {
-		this.id = id;
+	protected PcbLayer(String mark) {
+		this(mark, false, 0.0f, "unknown");
+	}
+	
+	protected PcbLayer(String mark, boolean isEnabled, float depth, String materialName) {
+		this.mark = mark;
 		this.isEnabled = isEnabled;
 		this.depth = depth;
 		
@@ -56,12 +61,12 @@ public class PcbLayer {
 		}
 	}
 	
-	protected static final int TOP_LAYER_ID = -1;
-	protected static final int BOTTOM_LAYER_ID = -2;
+	protected static final String TOP_LAYER_MARK = "TOP";
+	protected static final String BOTTOM_LAYER_MARK = "BOTTOM";
 	
 	private boolean isEnabled;
 	private float depth;
 	private String materialName;
 	
-	private final int id;
+	private final String mark;
 }
