@@ -38,7 +38,7 @@ public class BrowserPaintComponent extends JPanel {
 	button2.setSize(400, 400);
 	add(button2);*/
 	this.browserable = browserable;
-	//setLayout(null);
+	setLayout(null);
 	//TextField text = new TextField("ojfhgijuangoadnfogpnarjopngjarngjoandfogpnadfongajosdfgnjioadfnjuip");
 	//text.setSize(50, 500);
 	//text.setLocation(10, 10);
