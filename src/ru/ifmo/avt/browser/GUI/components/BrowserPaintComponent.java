@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.Scrollable;
 
 import ru.ifmo.avt.browser.GUI.paintComponents.PaintComponent;
+import ru.ifmo.avt.browser.GUI.paintComponents.PaintComponentLayoutManager;
 import ru.ifmo.avt.browser.interfaces.Browserable;
 
 public class BrowserPaintComponent extends JPanel {
@@ -30,20 +31,8 @@ public class BrowserPaintComponent extends JPanel {
     public BrowserPaintComponent(Browserable browserable) {
 
 	super();
-/*	JButton button = new JButton("OK");
-	button.setSize(400, 400);
-	add(button);
-	JButton button2 = new JButton("OK");
-	button2.setLocation(new Point(400, 400));
-	button2.setSize(400, 400);
-	add(button2);*/
 	this.browserable = browserable;
-	setLayout(null);
-	//TextField text = new TextField("ojfhgijuangoadnfogpnarjopngjarngjoandfogpnadfongajosdfgnjioadfnjuip");
-	//text.setSize(50, 500);
-	//text.setLocation(10, 10);
-	//add(text);
-	//setPreferredSize(new Dimension(5000, 5000));
+	setLayout(new PaintComponentLayoutManager());
 	add(browserable);
 
 	addMouseListener(new MouseAdapter() {
