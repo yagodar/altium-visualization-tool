@@ -96,7 +96,7 @@ public class AltiumPcbDocParser {
 										if(propKey.startsWith("VX") || propKey.startsWith("VY")) {
 											try {
 												int vertexId = Integer.parseInt(propKey.substring(2));
-												double coord = Float.parseFloat(propValue.substring(0, propValue.lastIndexOf("mil")));
+												double coord = Double.parseDouble(propValue.substring(0, propValue.lastIndexOf("mil")));
 												
 												PcbObjectVertex boardVertex = newPcbModel.getVertex(vertexId);
 												if(boardVertex == null) {
@@ -143,7 +143,7 @@ public class AltiumPcbDocParser {
 														newPcbModel.addLayer(layerMark, boardLayer);
 													}
 													
-													boardLayer.setDepth(boardLayer.getDepth() + Float.parseFloat(propValue.substring(0, propValue.lastIndexOf("mil"))));
+													boardLayer.setDepth(boardLayer.getDepth() + Double.parseDouble(propValue.substring(0, propValue.lastIndexOf("mil"))));
 												}
 												catch(Exception e) {
 													e.printStackTrace();
@@ -160,7 +160,7 @@ public class AltiumPcbDocParser {
 														newPcbModel.addLayer(layerMark, boardLayer);
 													}
 													
-													boardLayer.setDepth(boardLayer.getDepth() + Float.parseFloat(propValue.substring(0, propValue.lastIndexOf("mil"))));
+													boardLayer.setDepth(boardLayer.getDepth() + Double.parseDouble(propValue.substring(0, propValue.lastIndexOf("mil"))));
 												}
 												catch(Exception e) {
 													e.printStackTrace();
@@ -193,7 +193,7 @@ public class AltiumPcbDocParser {
 													newPcbModel.addLayer(PcbLayer.TOP_LAYER_MARK, boardLayer);
 												}
 												
-												boardLayer.setDepth(Float.parseFloat(propValue.substring(0, propValue.lastIndexOf("mil"))));
+												boardLayer.setDepth(Double.parseDouble(propValue.substring(0, propValue.lastIndexOf("mil"))));
 											}
 											catch(Exception e) {
 												e.printStackTrace();
@@ -208,7 +208,7 @@ public class AltiumPcbDocParser {
 													newPcbModel.addLayer(PcbLayer.BOTTOM_LAYER_MARK, boardLayer);
 												}
 												
-												boardLayer.setDepth(Float.parseFloat(propValue.substring(0, propValue.lastIndexOf("mil"))));
+												boardLayer.setDepth(Double.parseDouble(propValue.substring(0, propValue.lastIndexOf("mil"))));
 											}
 											catch(Exception e) {
 												e.printStackTrace();
@@ -256,7 +256,15 @@ public class AltiumPcbDocParser {
 										element = new PcbElementModel(elementId);
 										newPcbModel.addElement(elementId, element);
 									}
-
+									
+									try {
+										element.setSrcLocX(Double.parseDouble(props.get("X").substring(0, props.get("X").lastIndexOf("mil"))));
+										element.setSrcLocY(Double.parseDouble(props.get("Y").substring(0, props.get("Y").lastIndexOf("mil"))));
+									}
+									catch(Exception e) {
+										e.printStackTrace();
+									}
+									
 									element.setPatternName(props.get("PATTERN"));
 
 									element.setDesignatorName(props.get("SOURCEDESIGNATOR"));
@@ -281,7 +289,7 @@ public class AltiumPcbDocParser {
 										newPcbModel.addElement(elementId, element);
 									}
 									
-									element.setDepth(Float.parseFloat(props.get("OVERALLHEIGHT").substring(0, props.get("OVERALLHEIGHT").lastIndexOf("mil"))));
+									element.setDepth(Double.parseDouble(props.get("OVERALLHEIGHT").substring(0, props.get("OVERALLHEIGHT").lastIndexOf("mil"))));
 									
 									for (String propKey : props.keySet()) {
 										if(propKey != null) {
@@ -290,7 +298,7 @@ public class AltiumPcbDocParser {
 											if(propKey.startsWith("VX") || propKey.startsWith("VY")) {
 												try {
 													int vertexId = Integer.parseInt(propKey.substring(2));
-													double coord = Float.parseFloat(propValue.substring(0, propValue.lastIndexOf("mil")));
+													double coord = Double.parseDouble(propValue.substring(0, propValue.lastIndexOf("mil")));
 													
 													PcbObjectVertex elementVertex = element.getVertex(vertexId);
 													if(elementVertex == null) {
@@ -330,7 +338,7 @@ public class AltiumPcbDocParser {
 			newPcbModel.getName();
 			
 			Point boardLocation = new Point();
-			boardLocation.setLocation(100.0, 100.0);
+			boardLocation.setLocation(PcbModel.DEFAULT_LOC_X, PcbModel.DEFAULT_LOC_Y);
 			newPcbModel.setLocation(boardLocation);
 			
 			for (PcbElementModel element : newPcbModel.getAllElements()) {
@@ -344,13 +352,21 @@ public class AltiumPcbDocParser {
 				element.getDescription();
 				element.getFootprintDescription();
 				
+				Point elementLocation = new Point();
+				
 				double elementMinX = element.getVertecesMinX();
-				double elementMinY = element.getVertecesMinY();
-				if(elementMinX != 0.0) {
-					Point elementLocation = new Point();
-					elementLocation.setLocation(boardLocation.getX() + (elementMinX - newPcbModel.getVertecesMinX()), boardLocation.getY() + (elementMinY - newPcbModel.getVertecesMinY()));
-					element.setLocation(elementLocation);
-				}				
+				double elementMaxY = element.getVertecesMaxY();
+				
+				if(elementMinX != 0.0 && elementMaxY != 0.0) {
+					elementLocation.setLocation(boardLocation.getX() + elementMinX - newPcbModel.getVertecesMinX(), boardLocation.getY() + newPcbModel.getVertecesMaxY() - elementMaxY);
+				}
+				else {
+					elementLocation.setLocation(boardLocation.getX() + element.getSrcLocX() - PcbElementModel.DEFAULT_WIDTH / 2.0 - newPcbModel.getVertecesMinX(), boardLocation.getY() + newPcbModel.getVertecesMaxY() - element.getSrcLocY() - PcbElementModel.DEFAULT_HEIGHT / 2.0);
+					element.setWidth(PcbElementModel.DEFAULT_WIDTH);
+					element.setHeight(PcbElementModel.DEFAULT_HEIGHT);
+				}
+				
+				element.setLocation(elementLocation);
 			}
 		} 
 		catch (IOException e) {

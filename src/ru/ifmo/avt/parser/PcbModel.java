@@ -108,4 +108,7 @@ public class PcbModel extends AbstractPcbObject {
 	
 	private HashMap<String, PcbLayer> layersByMark;
 	private HashMap<Integer, PcbElementModel> elementsById;
+	
+	protected static final double DEFAULT_LOC_X = 100.0;
+	protected static final double DEFAULT_LOC_Y = 100.0;
 }
