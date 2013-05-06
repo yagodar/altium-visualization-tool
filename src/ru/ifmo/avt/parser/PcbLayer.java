@@ -21,11 +21,11 @@ public class PcbLayer {
 		return mark == BOTTOM_LAYER_MARK;
 	}
 	
-	public void setDepth(float depth) {
+	public void setDepth(double depth) {
 		this.depth = depth;
 	}
 	
-	public float getDepth() {
+	public double getDepth() {
 		return depth;
 	}
 	
@@ -65,7 +65,7 @@ public class PcbLayer {
 	protected static final String BOTTOM_LAYER_MARK = "BOTTOM";
 	
 	private boolean isEnabled;
-	private float depth;
+	private double depth;
 	private String materialName;
 	
 	private final String mark;

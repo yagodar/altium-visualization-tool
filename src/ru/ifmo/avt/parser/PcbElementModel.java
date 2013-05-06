@@ -32,10 +32,6 @@ public class PcbElementModel extends AbstractPcbObject {
 		return value;
 	}
 	
-	public void setDescription(String description) {
-		setProperty(PcbObjectPropertyMark.DESCRIPTION, description);
-	}
-	
 	@Override
 	public double getDepth() {
 		double depth = 0.0;
@@ -46,6 +42,10 @@ public class PcbElementModel extends AbstractPcbObject {
 		}
 		
 		return depth;
+	}
+	
+	public void setDescription(String description) {
+		setProperty(PcbObjectPropertyMark.DESCRIPTION, description);
 	}
 
 	public String getPatternName() {
@@ -124,11 +124,35 @@ public class PcbElementModel extends AbstractPcbObject {
 		super();
 		
 		this.id = id;
+		setSrcLocX(0.0);
+		setSrcLocY(0.0);
 	}
 	
+	protected double getSrcLocX() {
+		return srcLocX;
+	}
+
+	protected void setSrcLocX(double srcLocX) {
+		this.srcLocX = srcLocX;
+	}
+
+	protected double getSrcLocY() {
+		return srcLocY;
+	}
+
+	protected void setSrcLocY(double srcLocY) {
+		this.srcLocY = srcLocY;
+	}
+
 	protected int getId() {
 		return id;
 	}
 	
+	private double srcLocX;
+	private double srcLocY;
+	
 	private final int id;
+	
+	protected static final double DEFAULT_WIDTH = 100.0;
+	protected static final double DEFAULT_HEIGHT = 100.0;
 }
