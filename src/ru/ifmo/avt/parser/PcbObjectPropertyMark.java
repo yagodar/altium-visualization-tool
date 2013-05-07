@@ -2,13 +2,15 @@ package ru.ifmo.avt.parser;
 
 enum PcbObjectPropertyMark {
 	//Common
-	WIDTH("Ширина"),
-	HEIGHT("Высота"),
-	DEPTH("Толщина"),
-	MATERIAL("Материал"),
+	WIDTH("Ширина, мил"),
+	HEIGHT("Высота, мил"),
+	DEPTH("Толщина, мил"),
+	OBJ_TERMAL_CONDUCT("Теплопроводность, коэф."),
 	
 	//PcbModel
 	NAME("Имя"),
+	ENV_TERMAL_CONDUCT("Теплопроводность окр. среды, коэф."),
+	ENV_TEMPERATURE("Температура окр. среды, C"),
 	
 	//PcbElementModel
 	PATTERN("Шаблон"),
@@ -16,6 +18,7 @@ enum PcbObjectPropertyMark {
 	LIBRARY_REFERENCE("Библиотечное название"),
 	DESCRIPTION("Описание"),
 	FOOTPRINT_DESCRIPTION("Описание фотошаблона"),
+	POWER("Мощность, Вт"),
 	
 	;
 	

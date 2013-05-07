@@ -11,8 +11,9 @@ import java.util.List;
 
 import ru.ifmo.avt.browser.interfaces.Browserable;
 import ru.ifmo.avt.browser.interfaces.Propertiable;
+import ru.ifmo.avt.tca.IPcbObjectModelForTca;
 
-public abstract class AbstractPcbObject implements Browserable {
+public abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	@Override
 	public Point[] getPeak() {
 		Point leftTopPoint = new Point();
@@ -51,8 +52,27 @@ public abstract class AbstractPcbObject implements Browserable {
 		return new Dimension((int) getWidth() + 10, (int) getHeight() + 10);
 	}
 	
+	@Override
+	public double getThermalConduct() {
+		double thermalConduct = 0.0;
+		
+		Propertiable thermalConductProperty = getPropertyByMark(PcbObjectPropertyMark.OBJ_TERMAL_CONDUCT.toString());
+		if(thermalConductProperty != null) {
+			thermalConduct = (double) thermalConductProperty.getValue();
+		}
+		else {
+			setThermalConduct(thermalConduct);
+		}
+		
+		return thermalConduct;
+	}
+	
+	public void setThermalConduct(double thermalConduct) {
+		setProperty(PcbObjectPropertyMark.OBJ_TERMAL_CONDUCT, thermalConduct);
+	}
+	
 	public double getWidth() {
-		double width = 0.0f;
+		double width = 0.0;
 		
 		Propertiable widthProperty = getPropertyByMark(PcbObjectPropertyMark.WIDTH.toString());
 		if(widthProperty != null) {
@@ -71,7 +91,7 @@ public abstract class AbstractPcbObject implements Browserable {
 	}
 	
 	public double getHeight() {
-		double height = 0.0f;
+		double height = 0.0;
 
 		Propertiable absHeightProperty = getPropertyByMark(PcbObjectPropertyMark.HEIGHT.toString());
 		if(absHeightProperty != null) {
@@ -93,24 +113,6 @@ public abstract class AbstractPcbObject implements Browserable {
 	
 	public void setDepth(double depth) {
 		setProperty(PcbObjectPropertyMark.DEPTH, depth);
-	}
-	
-	public String getMaterialName() {
-		String materialName = "unknown";
-		
-		Propertiable materialProperty = getPropertyByMark(PcbObjectPropertyMark.MATERIAL.toString());
-		if(materialProperty != null) {
-			materialName = (String) materialProperty.getValue();
-		}
-		else {
-			setMaterialName(materialName);
-		}
-		
-		return materialName;
-	}
-	
-	public void setMaterialName(String materialName) {
-		setProperty(PcbObjectPropertyMark.MATERIAL, materialName);
 	}
 	
 	protected AbstractPcbObject() {

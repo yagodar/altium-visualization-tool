@@ -93,7 +93,10 @@ public class AltiumPcbDocParser {
 									if(propKey != null) {
 										String propValue = props.get(propKey);
 										
-										if(propKey.startsWith("VX") || propKey.startsWith("VY")) {
+										if(propKey.equals("FILENAME")) {
+											newPcbModel.setName(propValue.substring(propValue.lastIndexOf("\\") + 1, propValue.lastIndexOf(".")));
+										}
+										else if(propKey.startsWith("VX") || propKey.startsWith("VY")) {
 											try {
 												int vertexId = Integer.parseInt(propKey.substring(2));
 												double coord = Double.parseDouble(propValue.substring(0, propValue.lastIndexOf("mil")));
@@ -331,11 +334,13 @@ public class AltiumPcbDocParser {
 			
 			bufFileReader.close();
 			
+			newPcbModel.getName();
 			newPcbModel.getWidth();
 			newPcbModel.getHeight();
 			newPcbModel.getDepth();
-			newPcbModel.getMaterialName();
-			newPcbModel.getName();
+			newPcbModel.getThermalConduct();
+			newPcbModel.getEnvThermalConduct();
+			newPcbModel.getEnvTemperature();
 			
 			Point boardLocation = new Point();
 			boardLocation.setLocation(PcbModel.DEFAULT_LOC_X, PcbModel.DEFAULT_LOC_Y);
@@ -345,7 +350,7 @@ public class AltiumPcbDocParser {
 				element.getWidth();
 				element.getHeight();
 				element.getDepth();
-				element.getMaterialName();
+				element.getThermalConduct();
 				element.getPatternName();
 				element.getDesignatorName();
 				element.getLibraryReference();
