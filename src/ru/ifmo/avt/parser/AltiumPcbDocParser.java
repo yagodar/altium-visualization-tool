@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.HashMap;
 
 import ru.ifmo.avt.browser.interfaces.Browserable;
+import ru.ifmo.avt.tca.IPcbModelForTca;
 
 public class AltiumPcbDocParser {
 	public static AltiumPcbDocParser getInstance() {
@@ -22,7 +23,7 @@ public class AltiumPcbDocParser {
 		return INSTANCE;
 	}
 	
-	public Browserable createPcbModel(File pcbDocFile) {
+	public void createNewPcbModel(File pcbDocFile) {
 		pcbModel = null;
 		
 		if(pcbDocFile != null) {
@@ -33,11 +34,17 @@ public class AltiumPcbDocParser {
 				System.out.println("Error! pcbDocFile is not file! path: " + pcbDocFile.getAbsolutePath());
 			}
 		}
-		
-		return pcbModel;
 	}
 
-	public Browserable getPcbModel() {
+	public PcbModel getPcbModel() {
+		return pcbModel;
+	}
+	
+	public Browserable getPcbModelBrowserable() {
+		return pcbModel;
+	}
+	
+	public IPcbModelForTca getPcbModelForTca() {
 		return pcbModel;
 	}
 	
@@ -93,7 +100,10 @@ public class AltiumPcbDocParser {
 									if(propKey != null) {
 										String propValue = props.get(propKey);
 										
-										if(propKey.startsWith("VX") || propKey.startsWith("VY")) {
+										if(propKey.equals("FILENAME")) {
+											newPcbModel.setName(propValue.substring(propValue.lastIndexOf("\\") + 1, propValue.lastIndexOf(".")));
+										}
+										else if(propKey.startsWith("VX") || propKey.startsWith("VY")) {
 											try {
 												int vertexId = Integer.parseInt(propKey.substring(2));
 												double coord = Double.parseDouble(propValue.substring(0, propValue.lastIndexOf("mil")));
@@ -331,11 +341,14 @@ public class AltiumPcbDocParser {
 			
 			bufFileReader.close();
 			
+			newPcbModel.getName();
 			newPcbModel.getWidth();
 			newPcbModel.getHeight();
 			newPcbModel.getDepth();
-			newPcbModel.getMaterialName();
-			newPcbModel.getName();
+			newPcbModel.getThermalConduct();
+			newPcbModel.getTemperature();
+			newPcbModel.getEnvThermalConduct();
+			newPcbModel.getEnvTemperature();
 			
 			Point boardLocation = new Point();
 			boardLocation.setLocation(PcbModel.DEFAULT_LOC_X, PcbModel.DEFAULT_LOC_Y);
@@ -345,7 +358,8 @@ public class AltiumPcbDocParser {
 				element.getWidth();
 				element.getHeight();
 				element.getDepth();
-				element.getMaterialName();
+				element.getThermalConduct();
+				element.getTemperature();
 				element.getPatternName();
 				element.getDesignatorName();
 				element.getLibraryReference();
@@ -386,7 +400,7 @@ public class AltiumPcbDocParser {
 		}
 	}
 	
-	private Browserable pcbModel;
+	private PcbModel pcbModel;
 	
 	private final HashMap<String, ArrayList<HashMap<String, String>>> overAllProps;
 	

@@ -31,8 +31,8 @@ public class OpenFileAction extends AbstractAction {
 
 	if (answer == OpenFileDialog.APPROVE_OPTION) {
 	    
-	   Browserable browserable = AltiumPcbDocParser.getInstance().createPcbModel(openFileDialog.getSelectedFile());
-	    
+	   AltiumPcbDocParser.getInstance().createNewPcbModel(openFileDialog.getSelectedFile());
+	   Browserable browserable = AltiumPcbDocParser.getInstance().getPcbModelBrowserable();
 /*	    BrowserableObject browserableObject = new BrowserableObject();
 
 	    ArrayList<Browserable> listBrowserableObjects = new ArrayList<Browserable>();

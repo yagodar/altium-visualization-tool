@@ -11,8 +11,9 @@ import java.util.List;
 
 import ru.ifmo.avt.browser.interfaces.Browserable;
 import ru.ifmo.avt.browser.interfaces.Propertiable;
+import ru.ifmo.avt.tca.IPcbObjectModelForTca;
 
-public abstract class AbstractPcbObject implements Browserable {
+public abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	@Override
 	public Point[] getPeak() {
 		Point leftTopPoint = new Point();
@@ -51,8 +52,44 @@ public abstract class AbstractPcbObject implements Browserable {
 		return new Dimension((int) getWidth() + 10, (int) getHeight() + 10);
 	}
 	
+	@Override
+	public double getThermalConduct() {
+		double thermalConduct = DEFAULT_TERMAL_CONDACT;
+		
+		Propertiable thermalConductProperty = getPropertyByMark(PcbObjectPropertyMark.OBJ_TERMAL_CONDUCT.toString());
+		if(thermalConductProperty != null) {
+			thermalConduct = (double) thermalConductProperty.getValue();
+		}
+		else {
+			setThermalConduct(thermalConduct);
+		}
+		
+		return thermalConduct;
+	}
+	
+	@Override
+	public double getTemperature() {
+		double value = DEFAULT_TEMPERATURE;
+		
+		Propertiable valueProperty = getPropertyByMark(PcbObjectPropertyMark.OBJ_TEMPERATURE.toString());
+		if(valueProperty != null) {
+			value = (double) valueProperty.getValue();
+		}
+		else {
+			setTemperature(value);
+		}
+		
+		return value;
+	}
+	
+	@Override
+	public void setTemperature(double temperature) {
+		setProperty(PcbObjectPropertyMark.OBJ_TEMPERATURE, temperature);
+	}
+	
+	@Override
 	public double getWidth() {
-		double width = 0.0f;
+		double width = 0.0;
 		
 		Propertiable widthProperty = getPropertyByMark(PcbObjectPropertyMark.WIDTH.toString());
 		if(widthProperty != null) {
@@ -66,12 +103,9 @@ public abstract class AbstractPcbObject implements Browserable {
 		return width;
 	}
 	
-	public void setWidth(double width) {
-		setProperty(PcbObjectPropertyMark.WIDTH, width);
-	}
-	
+	@Override
 	public double getHeight() {
-		double height = 0.0f;
+		double height = 0.0;
 
 		Propertiable absHeightProperty = getPropertyByMark(PcbObjectPropertyMark.HEIGHT.toString());
 		if(absHeightProperty != null) {
@@ -84,33 +118,21 @@ public abstract class AbstractPcbObject implements Browserable {
 		
 		return height;
 	}
+	
+	public void setThermalConduct(double thermalConduct) {
+		setProperty(PcbObjectPropertyMark.OBJ_TERMAL_CONDUCT, thermalConduct);
+	}
+	
+	public void setWidth(double width) {
+		setProperty(PcbObjectPropertyMark.WIDTH, width);
+	}
 
 	public void setHeight(double height) {
 		setProperty(PcbObjectPropertyMark.HEIGHT, height);
 	}
 	
-	abstract public double getDepth();
-	
 	public void setDepth(double depth) {
 		setProperty(PcbObjectPropertyMark.DEPTH, depth);
-	}
-	
-	public String getMaterialName() {
-		String materialName = "unknown";
-		
-		Propertiable materialProperty = getPropertyByMark(PcbObjectPropertyMark.MATERIAL.toString());
-		if(materialProperty != null) {
-			materialName = (String) materialProperty.getValue();
-		}
-		else {
-			setMaterialName(materialName);
-		}
-		
-		return materialName;
-	}
-	
-	public void setMaterialName(String materialName) {
-		setProperty(PcbObjectPropertyMark.MATERIAL, materialName);
 	}
 	
 	protected AbstractPcbObject() {
@@ -232,4 +254,7 @@ public abstract class AbstractPcbObject implements Browserable {
 	private Point location;
 	
 	private HashMap<Integer, PcbObjectVertex> vertices;
+	
+	private static final double DEFAULT_TERMAL_CONDACT = 150;
+	private static final double DEFAULT_TEMPERATURE = 20.0;
 }

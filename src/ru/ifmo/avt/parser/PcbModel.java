@@ -7,8 +7,10 @@ import java.util.List;
 
 import ru.ifmo.avt.browser.interfaces.Browserable;
 import ru.ifmo.avt.browser.interfaces.Propertiable;
+import ru.ifmo.avt.tca.IPcbElementModelForTca;
+import ru.ifmo.avt.tca.IPcbModelForTca;
 
-public class PcbModel extends AbstractPcbObject {
+public class PcbModel extends AbstractPcbObject implements IPcbModelForTca {
 	@Override
 	public String toString() {
 		return PcbModel.class.getSimpleName() + " [name:" + getName() + "]" + " [width:" + getWidth() + "mil]" + " [height:" + getHeight() + "mil]" + " [depth:" + getDepth() + "mil]" + " [elementsCount:" + getAllElements().size() + "]";
@@ -16,15 +18,13 @@ public class PcbModel extends AbstractPcbObject {
 	
 	@Override
 	public double getDepth() {
-		double depth = 0.0f;
+		double depth = 0.0;
 
 		Propertiable depthProperty = getPropertyByMark(PcbObjectPropertyMark.DEPTH.toString());
 		if(depthProperty != null) {
 			depth = (double) depthProperty.getValue();
 		}
 		else {
-			depth = 0.0f;
-
 			for (PcbLayer layer : getAllLayers()) {
 				if(layer.isEnabled()) {
 					depth += layer.getDepth();
@@ -45,8 +45,53 @@ public class PcbModel extends AbstractPcbObject {
 	}
 	
 	@Override
+	public List<IPcbElementModelForTca> getElementsForTca() {
+		List<IPcbElementModelForTca> elementsForTca = new ArrayList<IPcbElementModelForTca>();
+		elementsForTca.addAll(getAllElements());
+		return elementsForTca;
+	}
+	
+	@Override
 	public String getDescription() {
 		return getName();
+	}
+	
+	@Override
+	public double getEnvThermalConduct() {
+		double envThermalConduct = DEFAULT_ENV_TERMAL_CONDACT;
+		
+		Propertiable envThermalConductProperty = getPropertyByMark(PcbObjectPropertyMark.ENV_TERMAL_CONDUCT.toString());
+		if(envThermalConductProperty != null) {
+			envThermalConduct = (double) envThermalConductProperty.getValue();
+		}
+		else {
+			setEnvThermalConduct(envThermalConduct);
+		}
+		
+		return envThermalConduct;
+	}
+	
+	@Override
+	public double getEnvTemperature() {
+		double envTemperature = DEFAULT_ENV_TEMPERATURE;
+		
+		Propertiable envTemperatureProperty = getPropertyByMark(PcbObjectPropertyMark.ENV_TEMPERATURE.toString());
+		if(envTemperatureProperty != null) {
+			envTemperature = (double) envTemperatureProperty.getValue();
+		}
+		else {
+			setEnvTemperature(envTemperature);
+		}
+		
+		return envTemperature;
+	}
+	
+	public void setEnvThermalConduct(double envThermalConduct) {
+		setProperty(PcbObjectPropertyMark.ENV_TERMAL_CONDUCT, envThermalConduct);
+	}
+	
+	public void setEnvTemperature(double envTemperature) {
+		setProperty(PcbObjectPropertyMark.ENV_TEMPERATURE, envTemperature);
 	}
 	
 	public String getName() {
@@ -111,4 +156,7 @@ public class PcbModel extends AbstractPcbObject {
 	
 	protected static final double DEFAULT_LOC_X = 100.0;
 	protected static final double DEFAULT_LOC_Y = 100.0;
+	
+	private static final double DEFAULT_ENV_TERMAL_CONDACT = 0.026;
+	private static final double DEFAULT_ENV_TEMPERATURE = 20.0;
 }

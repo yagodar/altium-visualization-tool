@@ -5,8 +5,9 @@ import java.util.List;
 
 import ru.ifmo.avt.browser.interfaces.Browserable;
 import ru.ifmo.avt.browser.interfaces.Propertiable;
+import ru.ifmo.avt.tca.IPcbElementModelForTca;
 
-public class PcbElementModel extends AbstractPcbObject {
+public class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTca {
 	@Override
 	public String toString() {
 		return PcbElementModel.class.getSimpleName() + " [id:" + getId() + "]" + " [depth:" + getDepth() + "mil]" + " [designator:" + getDesignatorName() + "]" + " [libRef:" + getLibraryReference() + "]"  + " [descr:" + getDescription() + "]";
@@ -40,12 +41,34 @@ public class PcbElementModel extends AbstractPcbObject {
 		if(depthProperty != null) {
 			depth = (double) depthProperty.getValue();
 		}
+		else {
+			setDepth(depth);
+		}
 		
 		return depth;
 	}
 	
+	@Override
+	public double getPower() {
+		double power = 0.0;
+		
+		Propertiable powerProperty = getPropertyByMark(PcbObjectPropertyMark.POWER.toString());
+		if(powerProperty != null) {
+			power = (double) powerProperty.getValue();
+		}
+		else {
+			setPower(power);
+		}
+		
+		return power;
+	}
+	
 	public void setDescription(String description) {
 		setProperty(PcbObjectPropertyMark.DESCRIPTION, description);
+	}
+	
+	public void setPower(double power) {
+		setProperty(PcbObjectPropertyMark.POWER, power);
 	}
 
 	public String getPatternName() {
