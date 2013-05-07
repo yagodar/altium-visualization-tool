@@ -87,10 +87,7 @@ public abstract class AbstractPcbObject implements Browserable, IPcbObjectModelF
 		setProperty(PcbObjectPropertyMark.OBJ_TEMPERATURE, temperature);
 	}
 	
-	public void setThermalConduct(double thermalConduct) {
-		setProperty(PcbObjectPropertyMark.OBJ_TERMAL_CONDUCT, thermalConduct);
-	}
-	
+	@Override
 	public double getWidth() {
 		double width = 0.0;
 		
@@ -106,10 +103,7 @@ public abstract class AbstractPcbObject implements Browserable, IPcbObjectModelF
 		return width;
 	}
 	
-	public void setWidth(double width) {
-		setProperty(PcbObjectPropertyMark.WIDTH, width);
-	}
-	
+	@Override
 	public double getHeight() {
 		double height = 0.0;
 
@@ -124,12 +118,18 @@ public abstract class AbstractPcbObject implements Browserable, IPcbObjectModelF
 		
 		return height;
 	}
+	
+	public void setThermalConduct(double thermalConduct) {
+		setProperty(PcbObjectPropertyMark.OBJ_TERMAL_CONDUCT, thermalConduct);
+	}
+	
+	public void setWidth(double width) {
+		setProperty(PcbObjectPropertyMark.WIDTH, width);
+	}
 
 	public void setHeight(double height) {
 		setProperty(PcbObjectPropertyMark.HEIGHT, height);
 	}
-	
-	abstract public double getDepth();
 	
 	public void setDepth(double depth) {
 		setProperty(PcbObjectPropertyMark.DEPTH, depth);
