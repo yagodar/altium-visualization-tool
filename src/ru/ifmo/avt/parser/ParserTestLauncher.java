@@ -8,7 +8,9 @@ public class ParserTestLauncher {
 		String testPath = "./data/data-in/fill.PcbDoc";
 		
 		System.out.println(ParserTestLauncher.class.getSimpleName() + ":START:" + testPath);
-		PcbModel testPcbModel = AltiumPcbDocParser.getInstance().createPcbModel(new File(testPath));
+		AltiumPcbDocParser.getInstance().createNewPcbModel(new File(testPath));
+		PcbModel testPcbModel = AltiumPcbDocParser.getInstance().getPcbModel();
+
 		System.out.println(ParserTestLauncher.class.getSimpleName() + ":STOP:" + testPcbModel);
 	}
 }

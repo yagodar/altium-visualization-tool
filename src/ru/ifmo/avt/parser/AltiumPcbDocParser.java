@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
+import ru.ifmo.avt.browser.interfaces.Browserable;
+import ru.ifmo.avt.tca.IPcbModelForTca;
+
 public class AltiumPcbDocParser {
 	public static AltiumPcbDocParser getInstance() {
 		if(INSTANCE == null) {
@@ -20,7 +23,7 @@ public class AltiumPcbDocParser {
 		return INSTANCE;
 	}
 	
-	public PcbModel createPcbModel(File pcbDocFile) {
+	public void createNewPcbModel(File pcbDocFile) {
 		pcbModel = null;
 		
 		if(pcbDocFile != null) {
@@ -31,11 +34,17 @@ public class AltiumPcbDocParser {
 				System.out.println("Error! pcbDocFile is not file! path: " + pcbDocFile.getAbsolutePath());
 			}
 		}
-		
-		return pcbModel;
 	}
 
 	public PcbModel getPcbModel() {
+		return pcbModel;
+	}
+	
+	public Browserable getPcbModelBrowserable() {
+		return pcbModel;
+	}
+	
+	public IPcbModelForTca getPcbModelForTca() {
 		return pcbModel;
 	}
 	

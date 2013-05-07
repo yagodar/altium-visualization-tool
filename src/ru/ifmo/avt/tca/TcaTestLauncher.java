@@ -12,8 +12,9 @@ public class TcaTestLauncher {
 		String testPath = "./data/data-in/fill.PcbDoc";
 
 		System.out.println(ParserTestLauncher.class.getSimpleName() + ":START_0:" + testPath);
-		IPcbModelForTca testPcbModel = AltiumPcbDocParser.getInstance().createPcbModel(new File(testPath));
-
+		AltiumPcbDocParser.getInstance().createNewPcbModel(new File(testPath));
+		IPcbModelForTca testPcbModel = AltiumPcbDocParser.getInstance().getPcbModelForTca();
+		
 		System.out.println(TcaTestLauncher.class.getSimpleName() + ":START_1:" + testPcbModel);
 		ThermalConditionsAnalyzer.getInstance().analyzePcbModel(testPcbModel);
 
