@@ -16,7 +16,7 @@ public class TcaTestLauncher {
 		IPcbModelForTca testPcbModel = AltiumPcbDocParser.getInstance().getPcbModelForTca();
 		
 		System.out.println(TcaTestLauncher.class.getSimpleName() + ":START_1:" + testPcbModel);
-		ThermalConditionsAnalyzer.getInstance().analyzePcbModel(testPcbModel);
+		PcbThermalConditionsAnalyzer.getInstance().analyzePcbModel(testPcbModel);
 
 		System.out.println(TcaTestLauncher.class.getSimpleName() + ":STOP");
 	}
