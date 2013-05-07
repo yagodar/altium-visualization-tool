@@ -54,7 +54,7 @@ public abstract class AbstractPcbObject implements Browserable, IPcbObjectModelF
 	
 	@Override
 	public double getThermalConduct() {
-		double thermalConduct = 0.0;
+		double thermalConduct = DEFAULT_TERMAL_CONDACT;
 		
 		Propertiable thermalConductProperty = getPropertyByMark(PcbObjectPropertyMark.OBJ_TERMAL_CONDUCT.toString());
 		if(thermalConductProperty != null) {
@@ -65,6 +65,26 @@ public abstract class AbstractPcbObject implements Browserable, IPcbObjectModelF
 		}
 		
 		return thermalConduct;
+	}
+	
+	@Override
+	public double getTemperature() {
+		double value = DEFAULT_TEMPERATURE;
+		
+		Propertiable valueProperty = getPropertyByMark(PcbObjectPropertyMark.OBJ_TEMPERATURE.toString());
+		if(valueProperty != null) {
+			value = (double) valueProperty.getValue();
+		}
+		else {
+			setTemperature(value);
+		}
+		
+		return value;
+	}
+	
+	@Override
+	public void setTemperature(double temperature) {
+		setProperty(PcbObjectPropertyMark.OBJ_TEMPERATURE, temperature);
 	}
 	
 	public void setThermalConduct(double thermalConduct) {
@@ -234,4 +254,7 @@ public abstract class AbstractPcbObject implements Browserable, IPcbObjectModelF
 	private Point location;
 	
 	private HashMap<Integer, PcbObjectVertex> vertices;
+	
+	private static final double DEFAULT_TERMAL_CONDACT = 150;
+	private static final double DEFAULT_TEMPERATURE = 20.0;
 }

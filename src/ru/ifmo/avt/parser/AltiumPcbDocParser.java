@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-import ru.ifmo.avt.browser.interfaces.Browserable;
-
 public class AltiumPcbDocParser {
 	public static AltiumPcbDocParser getInstance() {
 		if(INSTANCE == null) {
@@ -22,7 +20,7 @@ public class AltiumPcbDocParser {
 		return INSTANCE;
 	}
 	
-	public Browserable createPcbModel(File pcbDocFile) {
+	public PcbModel createPcbModel(File pcbDocFile) {
 		pcbModel = null;
 		
 		if(pcbDocFile != null) {
@@ -37,7 +35,7 @@ public class AltiumPcbDocParser {
 		return pcbModel;
 	}
 
-	public Browserable getPcbModel() {
+	public PcbModel getPcbModel() {
 		return pcbModel;
 	}
 	
@@ -339,6 +337,7 @@ public class AltiumPcbDocParser {
 			newPcbModel.getHeight();
 			newPcbModel.getDepth();
 			newPcbModel.getThermalConduct();
+			newPcbModel.getTemperature();
 			newPcbModel.getEnvThermalConduct();
 			newPcbModel.getEnvTemperature();
 			
@@ -351,6 +350,7 @@ public class AltiumPcbDocParser {
 				element.getHeight();
 				element.getDepth();
 				element.getThermalConduct();
+				element.getTemperature();
 				element.getPatternName();
 				element.getDesignatorName();
 				element.getLibraryReference();
@@ -391,7 +391,7 @@ public class AltiumPcbDocParser {
 		}
 	}
 	
-	private Browserable pcbModel;
+	private PcbModel pcbModel;
 	
 	private final HashMap<String, ArrayList<HashMap<String, String>>> overAllProps;
 	
