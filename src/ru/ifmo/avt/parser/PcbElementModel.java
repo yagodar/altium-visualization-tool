@@ -30,7 +30,7 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 			setDescription(value);
 		}
 		
-		return value;
+		return value + "\nx:[" + getLocation().getX() + "] y:[" + getLocation().getY() + "]\nw:[" + getDimension().width + "] h:[" +  + getDimension().height;
 	}
 	
 	@Override
