@@ -1,8 +1,11 @@
-package ru.ifmo.avt.parser;
+package ru.ifmo.avt;
 
 import java.io.File;
 
-public class ParserTestLauncher {
+import ru.ifmo.avt.parser.AltiumPcbDocParser;
+import ru.ifmo.avt.parser.PcbModel;
+
+class ParserTestLauncher {
 	public static void main(String[] args) {
 		//String testPath = "./data/data-in/empty.PcbDoc";
 		String testPath = "./data/data-in/fill.PcbDoc";

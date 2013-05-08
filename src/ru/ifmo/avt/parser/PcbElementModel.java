@@ -7,7 +7,7 @@ import ru.ifmo.avt.browser.interfaces.Browserable;
 import ru.ifmo.avt.browser.interfaces.Propertiable;
 import ru.ifmo.avt.tca.IPcbElementModelForTca;
 
-public class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTca {
+class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTca {
 	@Override
 	public String toString() {
 		return PcbElementModel.class.getSimpleName() + " [id:" + getId() + "]" + " [depth:" + getDepth() + "mil]" + " [designator:" + getDesignatorName() + "]" + " [libRef:" + getLibraryReference() + "]"  + " [descr:" + getDescription() + "]";
@@ -30,7 +30,7 @@ public class PcbElementModel extends AbstractPcbObject implements IPcbElementMod
 			setDescription(value);
 		}
 		
-		return value;
+		return value + "\nx:[" + getLocation().getX() + "] y:[" + getLocation().getY() + "]\nw:[" + getDimension().width + "] h:[" +  + getDimension().height;
 	}
 	
 	@Override

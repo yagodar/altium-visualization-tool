@@ -1,17 +1,17 @@
 package ru.ifmo.avt.parser;
 
-enum PcbObjectPropertyMark {
+public enum PcbObjectPropertyMark {
 	//Common
 	WIDTH("Ширина, мил"),
 	HEIGHT("Высота, мил"),
 	DEPTH("Толщина, мил"),
 	OBJ_TERMAL_CONDUCT("Теплопроводность, коэф."),
-	OBJ_TEMPERATURE("Температура, C"),
+	OBJ_TEMPERATURE("Температура, K"),
 	
 	//PcbModel
 	NAME("Имя"),
 	ENV_TERMAL_CONDUCT("Теплопроводность окр. среды, коэф."),
-	ENV_TEMPERATURE("Температура окр. среды, C"),
+	ENV_TEMPERATURE("Температура окр. среды, K"),
 	
 	//PcbElementModel
 	PATTERN("Шаблон"),

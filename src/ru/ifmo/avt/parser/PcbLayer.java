@@ -1,6 +1,6 @@
 package ru.ifmo.avt.parser;
 
-public class PcbLayer {	
+class PcbLayer {	
 	public String getMark() {
 		return mark;
 	}

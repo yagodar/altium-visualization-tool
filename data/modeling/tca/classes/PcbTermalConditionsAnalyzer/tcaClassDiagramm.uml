@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_aRuy0Le2EeKvJKO51iHdqQ" name="model">
+  <packagedElement xmi:type="uml:Class" xmi:id="_nsnqoLe2EeKvJKO51iHdqQ" clientDependency="_DLC5MLe4EeKvJKO51iHdqQ" name="PcbThermalConditionsAnalyzer">
+    <ownedAttribute xmi:id="_-jf7wLe2EeKvJKO51iHdqQ" name="INSTANCE" visibility="private" isStatic="true" type="_nsnqoLe2EeKvJKO51iHdqQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__DlxELe2EeKvJKO51iHdqQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__DlxEbe2EeKvJKO51iHdqQ" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="__DmYILe2EeKvJKO51iHdqQ">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_EyNgwLe3EeKvJKO51iHdqQ" name="getInstance" isStatic="true">
+      <ownedParameter xmi:id="_NLQbELfSEeKgt7HKDoUz0Q" type="_nsnqoLe2EeKvJKO51iHdqQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_LeE70Le3EeKvJKO51iHdqQ" name="analyzePcbModel">
+      <ownedParameter xmi:id="_mhHQELfSEeKgt7HKDoUz0Q" type="_gSXDELe3EeKvJKO51iHdqQ"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_a7Y-YLe3EeKvJKO51iHdqQ" name="IPcbObjectModelForTca">
+    <ownedOperation xmi:id="_imMRcLe4EeKvJKO51iHdqQ" name="getThermalConduct">
+      <ownedParameter xmi:id="_0cFyoLfREeKgt7HKDoUz0Q" type="_InYJkLe5EeKvJKO51iHdqQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_kYmqQLe4EeKvJKO51iHdqQ" name="getTemperature">
+      <ownedParameter xmi:id="_28JUkLfREeKgt7HKDoUz0Q" type="_InYJkLe5EeKvJKO51iHdqQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_l0c9MLe4EeKvJKO51iHdqQ" name="getWidth">
+      <ownedParameter xmi:id="_5uZZwLfREeKgt7HKDoUz0Q" type="_InYJkLe5EeKvJKO51iHdqQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_nD-EULe4EeKvJKO51iHdqQ" name="getHeight">
+      <ownedParameter xmi:id="_7dicILfREeKgt7HKDoUz0Q" type="_InYJkLe5EeKvJKO51iHdqQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_oL58wLe4EeKvJKO51iHdqQ" name="getDepth">
+      <ownedParameter xmi:id="_8_Tw4LfREeKgt7HKDoUz0Q" type="_InYJkLe5EeKvJKO51iHdqQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_sOx8ULe4EeKvJKO51iHdqQ" name="getLocation">
+      <ownedParameter xmi:id="__FZToLfREeKgt7HKDoUz0Q" type="_O3yXsLe5EeKvJKO51iHdqQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_v9fpwLe4EeKvJKO51iHdqQ" name="setTemperature">
+      <ownedParameter xmi:id="_AKONsLfSEeKgt7HKDoUz0Q" type="_InYJkLe5EeKvJKO51iHdqQ"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_gSXDELe3EeKvJKO51iHdqQ" clientDependency="_VxgeALe4EeKvJKO51iHdqQ" name="IPcbModelForTca">
+    <generalization xmi:id="__mhCgLe3EeKvJKO51iHdqQ" general="_a7Y-YLe3EeKvJKO51iHdqQ"/>
+    <ownedOperation xmi:id="_2GtqwLe4EeKvJKO51iHdqQ" name="getEnvThermalConduct">
+      <ownedParameter xmi:id="_Dq_lwLfSEeKgt7HKDoUz0Q" type="_InYJkLe5EeKvJKO51iHdqQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_4YOaYLe4EeKvJKO51iHdqQ" name="getEnvTemperature">
+      <ownedParameter xmi:id="_FKMusLfSEeKgt7HKDoUz0Q" type="_InYJkLe5EeKvJKO51iHdqQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_6O5BELe4EeKvJKO51iHdqQ" name="getElementsForTca">
+      <ownedParameter xmi:id="_HlXwoLfSEeKgt7HKDoUz0Q" type="_VeLc4Le5EeKvJKO51iHdqQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_rBKIELe3EeKvJKO51iHdqQ" name="IPcbElementModelForTca">
+    <generalization xmi:id="_-cL9YLe3EeKvJKO51iHdqQ" general="_a7Y-YLe3EeKvJKO51iHdqQ"/>
+    <ownedOperation xmi:id="_1O0ZcLe4EeKvJKO51iHdqQ" name="getPower">
+      <ownedParameter xmi:id="_B_wL8LfSEeKgt7HKDoUz0Q" type="_InYJkLe5EeKvJKO51iHdqQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_DLC5MLe4EeKvJKO51iHdqQ" name="" client="_nsnqoLe2EeKvJKO51iHdqQ" supplier="_gSXDELe3EeKvJKO51iHdqQ"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_HfwPoLe4EeKvJKO51iHdqQ" name="iPcbElementModelForTca_iPcbModelForTca_1" memberEnd="_Hfw2s7e4EeKvJKO51iHdqQ _Hfw2sLe4EeKvJKO51iHdqQ">
+    <ownedEnd xmi:id="_Hfw2sLe4EeKvJKO51iHdqQ" name="iPcbModelForTca" type="_gSXDELe3EeKvJKO51iHdqQ" association="_HfwPoLe4EeKvJKO51iHdqQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Hfw2sbe4EeKvJKO51iHdqQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Hfw2sre4EeKvJKO51iHdqQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_Hfw2s7e4EeKvJKO51iHdqQ" name="iPcbElementModelForTca" type="_rBKIELe3EeKvJKO51iHdqQ" association="_HfwPoLe4EeKvJKO51iHdqQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Hfw2tLe4EeKvJKO51iHdqQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Hfw2tbe4EeKvJKO51iHdqQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_VxgeALe4EeKvJKO51iHdqQ" name="" client="_gSXDELe3EeKvJKO51iHdqQ" supplier="_rBKIELe3EeKvJKO51iHdqQ"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_InYJkLe5EeKvJKO51iHdqQ" name="double"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_O3yXsLe5EeKvJKO51iHdqQ" name="java.awt.Point"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VeLc4Le5EeKvJKO51iHdqQ" name="java.util.List"/>
+</uml:Model>

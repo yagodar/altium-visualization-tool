@@ -53,7 +53,7 @@ public class PcbModel extends AbstractPcbObject implements IPcbModelForTca {
 	
 	@Override
 	public String getDescription() {
-		return getName();
+		return getName() + "\nx:[" + getLocation().getX() + "] y:[" + getLocation().getY() + "]\nw:[" + getDimension().width + "] h:[" +  + getDimension().height;
 	}
 	
 	@Override

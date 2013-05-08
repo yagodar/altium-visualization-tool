@@ -8,7 +8,7 @@ import javax.swing.JCheckBox;
 
 import ru.ifmo.avt.browser.interfaces.Propertiable;
 
-public class PcbObjectProperty implements Propertiable {
+class PcbObjectProperty implements Propertiable {
 	@Override
 	public String getName() {
 		return name;
