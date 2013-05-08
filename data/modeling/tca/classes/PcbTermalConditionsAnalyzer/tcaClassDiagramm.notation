@@ -27,6 +27,9 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_EyTnYbe3EeKvJKO51iHdqQ"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_LeImMLe3EeKvJKO51iHdqQ" type="3013" fontName="Segoe UI" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_o6lo4LfSEeKgt7HKDoUz0Q" source="CustomAppearance_Annotation">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pB8OELfSEeKgt7HKDoUz0Q" key="CustomAppearance_MaskValue" value="778"/>
+        </eAnnotations>
         <element xmi:type="uml:Operation" href="tcaClassDiagramm.uml#_LeE70Le3EeKvJKO51iHdqQ"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_LeImMbe3EeKvJKO51iHdqQ"/>
       </children>
@@ -42,7 +45,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nt5dDre2EeKvJKO51iHdqQ"/>
     </children>
     <element xmi:type="uml:Class" href="tcaClassDiagramm.uml#_nsnqoLe2EeKvJKO51iHdqQ"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ntfNUbe2EeKvJKO51iHdqQ" x="420" y="90" width="259"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ntfNUbe2EeKvJKO51iHdqQ" x="420" y="90" width="276"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_a7ed8Le3EeKvJKO51iHdqQ" type="2004" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_a7fsELe3EeKvJKO51iHdqQ" source="ShadowFigure">
@@ -87,6 +90,9 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_sOzxgbe4EeKvJKO51iHdqQ"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_v9lJULe4EeKvJKO51iHdqQ" type="3007" fontName="Segoe UI" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ntrJ0LfSEeKgt7HKDoUz0Q" source="CustomAppearance_Annotation">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_oS7L8LfSEeKgt7HKDoUz0Q" key="CustomAppearance_MaskValue" value="778"/>
+        </eAnnotations>
         <element xmi:type="uml:Operation" href="tcaClassDiagramm.uml#_v9fpwLe4EeKvJKO51iHdqQ"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_v9lJUbe4EeKvJKO51iHdqQ"/>
       </children>
@@ -102,7 +108,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_a7g6Obe3EeKvJKO51iHdqQ"/>
     </children>
     <element xmi:type="uml:Interface" href="tcaClassDiagramm.uml#_a7Y-YLe3EeKvJKO51iHdqQ"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_a7ed8be3EeKvJKO51iHdqQ" x="50" y="130" width="256" height="165"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_a7ed8be3EeKvJKO51iHdqQ" x="50" y="130" width="276" height="165"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_gSb7kLe3EeKvJKO51iHdqQ" type="2004" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gSdJsLe3EeKvJKO51iHdqQ" source="ShadowFigure">
@@ -146,7 +152,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gSe-5Le3EeKvJKO51iHdqQ"/>
     </children>
     <element xmi:type="uml:Interface" href="tcaClassDiagramm.uml#_gSXDELe3EeKvJKO51iHdqQ"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gSb7kbe3EeKvJKO51iHdqQ" x="420" y="355" width="256" height="86"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gSb7kbe3EeKvJKO51iHdqQ" x="420" y="355" width="276" height="86"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_rBPnoLe3EeKvJKO51iHdqQ" type="2004" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rBQ1wLe3EeKvJKO51iHdqQ" source="ShadowFigure">
@@ -182,7 +188,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rBSq9Le3EeKvJKO51iHdqQ"/>
     </children>
     <element xmi:type="uml:Interface" href="tcaClassDiagramm.uml#_rBKIELe3EeKvJKO51iHdqQ"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rBPnobe3EeKvJKO51iHdqQ" x="50" y="370" width="261" height="61"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rBPnobe3EeKvJKO51iHdqQ" x="50" y="370" width="281" height="61"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_IneQMLe5EeKvJKO51iHdqQ" type="2009" fontName="Segoe UI" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Ine3QLe5EeKvJKO51iHdqQ" source="ShadowFigure">
