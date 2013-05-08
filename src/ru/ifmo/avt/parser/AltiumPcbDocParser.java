@@ -360,6 +360,7 @@ public class AltiumPcbDocParser {
 				element.getDepth();
 				element.getThermalConduct();
 				element.getTemperature();
+				element.getPower();
 				element.getPatternName();
 				element.getDesignatorName();
 				element.getLibraryReference();
@@ -372,10 +373,10 @@ public class AltiumPcbDocParser {
 				double elementMaxY = element.getVertecesMaxY();
 				
 				if(elementMinX != 0.0 && elementMaxY != 0.0) {
-					elementLocation.setLocation(boardLocation.getX() + elementMinX - newPcbModel.getVertecesMinX(), boardLocation.getY() + newPcbModel.getVertecesMaxY() - elementMaxY);
+					elementLocation.setLocation(elementMinX - newPcbModel.getVertecesMinX(), newPcbModel.getVertecesMaxY() - elementMaxY);
 				}
 				else {
-					elementLocation.setLocation(boardLocation.getX() + element.getSrcLocX() - PcbElementModel.DEFAULT_WIDTH / 2.0 - newPcbModel.getVertecesMinX(), boardLocation.getY() + newPcbModel.getVertecesMaxY() - element.getSrcLocY() - PcbElementModel.DEFAULT_HEIGHT / 2.0);
+					elementLocation.setLocation(element.getSrcLocX() - PcbElementModel.DEFAULT_WIDTH / 2.0 - newPcbModel.getVertecesMinX(), newPcbModel.getVertecesMaxY() - element.getSrcLocY() - PcbElementModel.DEFAULT_HEIGHT / 2.0);
 					element.setWidth(PcbElementModel.DEFAULT_WIDTH);
 					element.setHeight(PcbElementModel.DEFAULT_HEIGHT);
 				}

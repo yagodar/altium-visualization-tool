@@ -13,7 +13,7 @@ import ru.ifmo.avt.browser.interfaces.Browserable;
 import ru.ifmo.avt.browser.interfaces.Propertiable;
 import ru.ifmo.avt.tca.IPcbObjectModelForTca;
 
-public abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
+abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	@Override
 	public Point[] getPeak() {
 		Point leftTopPoint = new Point();

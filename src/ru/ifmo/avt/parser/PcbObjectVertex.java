@@ -2,7 +2,7 @@ package ru.ifmo.avt.parser;
 
 import java.awt.Point;
 
-public class PcbObjectVertex extends Point {
+class PcbObjectVertex extends Point {
 	public int getId() {
 		return id;
 	}
