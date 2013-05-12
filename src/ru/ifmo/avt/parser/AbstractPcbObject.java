@@ -43,7 +43,7 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	
 	@Override
 	public Dimension getDimension() {
-		return new Dimension(getRightBottomPeakPoint().x, getRightBottomPeakPoint().y);
+		return new Dimension((int) (getRightBottomPeakPoint().getX() - getLeftTopPeakPoint().getX()), (int) (getRightBottomPeakPoint().getY() - getLeftTopPeakPoint().getY()));
 	}
 	
 	@Override
