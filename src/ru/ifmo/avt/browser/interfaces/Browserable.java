@@ -1,5 +1,6 @@
 package ru.ifmo.avt.browser.interfaces;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Shape;
@@ -13,6 +14,8 @@ public interface Browserable {
     public List<Propertiable> getProperties();
 
     public Shape getVisualizationShape();
+    
+    public Color getColor();
 
     public List<Browserable> getBrowserableObjects();
 
@@ -23,4 +26,6 @@ public interface Browserable {
     public Dimension getDimension();
 
     public void setLocation(Point point);
+
+    public boolean isBoard();
 }
