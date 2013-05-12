@@ -54,7 +54,7 @@ public class PcbModel extends AbstractPcbObject implements IPcbModelForTca {
 	
 	@Override
 	public String getDescription() {
-		return getName() + "\nx:[" + getLocation().getX() + "] y:[" + getLocation().getY() + "]\nw:[" + getDimension().width + "] h:[" +  + getDimension().height;
+		return "<html>" + getName() + "<br />x:[" + getLocation().getX() + "] y:[" + getLocation().getY() + "]<br />w:[" + getDimension().width + "] h:[" + getDimension().height + "] d:[" + getDepth() + "] </html>";
 	}
 	
 	@Override
@@ -85,6 +85,17 @@ public class PcbModel extends AbstractPcbObject implements IPcbModelForTca {
 		}
 		
 		return envTemperature;
+	}
+	
+	@Override
+	public Color getColor() {
+		//TODO
+	    return Color.GRAY;
+	}
+
+	@Override
+	public boolean isBoard() {
+	    return true;
 	}
 	
 	public void setEnvThermalConduct(double envThermalConduct) {
@@ -160,15 +171,4 @@ public class PcbModel extends AbstractPcbObject implements IPcbModelForTca {
 	
 	private static final double DEFAULT_ENV_TERMAL_CONDACT = 0.026;
 	private static final double DEFAULT_ENV_TEMPERATURE = 20;
-	@Override
-	public Color getColor() {
-	    // TODO Auto-generated method stub
-	    return Color.GRAY;
-	}
-
-	@Override
-	public boolean isBoard() {
-	    // TODO Auto-generated method stub
-	    return true;
-	}
 }

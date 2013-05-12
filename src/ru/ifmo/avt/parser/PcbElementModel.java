@@ -11,7 +11,6 @@ import ru.ifmo.avt.tca.IPcbElementModelForTca;
 class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTca {
 	@Override
 	public String toString() {
-		
 		return PcbElementModel.class.getSimpleName() + " [id:" + getId() + "]" + " [x:" + getLocation().getX() + "] [y:" + getLocation().getY() + "] [w:" + getDimension().width + "] [h:" + getDimension().height + "] [d:" + getDepth() + "] [designtr:" + getDesignatorName() + "]" + " [libRef:" + getLibraryReference() + "]"  + " [descr:" + getSrcDescription() + "]";
 	}
 	
@@ -22,7 +21,7 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	
 	@Override
 	public String getDescription() {
-		return "<html /><head /><title>Element Description</title>" + getSrcDescription() + "<br />x:[" + getLocation().getX() + "] y:[" + getLocation().getY() + "]<br />w:[" + getDimension().width + "] h:[" + getDimension().height + "]";
+		return "<html>" + getSrcDescription() + "<br />x:[" + getLocation().getX() + "] y:[" + getLocation().getY() + "]<br />w:[" + getDimension().width + "] h:[" + getDimension().height + "] d:[" + getDepth() + "] </html>";
 	}
 	
 	@Override
@@ -53,6 +52,17 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 		}
 		
 		return power;
+	}
+	
+	@Override
+	public Color getColor() {
+		//TODO
+	    return Color.YELLOW;
+	}
+
+	@Override
+	public boolean isBoard() {
+	    return false;
 	}
 	
 	public void setDescription(String description) {
@@ -184,15 +194,4 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	
 	protected static final double DEFAULT_WIDTH = 100;
 	protected static final double DEFAULT_HEIGHT = 100;
-	@Override
-	public Color getColor() {
-	    // TODO Auto-generated method stub
-	    return Color.YELLOW;
-	}
-
-	@Override
-	public boolean isBoard() {
-	    // TODO Auto-generated method stub
-	    return false;
-	}
 }
