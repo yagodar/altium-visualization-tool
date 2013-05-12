@@ -35,6 +35,8 @@ public class PaintComponent extends DraggedPaintComponent {
 
 	Graphics2D g2 = (Graphics2D) g;
 	Shape shape = getBrowserable().getVisualizationShape();
+	setSize(getBrowserable().getDimension());
+	setPreferredSize(getBrowserable().getDimension());
 	g2.setColor(getBrowserable().getColor());
 	g2.fill(shape);
 	g2.setColor(boardColor);
