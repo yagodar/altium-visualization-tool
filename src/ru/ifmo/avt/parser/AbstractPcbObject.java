@@ -16,6 +16,14 @@ import ru.ifmo.avt.tca.IPcbObjectModelForTca;
 abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	@Override
 	public Point[] getPeak() {
+		if(peak == null) {
+			Point leftTopPoint = new Point();
+			leftTopPoint.setLocation(0.0, 0.0);
+			Point rightBottomPoint = new Point();
+			rightBottomPoint.setLocation(getWidth(), getHeight());
+			peak = new Point[] { leftTopPoint, rightBottomPoint };
+		}
+		
 		return peak;
 	}
 	
@@ -131,12 +139,6 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	
 	protected AbstractPcbObject() {
 		propsByMark = new HashMap<String, Propertiable>();
-		
-		Point leftTopPoint = new Point();
-		leftTopPoint.setLocation(0.0, 0.0);
-		Point rightBottomPoint = new Point();
-		rightBottomPoint.setLocation(getWidth(), getHeight());
-		peak = new Point[] { leftTopPoint, rightBottomPoint };
 		
 		setLocation(new Point(0, 0));
 		
