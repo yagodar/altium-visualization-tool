@@ -16,15 +16,7 @@ import ru.ifmo.avt.tca.IPcbObjectModelForTca;
 abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	@Override
 	public Point[] getPeak() {
-		if(peak == null) {
-			Point leftTopPoint = new Point();
-			leftTopPoint.setLocation(0.0, 0.0);
-			Point rightBottomPoint = new Point();
-			rightBottomPoint.setLocation(getWidth(), getHeight());
-			peak = new Point[] { leftTopPoint, rightBottomPoint };
-		}
-		
-		return peak;
+		return new Point[] { getLeftTopPeakPoint(), getRightBottomPeakPoint() };
 	}
 	
 	@Override
@@ -36,7 +28,7 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	
 	@Override
 	public Shape getVisualizationShape() {
-		return new Rectangle2D.Double(0.0, 0.0, getPeak()[1].getX() - 1.0, getPeak()[1].getY() - 1.0);
+		return new Rectangle2D.Double(0.0, 0.0, getRightBottomPeakPoint().getX() - 1.0, getRightBottomPeakPoint().getY() - 1.0);
 	}
 	
 	@Override
@@ -51,7 +43,7 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	
 	@Override
 	public Dimension getDimension() {
-		return new Dimension(getPeak()[1].x, getPeak()[1].y);
+		return new Dimension(getRightBottomPeakPoint().x, getRightBottomPeakPoint().y);
 	}
 	
 	@Override
@@ -140,7 +132,7 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	protected AbstractPcbObject() {
 		propsByMark = new HashMap<String, Propertiable>();
 		
-		setLocation(new Point(0, 0));
+		setLocation(getLeftTopPeakPoint());
 		
 		vertices = new HashMap<Integer, PcbObjectVertex>();
 	}
@@ -253,13 +245,32 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 		return maxY;
 	}
 
+	private Point getLeftTopPeakPoint() {
+		if(leftTopPoint == null) {
+			leftTopPoint = DEFAULT_LEFT_TOP_PEAK_POINT;
+		}
+		
+		return leftTopPoint;
+	}
+	
+	private Point getRightBottomPeakPoint() {
+		if(rightBottomPoint == null) {
+			rightBottomPoint = new Point();
+			rightBottomPoint.setLocation(getWidth(), getHeight());
+		}
+		
+		return rightBottomPoint;
+	}
+	
 	protected static final double DEFAULT_TEMPERATURE = 20;
 	
 	private Point location;
-	private Point[] peak;
+	Point leftTopPoint;
+	Point rightBottomPoint;
 	private HashMap<String, Propertiable> propsByMark;
 	
 	private HashMap<Integer, PcbObjectVertex> vertices;
 	
 	private static final double DEFAULT_TERMAL_CONDACT = 150;
+	private static final Point DEFAULT_LEFT_TOP_PEAK_POINT = new Point(0, 0);
 }
