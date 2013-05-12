@@ -34,7 +34,7 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	
 	@Override
 	public Shape getVisualizationShape() {
-		return new Rectangle2D.Double(0.0, 0.0, getWidth(), getHeight());
+		return new Rectangle2D.Double(0.0, 0.0, getWidth() - 1, getHeight() - 1);
 	}
 	
 	@Override
@@ -49,7 +49,7 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	
 	@Override
 	public Dimension getDimension() {
-		return new Dimension((int) getWidth() + 10, (int) getHeight() + 10);
+		return new Dimension((int) getWidth(), (int) getHeight());
 	}
 	
 	@Override

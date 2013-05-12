@@ -1,5 +1,6 @@
 package ru.ifmo.avt.parser;
 
+import java.awt.Color;
 import java.util.Collections;
 import java.util.List;
 
@@ -183,4 +184,15 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	
 	protected static final double DEFAULT_WIDTH = 100;
 	protected static final double DEFAULT_HEIGHT = 100;
+	@Override
+	public Color getColor() {
+	    // TODO Auto-generated method stub
+	    return Color.YELLOW;
+	}
+
+	@Override
+	public boolean isBoard() {
+	    // TODO Auto-generated method stub
+	    return false;
+	}
 }

@@ -1,5 +1,6 @@
 package ru.ifmo.avt.parser;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -159,4 +160,15 @@ public class PcbModel extends AbstractPcbObject implements IPcbModelForTca {
 	
 	private static final double DEFAULT_ENV_TERMAL_CONDACT = 0.026;
 	private static final double DEFAULT_ENV_TEMPERATURE = 20;
+	@Override
+	public Color getColor() {
+	    // TODO Auto-generated method stub
+	    return Color.GRAY;
+	}
+
+	@Override
+	public boolean isBoard() {
+	    // TODO Auto-generated method stub
+	    return true;
+	}
 }
