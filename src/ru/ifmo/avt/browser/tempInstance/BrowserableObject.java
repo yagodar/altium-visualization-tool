@@ -1,17 +1,13 @@
 package ru.ifmo.avt.browser.tempInstance;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Shape;
-import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-import javax.swing.JComponent;
-
-import ru.ifmo.avt.browser.GUI.paintComponents.PaintComponent;
 import ru.ifmo.avt.browser.interfaces.Browserable;
 import ru.ifmo.avt.browser.interfaces.Propertiable;
 
@@ -78,4 +74,13 @@ public class BrowserableObject implements Browserable {
     private Point location = new Point(100, 100);
     private List<Propertiable> listProperties;
     private List<Browserable> listBrowserableObject;
+    @Override
+    public boolean isBoard() {
+	return true;
+    }
+    @Override
+    public Color getColor() {
+	// TODO Auto-generated method stub
+	return null;
+    }
 }

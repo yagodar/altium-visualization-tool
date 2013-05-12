@@ -1,8 +1,6 @@
 package ru.ifmo.avt.browser.action;
 
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -12,7 +10,6 @@ import javax.swing.JOptionPane;
 import ru.ifmo.avt.browser.EntryPoint;
 import ru.ifmo.avt.browser.dialog.OpenFileDialog;
 import ru.ifmo.avt.browser.interfaces.Browserable;
-import ru.ifmo.avt.browser.tempInstance.BrowserableObject;
 import ru.ifmo.avt.parser.AltiumPcbDocParser;
 
 public class OpenFileAction extends AbstractAction {
@@ -30,16 +27,19 @@ public class OpenFileAction extends AbstractAction {
 	int answer = openFileDialog.showOpenDialog(EntryPoint.browser);
 
 	if (answer == OpenFileDialog.APPROVE_OPTION) {
-	    
-	   AltiumPcbDocParser.getInstance().createNewPcbModel(openFileDialog.getSelectedFile());
-	   Browserable browserable = AltiumPcbDocParser.getInstance().getPcbModelBrowserable();
-/*	    BrowserableObject browserableObject = new BrowserableObject();
 
-	    ArrayList<Browserable> listBrowserableObjects = new ArrayList<Browserable>();
-	    listBrowserableObjects.add(new BrowserableObject());
-	    listBrowserableObjects.add(new BrowserableObject());
-
-	    browserableObject.setBrowserableObjects(listBrowserableObjects);*/
+	    AltiumPcbDocParser.getInstance().createNewPcbModel(openFileDialog.getSelectedFile());
+	    Browserable browserable = AltiumPcbDocParser.getInstance().getPcbModelBrowserable();
+	    /*
+	     * BrowserableObject browserable = new BrowserableObject();
+	     * 
+	     * ArrayList<Browserable> listBrowserableObjects = new
+	     * ArrayList<Browserable>(); listBrowserableObjects.add(new
+	     * BrowserableObject()); listBrowserableObjects.add(new
+	     * BrowserableObject());
+	     * 
+	     * browserable.setBrowserableObjects(listBrowserableObjects);
+	     */
 
 	    if (browserable == null)
 		JOptionPane.showConfirmDialog(EntryPoint.browser, "Ошибка чтения файла", "Ошибка", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null);
