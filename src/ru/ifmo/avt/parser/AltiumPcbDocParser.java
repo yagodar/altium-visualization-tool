@@ -364,7 +364,7 @@ public class AltiumPcbDocParser {
 				element.getPatternName();
 				element.getDesignatorName();
 				element.getLibraryReference();
-				element.getDescription();
+				element.getSrcDescription();
 				element.getFootprintDescription();
 				
 				Point elementLocation = new Point();
@@ -400,11 +400,11 @@ public class AltiumPcbDocParser {
 			overAllProps.get(propsType).add(props);
 		}
 	}
-	
+
 	private PcbModel pcbModel;
-	
 	private final HashMap<String, ArrayList<HashMap<String, String>>> overAllProps;
 	
 	private static AltiumPcbDocParser INSTANCE;
+	
 	private static final String PCB_DOC_ENCODING = "windows-1251";
 }

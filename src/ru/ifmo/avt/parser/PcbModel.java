@@ -154,9 +154,9 @@ public class PcbModel extends AbstractPcbObject implements IPcbModelForTca {
 	private HashMap<String, PcbLayer> layersByMark;
 	private HashMap<Integer, PcbElementModel> elementsById;
 	
-	protected static final double DEFAULT_LOC_X = 100.0;
-	protected static final double DEFAULT_LOC_Y = 100.0;
+	protected static final double DEFAULT_LOC_X = 100;
+	protected static final double DEFAULT_LOC_Y = 100;
 	
 	private static final double DEFAULT_ENV_TERMAL_CONDACT = 0.026;
-	private static final double DEFAULT_ENV_TEMPERATURE = 20.0;
+	private static final double DEFAULT_ENV_TEMPERATURE = 20;
 }

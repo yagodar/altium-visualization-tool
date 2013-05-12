@@ -25,13 +25,27 @@ class TcaTestLauncher {
 		PcbThermalConditionsAnalyzer.getInstance().analyzePcbModel(testPcbModel);
 
 		System.out.println(TcaTestLauncher.class.getSimpleName() + ":STOP");
+		
+		for (int i = 0; i < testPcbModel.getBrowserableObjects().size(); i++) {
+			Browserable element = testPcbModel.getBrowserableObjects().get(i);
+			
+			System.out.print(element + " [temp:");
+			
+			for (Propertiable prop : element.getProperties()) {
+				if(prop.getName().equals(PcbObjectPropertyMark.OBJ_TEMPERATURE.getName())) {
+					System.out.print(prop.getValue());
+				}
+			}
+			
+			System.out.println("]");
+		}
 	}
 	
 	private static void chargeElements(PcbModel testPcbModel) {
 		for (Browserable element : testPcbModel.getBrowserableObjects()) {
 			for (Propertiable prop : element.getProperties()) {
 				if(prop.getName().equals(PcbObjectPropertyMark.POWER.getName())) {
-					prop.setValue(20.0);
+					prop.setValue(10.0);
 				}
 			}
 		}
