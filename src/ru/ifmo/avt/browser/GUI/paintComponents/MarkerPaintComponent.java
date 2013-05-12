@@ -9,7 +9,6 @@ import java.awt.geom.Rectangle2D;
 
 public class MarkerPaintComponent extends DraggedPaintComponent {
 
-    
     private static final long serialVersionUID = -5523399180337116086L;
 
     public MarkerPaintComponent(ElementPaintComponent elementPaintComponent, final Point point) {
