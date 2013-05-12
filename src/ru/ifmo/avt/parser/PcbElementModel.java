@@ -56,8 +56,7 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	
 	@Override
 	public Color getColor() {
-		//TODO
-	    return Color.YELLOW;
+	    return DEFAULT_COLOR;
 	}
 
 	@Override
@@ -194,4 +193,6 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	
 	protected static final double DEFAULT_WIDTH = 100;
 	protected static final double DEFAULT_HEIGHT = 100;
+	
+	private static final Color DEFAULT_COLOR = new Color(67, 75, 75);
 }

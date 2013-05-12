@@ -89,8 +89,7 @@ public class PcbModel extends AbstractPcbObject implements IPcbModelForTca {
 	
 	@Override
 	public Color getColor() {
-		//TODO
-	    return Color.GRAY;
+	    return DEFAULT_COLOR;
 	}
 
 	@Override
@@ -171,4 +170,5 @@ public class PcbModel extends AbstractPcbObject implements IPcbModelForTca {
 	
 	private static final double DEFAULT_ENV_TERMAL_CONDACT = 0.026;
 	private static final double DEFAULT_ENV_TEMPERATURE = 20;
+	private static final Color DEFAULT_COLOR = new Color(5, 95, 14);
 }
