@@ -22,18 +22,6 @@ public class MarkerPaintComponent extends DraggedPaintComponent {
 	setPreferredSize(dimension);
 	setToolTipText(point.toString());
 	setVisible(false);
-
-/*	addMouseMotionListener(new MouseMotionAdapter() {
-
-	    @Override
-	    public void mouseDragged(MouseEvent event) {
-		Point newPoint = event.getPoint();
-		point.setLocation((int) newPoint.getX(), (int) newPoint.getY());
-		setToolTipText(point.toString());
-		relocation();
-		//MarkerPaintComponent.this.elementPaintComponent.repaint();
-	    }
-	});*/
     }
 
     @Override
@@ -43,6 +31,7 @@ public class MarkerPaintComponent extends DraggedPaintComponent {
 	shape.setFrameFromDiagonal(new Point(0, 0), new Point(SIZE, SIZE));
 	g2.setColor(bgColor);
 	g2.fill(shape);
+	shape.setFrameFromDiagonal(new Point(0, 0), new Point(SIZE - 1, SIZE - 1));
 	g2.setColor(boardColor);
 	g2.draw(shape);
 	super.paintComponent(g);
@@ -59,7 +48,7 @@ public class MarkerPaintComponent extends DraggedPaintComponent {
 	setToolTipText(p.toString());
     }
 
-    private static Color boardColor = Color.WHITE;
+    private static Color boardColor = Color.GRAY;
     private static Color bgColor = Color.BLUE;
     private static int SIZE = 6;
     private ElementPaintComponent elementPaintComponent = null;
