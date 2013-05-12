@@ -28,7 +28,7 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	
 	@Override
 	public Shape getVisualizationShape() {
-		return new Rectangle2D.Double(getLeftTopPeakPoint().getX(), getLeftTopPeakPoint().getY(), getRightBottomPeakPoint().getX() - 1.0, getRightBottomPeakPoint().getY() - 1.0);
+		return new Rectangle2D.Double(getLeftTopPeakPoint().getX(), getLeftTopPeakPoint().getY(), getRightBottomPeakPoint().getX() - getLeftTopPeakPoint().getX() - 1.0, getRightBottomPeakPoint().getY() - getLeftTopPeakPoint().getY() - 1.0);
 	}
 	
 	@Override
