@@ -16,7 +16,16 @@ public class PcbThermalConditionsAnalyzer {
 		if(pcbModel != null) {
 			ArrayList<IPcbElementModelForTca> poweredElements = selectPoweredPcbElementModels(pcbModel);
 			if(poweredElements.size() != 0) {
-				double[][] generalMatrixA = createGeneralMatrix(pcbModel, poweredElements);
+				double[][] thermalConductsBodyEnv = calcThermalConductsBodyEnv(pcbModel, poweredElements);
+				
+				double[][] generalMatrixA = createGeneralMatrixA(pcbModel, poweredElements, thermalConductsBodyEnv);
+				double[] freeTermsMatrixB = createFreeTermsMatrixB(pcbModel, poweredElements, thermalConductsBodyEnv);
+				
+				double[] elementsTemperature = calcUnknownMatrixX(generalMatrixA, freeTermsMatrixB);
+				
+				for (int i = 0; i < elementsTemperature.length; i++) {
+					poweredElements.get(i).setTemperature(elementsTemperature[i]);
+				}
 			}
 			else {
 				System.out.println(PcbThermalConditionsAnalyzer.class.getSimpleName() + " Warning! There is no powered elements in pcbModel!");
@@ -33,7 +42,7 @@ public class PcbThermalConditionsAnalyzer {
 		ArrayList<IPcbElementModelForTca> poweredElements = new ArrayList<IPcbElementModelForTca>();
 		
 		for (IPcbElementModelForTca element : pcbModel.getElementsForTca()) {
-			if(element.getPower() > 0.0) {
+			if(element.getPower() > 0.0 && element.getWidth() > 0.0 && element.getHeight() > 0.0 && element.getDepth() > 0.0) {
 				poweredElements.add(element);
 			}
 		}
@@ -43,35 +52,31 @@ public class PcbThermalConditionsAnalyzer {
 		return poweredElements;
 	}
 	
-	private double[][] createGeneralMatrix(IPcbModelForTca pcbModel, ArrayList<IPcbElementModelForTca> poweredElements) {
-		double generalMatrix[][] = new double[poweredElements.size()][poweredElements.size()];
+	private double[][] createGeneralMatrixA(IPcbModelForTca pcbModel, ArrayList<IPcbElementModelForTca> poweredElements, double[][] thermalConductsSumBodyEnv) {
+		double result[][] = new double[poweredElements.size()][poweredElements.size()];
 		
 		double envThermalConduct = pcbModel.getEnvThermalConduct();
-		double boardThermalConduct = pcbModel.getThermalConduct();
 		
 		double thermalConductsBodyBody[][] = calcThermalConductsBodyBody(envThermalConduct, poweredElements);
-		double thermalConductsBodyEnv[][] = calcThermalConductsBodyEnv(envThermalConduct, boardThermalConduct, poweredElements);
 		
-		for (int rowIndx = 0; rowIndx < generalMatrix.length; rowIndx++) {
-			for (int columnIndx = 0; columnIndx < generalMatrix[rowIndx].length; columnIndx++) {
+		for (int rowIndx = 0; rowIndx < result.length; rowIndx++) {
+			for (int columnIndx = 0; columnIndx < result[rowIndx].length; columnIndx++) {
 				if(rowIndx == columnIndx) {
-					generalMatrix[rowIndx][columnIndx] = 0.0;
-					
 					for (int j = 0; j < thermalConductsBodyBody[rowIndx].length; j++) {
-						generalMatrix[rowIndx][columnIndx] += thermalConductsBodyBody[rowIndx][j];
+						result[rowIndx][columnIndx] += thermalConductsBodyBody[rowIndx][j];
 					}
 					
-					for (int k = 0; k < thermalConductsBodyEnv[rowIndx].length; k++) {
-						generalMatrix[rowIndx][columnIndx] += thermalConductsBodyBody[rowIndx][k];
+					for (int k = 0; k < thermalConductsSumBodyEnv[rowIndx].length; k++) {
+						result[rowIndx][columnIndx] += thermalConductsSumBodyEnv[rowIndx][k];
 					}
 				}
 				else {
-					generalMatrix[rowIndx][columnIndx] = -thermalConductsBodyBody[rowIndx][columnIndx];
+					result[rowIndx][columnIndx] = -thermalConductsBodyBody[rowIndx][columnIndx];
 				}
 			}
 		}
 		
-		return generalMatrix;
+		return result;
 	}
 	
 	private double[][] calcThermalConductsBodyBody(double envThermalConduct, ArrayList<IPcbElementModelForTca> poweredElements) {
@@ -85,13 +90,13 @@ public class PcbThermalConditionsAnalyzer {
 			triangleMatrixBegan = false;
 			for (int j = 0; j < poweredElements.size(); j++) {
 				if(i == j) {
-					result[i][j] = 0.0;
 					triangleMatrixBegan = true;
 				}
 				else if(triangleMatrixBegan) {
-					sectionalArea = ((Math.sqrt(Math.pow(poweredElements.get(i).getHeight(), 2.0) + Math.pow(poweredElements.get(i).getWidth(), 2)) + Math.sqrt(Math.pow(poweredElements.get(j).getHeight(), 2) + Math.pow(poweredElements.get(j).getWidth(), 2.0))) / 2.0) * (poweredElements.get(i).getDepth() + poweredElements.get(j).getDepth() / 2.0);
-					lengthOfArea = Math.sqrt(Math.pow(poweredElements.get(j).getLocation().getX() - poweredElements.get(i).getLocation().getX(), 2) + Math.pow(poweredElements.get(j).getLocation().getY() - poweredElements.get(i).getLocation().getY(), 2));
+					sectionalArea = ((Math.sqrt(Math.pow(poweredElements.get(i).getHeight(), 2.0) + Math.pow(poweredElements.get(i).getWidth(), 2.0)) + Math.sqrt(Math.pow(poweredElements.get(j).getHeight(), 2.0) + Math.pow(poweredElements.get(j).getWidth(), 2.0))) / 2.0) * (poweredElements.get(i).getDepth() + poweredElements.get(j).getDepth() / 2.0);
+					lengthOfArea = Math.sqrt(Math.pow(poweredElements.get(j).getLocation().getX() - poweredElements.get(i).getLocation().getX(), 2.0) + Math.pow(poweredElements.get(j).getLocation().getY() - poweredElements.get(i).getLocation().getY(), 2.0));
 					result[i][j] = (envThermalConduct * sectionalArea) / lengthOfArea;
+					result[j][i] = result[i][j];
 				}
 			}
 		}
@@ -99,11 +104,153 @@ public class PcbThermalConditionsAnalyzer {
 		return result;
 	}
 	
-	private double[][] calcThermalConductsBodyEnv(double envThermalConduct, double boardThermalConduct, ArrayList<IPcbElementModelForTca> poweredElements) {
-		double result[][] = null;
+	private double[][] calcThermalConductsBodyEnv(IPcbModelForTca pcbModel, ArrayList<IPcbElementModelForTca> poweredElements) {
+		double[][] result = new double[poweredElements.size()][6];
+
+		double sectionalArea = 0.0;
+		double lengthOfArea = 0.0;
+
+		double envThermalConduct = pcbModel.getEnvThermalConduct();
+		double boardThermalConduct = pcbModel.getThermalConduct();
+
+		double boardWidth = pcbModel.getWidth();
+		double boardHeight = pcbModel.getHeight();
+		double boardDepth = pcbModel.getDepth();
+
+		double maxElementsDepth = getMaxDepth(poweredElements);
+
+		double elementWidth = 0.0;
+		double elementHeight = 0.0;
+		double elementDepth = 0.0;
+
+		double elementLocX = 0.0;
+		double elementLocY = 0.0;
+
+		for(int i = 0; i < poweredElements.size(); i++) {
+			elementWidth = poweredElements.get(i).getWidth();
+			elementHeight = poweredElements.get(i).getHeight();
+			elementDepth = poweredElements.get(i).getDepth();
+
+			if(poweredElements.get(i).getLocation() != null) {
+				elementLocX = poweredElements.get(i).getLocation().getX();
+				elementLocY = poweredElements.get(i).getLocation().getY();
+			}
+
+			sectionalArea = elementWidth * elementHeight;
+
+			//bottom
+			if(boardDepth > 0.0) {
+				result[i][0] = (boardThermalConduct * sectionalArea) / boardDepth;
+			}
+
+			//top
+			lengthOfArea = maxElementsDepth - elementDepth;
+			if(lengthOfArea > 0.0) {
+				result[i][1] = (envThermalConduct * sectionalArea) / lengthOfArea;
+			}
+
+			sectionalArea = elementHeight * elementDepth;
+
+			//left
+			if(elementLocX > 0.0) {
+				result[i][2] = (envThermalConduct * sectionalArea) / elementLocX;
+			}
+
+			//right
+			lengthOfArea = boardWidth - elementLocX - elementWidth;
+			if(lengthOfArea > 0.0) {
+				result[i][3] = (envThermalConduct * sectionalArea) / lengthOfArea;
+			}
+
+			sectionalArea = elementWidth * elementDepth;
+
+			//forward
+			if(elementLocY > 0.0) {
+				result[i][4] = (envThermalConduct * sectionalArea) / elementLocY;
+			}
+
+			//back
+			lengthOfArea = boardHeight - elementLocY - elementHeight;
+			if(lengthOfArea > 0.0) {
+				result[i][5] = (envThermalConduct * sectionalArea) / lengthOfArea;
+			}
+		}
+
+		return result;
+	}
+	
+	private double getMaxDepth(ArrayList<IPcbElementModelForTca> poweredElements) {
+		double result = 0.0;
+		double depth = 0.0;
+		
+		result = poweredElements.get(0).getDepth();
+		
+		for (int i = 1; i < poweredElements.size(); i++) {
+			depth = poweredElements.get(i).getDepth();
+			
+			if(result < depth) {
+				result = depth;
+			}
+		}
 		
 		return result;
 	}
 	
+	private double[] createFreeTermsMatrixB(IPcbModelForTca pcbModel, ArrayList<IPcbElementModelForTca> poweredElements, double[][] thermalConductsSumBodyEnv) {
+		double[] result = new double[poweredElements.size()];
+		
+		double envTemperature = pcbModel.getEnvTemperature();
+		
+		for (int i = 0; i < poweredElements.size(); i++) {
+			result[i] = poweredElements.get(i).getPower() / MULT_MIL_TO_M; //Так как расстояния в милах, а мощность в Вт = Н*м/с
+			
+			for (int j = 0; j < thermalConductsSumBodyEnv[i].length; j++) {
+				result[i] += thermalConductsSumBodyEnv[i][j] * envTemperature;
+			}
+		}
+		
+		return result;
+	}
+	
+	private double[] calcUnknownMatrixX(double[][] generalMatrixA, double[] freeTermsMatrixB) {
+		double topMatrixEl;
+		double multMatrixEl;
+		
+		for (int rowIndx = 0; rowIndx < generalMatrixA.length; rowIndx++) {
+			topMatrixEl = generalMatrixA[rowIndx][rowIndx];
+			
+			for (int columnIndx = rowIndx; columnIndx < generalMatrixA[rowIndx].length; columnIndx++) {
+				generalMatrixA[rowIndx][columnIndx] = generalMatrixA[rowIndx][columnIndx] / topMatrixEl;
+			}
+			
+			freeTermsMatrixB[rowIndx] = freeTermsMatrixB[rowIndx] / topMatrixEl;
+			
+			for (int multRowIndx = rowIndx + 1; multRowIndx < generalMatrixA.length; multRowIndx++) {
+				multMatrixEl = -generalMatrixA[multRowIndx][rowIndx];
+				
+				for (int multColumnIndx = rowIndx; multColumnIndx < generalMatrixA[multRowIndx].length; multColumnIndx++) {
+					generalMatrixA[multRowIndx][multColumnIndx] += generalMatrixA[rowIndx][multColumnIndx] * multMatrixEl;
+				}
+				
+				freeTermsMatrixB[multRowIndx] += freeTermsMatrixB[rowIndx] * multMatrixEl;
+			}
+		}
+		
+		
+		for (int multColumnIndx = generalMatrixA[0].length - 1; multColumnIndx > 0; multColumnIndx--) {
+			for (int multRowIndx = multColumnIndx - 1; multRowIndx >= 0; multRowIndx--) {
+				multMatrixEl = -generalMatrixA[multRowIndx][multColumnIndx];
+				
+				generalMatrixA[multRowIndx][multColumnIndx] += generalMatrixA[multColumnIndx][multColumnIndx] * multMatrixEl;
+				
+				freeTermsMatrixB[multRowIndx] += freeTermsMatrixB[multColumnIndx] * multMatrixEl;
+			}
+		}
+		
+		return freeTermsMatrixB;
+	}
+	
 	private static PcbThermalConditionsAnalyzer INSTANCE;
+	
+	private static final double MULT_MIL_TO_M = 0.0000254;
 }

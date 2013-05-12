@@ -6,12 +6,12 @@ public enum PcbObjectPropertyMark {
 	HEIGHT("Высота, мил"),
 	DEPTH("Толщина, мил"),
 	OBJ_TERMAL_CONDUCT("Теплопроводность, коэф."),
-	OBJ_TEMPERATURE("Температура, K"),
+	OBJ_TEMPERATURE("Температура, C"),
 	
 	//PcbModel
 	NAME("Имя"),
 	ENV_TERMAL_CONDUCT("Теплопроводность окр. среды, коэф."),
-	ENV_TEMPERATURE("Температура окр. среды, K"),
+	ENV_TEMPERATURE("Температура окр. среды, C"),
 	
 	//PcbElementModel
 	PATTERN("Шаблон"),

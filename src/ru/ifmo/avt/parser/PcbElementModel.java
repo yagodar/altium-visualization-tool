@@ -10,7 +10,8 @@ import ru.ifmo.avt.tca.IPcbElementModelForTca;
 class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTca {
 	@Override
 	public String toString() {
-		return PcbElementModel.class.getSimpleName() + " [id:" + getId() + "]" + " [depth:" + getDepth() + "mil]" + " [designator:" + getDesignatorName() + "]" + " [libRef:" + getLibraryReference() + "]"  + " [descr:" + getDescription() + "]";
+		
+		return PcbElementModel.class.getSimpleName() + " [id:" + getId() + "]" + " [x:" + getLocation().getX() + "] [y:" + getLocation().getY() + "] [w:" + getDimension().width + "] [h:" + getDimension().height + "] [d:" + getDepth() + "] [designtr:" + getDesignatorName() + "]" + " [libRef:" + getLibraryReference() + "]"  + " [descr:" + getSrcDescription() + "]";
 	}
 	
 	@Override
@@ -20,17 +21,7 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	
 	@Override
 	public String getDescription() {
-		String value = "unknown";
-		
-		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.DESCRIPTION.toString());
-		if(property != null) {
-			value = (String) property.getValue();
-		}
-		else {
-			setDescription(value);
-		}
-		
-		return value + "\nx:[" + getLocation().getX() + "] y:[" + getLocation().getY() + "]\nw:[" + getDimension().width + "] h:[" +  + getDimension().height;
+		return "<html /><head /><title>Element Description</title>" + getSrcDescription() + "<br />x:[" + getLocation().getX() + "] y:[" + getLocation().getY() + "]<br />w:[" + getDimension().width + "] h:[" + getDimension().height + "]";
 	}
 	
 	@Override
@@ -151,6 +142,20 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 		setSrcLocY(0.0);
 	}
 	
+	protected String getSrcDescription() {
+		String value = "unknown";
+		
+		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.DESCRIPTION.toString());
+		if(property != null) {
+			value = (String) property.getValue();
+		}
+		else {
+			setDescription(value);
+		}
+		
+		return value;
+	}
+	
 	protected double getSrcLocX() {
 		return srcLocX;
 	}
@@ -176,6 +181,6 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	
 	private final int id;
 	
-	protected static final double DEFAULT_WIDTH = 100.0;
-	protected static final double DEFAULT_HEIGHT = 100.0;
+	protected static final double DEFAULT_WIDTH = 100;
+	protected static final double DEFAULT_HEIGHT = 100;
 }

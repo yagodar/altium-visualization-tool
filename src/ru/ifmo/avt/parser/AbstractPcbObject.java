@@ -249,12 +249,12 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 		
 		return maxY;
 	}
-	
+
 	private HashMap<String, Propertiable> propsByMark;
 	private Point location;
 	
 	private HashMap<Integer, PcbObjectVertex> vertices;
 	
 	private static final double DEFAULT_TERMAL_CONDACT = 150;
-	private static final double DEFAULT_TEMPERATURE = 20.0;
+	private static final double DEFAULT_TEMPERATURE = 20;
 }
