@@ -247,7 +247,7 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 
 	private Point getLeftTopPeakPoint() {
 		if(leftTopPoint == null) {
-			leftTopPoint = DEFAULT_LEFT_TOP_PEAK_POINT;
+			leftTopPoint = new Point(0, 0);
 		}
 		
 		return leftTopPoint;
@@ -272,5 +272,4 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	private HashMap<Integer, PcbObjectVertex> vertices;
 	
 	private static final double DEFAULT_TERMAL_CONDACT = 150;
-	private static final Point DEFAULT_LEFT_TOP_PEAK_POINT = new Point(0, 0);
 }
