@@ -95,4 +95,10 @@ public class BrowserableObject implements Browserable {
 	// TODO Auto-generated method stub
 	
     }
+
+    @Override
+    public void setSrcLocation(Point location) {
+	// TODO Auto-generated method stub
+	
+    }
 }

@@ -28,9 +28,9 @@ public class BrowserPaintPanel extends JPanel {
     }
 
     public static void scale(Browserable browserable) {
-	browserable.getLocation().setLocation(browserable.getLocation().getX() * EntryPoint.scale, browserable.getLocation().getY() * EntryPoint.scale);
+	browserable.getLocation().setLocation(browserable.getLocation().getX() * EntryPoint.relativScale, browserable.getLocation().getY() * EntryPoint.relativScale);
 	for (Point p : browserable.getPeak())
-	    p.setLocation(p.getX() * EntryPoint.scale, p.getY() * EntryPoint.scale);
+	    p.setLocation(p.getX() * EntryPoint.relativScale, p.getY() * EntryPoint.relativScale);
     }
 
     private static Color bgColor = Color.WHITE;

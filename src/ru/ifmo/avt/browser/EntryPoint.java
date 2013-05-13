@@ -21,5 +21,6 @@ public class EntryPoint {
     }
 
     public static BrowserFrame browser;
+    public static double relativScale = 1;
     public static double scale = 1;
 }

@@ -17,7 +17,8 @@ public class BrowserScaleSpinner extends JSpinner {
 	    public void setValue(Object arg0) {
 		if (arg0 instanceof Double) {
 		    if ((double) arg0 != scale) {
-			EntryPoint.scale = (double) arg0 / scale;
+			EntryPoint.relativScale = (double) arg0 / scale;
+			EntryPoint.scale = (double) arg0 / 100;
 			if (EntryPoint.browser != null)
 			    EntryPoint.browser.getBrowserWorkPanel().rebuild();
 		    }

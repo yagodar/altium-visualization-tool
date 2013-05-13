@@ -62,23 +62,25 @@ public class MarkerPaintComponent extends DraggedPaintComponent {
 		    marker.setToolTipText(marker.point.toString());
 		}
 	    }
-	    
-	    elementPaintComponent.getBrowserable().setHeight(elementPaintComponent.getBrowserable().getVisualizationShape().getBounds2D().getHeight() / EntryPoint.scale);
-	    elementPaintComponent.getBrowserable().setWidth(elementPaintComponent.getBrowserable().getVisualizationShape().getBounds2D().getWidth() / EntryPoint.scale);
-	    
-	    elementPaintComponent.getBrowserable().setLocation(new Point((int) getLocation().getX() + SIZE / 2, (int) getLocation().getY() + SIZE / 2));
+
+	    Point location = new Point((int) getLocation().getX() + SIZE / 2, (int) getLocation().getY() + SIZE / 2);
+	    Point srcLocation = new Point();
+	    srcLocation.setLocation((getLocation().getX() + SIZE / 2) / EntryPoint.scale, (getLocation().getY() + SIZE / 2) / EntryPoint.scale);
+	    elementPaintComponent.getBrowserable().setLocation(location);
+	    elementPaintComponent.getBrowserable().setSrcLocation(srcLocation);
 	}
+
+	elementPaintComponent.getBrowserable().setHeight((elementPaintComponent.getBrowserable().getVisualizationShape().getBounds2D().getHeight() + 1) / EntryPoint.scale);
+	elementPaintComponent.getBrowserable().setWidth((elementPaintComponent.getBrowserable().getVisualizationShape().getBounds2D().getWidth() + 1) / EntryPoint.scale);
 
 	setToolTipText(point.toString());
     }
-    
-    public ElementPaintComponent getElementPaintComponent()
-    {
+
+    public ElementPaintComponent getElementPaintComponent() {
 	return elementPaintComponent;
     }
-    
-    public Point getPoint()
-    {
+
+    public Point getPoint() {
 	return point;
     }
 

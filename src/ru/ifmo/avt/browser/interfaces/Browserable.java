@@ -31,4 +31,6 @@ public interface Browserable {
     public void setWidth(double width);
     
     public void setHeight(double height);
+    
+    public void setSrcLocation(Point location);
 }
