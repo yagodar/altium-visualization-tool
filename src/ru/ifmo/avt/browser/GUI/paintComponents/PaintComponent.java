@@ -6,8 +6,6 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Shape;
 
-import org.eclipse.emf.codegen.ecore.templates.editor.EntryPoint;
-
 import ru.ifmo.avt.browser.interfaces.Browserable;
 
 public class PaintComponent extends DraggedPaintComponent {
@@ -32,14 +30,9 @@ public class PaintComponent extends DraggedPaintComponent {
 
     @Override
     public void paintComponent(Graphics g) {
-	if(this instanceof ElementPaintComponent)
-	    System.out.println("");
-	
 	Graphics2D g2 = (Graphics2D) g;
 	Shape shape = getBrowserable().getVisualizationShape();
 	setLocation(getBrowserable().getLocation());
-	System.out.println("-->" + getSize());
-	System.out.println("-->" + getPreferredSize());
 	setSize(getBrowserable().getDimension());
 	setPreferredSize(getBrowserable().getDimension());
 	setToolTipText(getBrowserable().getDescription());
@@ -47,15 +40,15 @@ public class PaintComponent extends DraggedPaintComponent {
 	g2.fill(shape);
 	g2.setColor(borderColor);
 	g2.draw(shape);
-	
+
 	super.paintComponent(g);
     }
 
     @Override
     public void repaint() {
-        super.repaint();
+	super.repaint();
     }
-    
+
     public Browserable getBrowserable() {
 
 	return browserable;

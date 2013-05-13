@@ -27,17 +27,11 @@ public class BrowserPaintPanel extends JPanel {
 	}
     }
 
-    public static void scale(Browserable browserable)
-    {
-	browserable.getLocation().x *= EntryPoint.scale;
-	browserable.getLocation().y *= EntryPoint.scale;
-	
-	for(Point p : browserable.getPeak())
-	{
-	    p.x *= EntryPoint.scale;
-	    p.y *= EntryPoint.scale;
-	}
+    public static void scale(Browserable browserable) {
+	browserable.getLocation().setLocation(browserable.getLocation().getX() * EntryPoint.scale, browserable.getLocation().getY() * EntryPoint.scale);
+	for (Point p : browserable.getPeak())
+	    p.setLocation(p.getX() * EntryPoint.scale, p.getY() * EntryPoint.scale);
     }
-    
+
     private static Color bgColor = Color.WHITE;
 }

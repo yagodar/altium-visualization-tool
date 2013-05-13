@@ -46,7 +46,7 @@ public class PaintPanelLayoutManager implements LayoutManager {
 		preferredWidth = width;
 	}
 
-	dimension = new Dimension((int) preferredWidth +  50, (int) preferredHeight + 50);
+	dimension = new Dimension((int) preferredWidth + 50, (int) preferredHeight + 50);
     }
 
     private int SPACE_SIZE = 0;

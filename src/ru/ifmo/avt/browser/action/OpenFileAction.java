@@ -30,16 +30,6 @@ public class OpenFileAction extends AbstractAction {
 
 	    AltiumPcbDocParser.getInstance().createNewPcbModel(openFileDialog.getSelectedFile());
 	    Browserable browserable = AltiumPcbDocParser.getInstance().getPcbModelBrowserable();
-	    /*
-	     * BrowserableObject browserable = new BrowserableObject();
-	     * 
-	     * ArrayList<Browserable> listBrowserableObjects = new
-	     * ArrayList<Browserable>(); listBrowserableObjects.add(new
-	     * BrowserableObject()); listBrowserableObjects.add(new
-	     * BrowserableObject());
-	     * 
-	     * browserable.setBrowserableObjects(listBrowserableObjects);
-	     */
 
 	    if (browserable == null)
 		JOptionPane.showConfirmDialog(EntryPoint.browser, "Ошибка чтения файла", "Ошибка", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null);

@@ -9,11 +9,11 @@ import java.util.List;
 public interface Browserable {
 
     public Point[] getPeak();
-    
+
     public List<Propertiable> getProperties();
 
     public Shape getVisualizationShape();
-    
+
     public Color getColor();
 
     public List<Browserable> getBrowserableObjects();

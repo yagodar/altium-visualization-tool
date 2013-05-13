@@ -11,6 +11,7 @@ public class BrowserFrame extends JFrame {
     public BrowserFrame() {
 	setTitle(NAME);
 	setSize(WIDTH, HEIGHT);
+	setExtendedState(JFrame.MAXIMIZED_BOTH);
 	setLayout(new BorderLayout());
 	setJMenuBar(browserMenuBar = new BrowserMenuBar());
 	add(browserToolBar = new BrowserToolBar(), BorderLayout.NORTH);
@@ -32,7 +33,7 @@ public class BrowserFrame extends JFrame {
     private BrowserMenuBar browserMenuBar;
     private BrowserToolBar browserToolBar;
     private BrowserWorkPanel browserWorkPanel;
-    private static String NAME = "ModeBrowser";
+    private static String NAME = "VibroMode";
     private static int WIDTH = 800;
     private static int HEIGHT = 600;
 }

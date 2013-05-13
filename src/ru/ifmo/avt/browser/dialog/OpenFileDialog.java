@@ -11,6 +11,6 @@ public class OpenFileDialog extends JFileChooser {
 
     public OpenFileDialog() {
 	setFileFilter(new FileNameExtensionFilter("PCBfile", "PcbDoc"));
-	setCurrentDirectory(new File("."));
+	setCurrentDirectory(new File(".\\data\\data-in"));
     }
 }

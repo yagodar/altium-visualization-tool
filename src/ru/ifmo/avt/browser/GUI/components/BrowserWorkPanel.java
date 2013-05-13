@@ -26,6 +26,6 @@ public class BrowserWorkPanel extends JPanel {
     public void rescale() {
 	setBrowserableObject(browserable);
     }
-    
+
     private Browserable browserable;
 }

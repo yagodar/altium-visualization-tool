@@ -24,7 +24,7 @@ public class ElementPaintComponent extends PaintComponent {
 	    public void mousePressed(MouseEvent event) {
 		BoardPaintComponent board = (BoardPaintComponent) ElementPaintComponent.this.getParent();
 		for (MarkerPaintComponent marker : markerList)
-			board.setComponentZOrder(marker, 0);
+		    board.setComponentZOrder(marker, 0);
 		board.setComponentZOrder(ElementPaintComponent.this, 0);
 		board.setSelectedElement(ElementPaintComponent.this);
 		board.repaint();

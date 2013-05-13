@@ -23,12 +23,11 @@ public class DraggedPaintComponent extends JComponent {
 		Point newLocation = event.getPoint();
 
 		Point point = new Point(getX() + (newLocation.x - oldLocation.x), getY() + (newLocation.y - oldLocation.y));
-		
-		if(Math.abs(newLocation.x - oldLocation.x) > 5 || Math.abs(newLocation.y - oldLocation.y) > 5)
-		{
-        		setLocation(point);
-        
-        		((Component) event.getSource()).getParent().repaint();
+
+		if (Math.abs(newLocation.x - oldLocation.x) > 5 || Math.abs(newLocation.y - oldLocation.y) > 5) {
+		    setLocation(point);
+
+		    ((Component) event.getSource()).getParent().repaint();
 		}
 	    }
 	});

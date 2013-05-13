@@ -24,10 +24,19 @@ public class PropertyEditorPanel extends JPanel {
 	    for (Propertiable property : properties) {
 		String name = property.getName();
 		Component component = property.getViewComponent();
+		if (component == null)
+		    component = new TextFieldViewComponent(property);
+
+		/*
+		 * component.addFocusListener(new FocusAdapter() {
+		 * 
+		 * @Override public void focusLost(FocusEvent event) {
+		 * event.getComponent().getParent(.getParent()).repaint(); } });
+		 */
 		int index = properties.indexOf(property);
 
 		add(new JLabel(name), new GBC(0, index).setAnchor(GBC.FIRST_LINE_START).setFill(GBC.BOTH).setInsets(0, 5, 0, 5));
-		add(component == null ? new TextFieldViewComponent(property) : component, new GBC(1, index).setAnchor(GBC.FIRST_LINE_START).setFill(GBC.BOTH).setWeight(100, 0));
+		add(component, new GBC(1, index).setAnchor(GBC.FIRST_LINE_START).setFill(GBC.BOTH).setWeight(100, 0));
 	    }
 
 	    add(new JLabel(""), new GBC(0, properties.size()).setWeight(0, 100));

@@ -21,19 +21,18 @@ public class BoardPaintComponent extends PaintComponent {
 		add(elementComponent);
 	    }
     }
-    
-    private void add(ElementPaintComponent component)
-    {
-	for(MarkerPaintComponent marker : component.getMarkerList())
+
+    private void add(ElementPaintComponent component) {
+	for (MarkerPaintComponent marker : component.getMarkerList())
 	    add(marker);
-	
+
 	super.add(component);
     }
 
     public void setSelectedElement(ElementPaintComponent component) {
-	if(selectedElement != null)
+	if (selectedElement != null)
 	    selectedElement.setSelected(false);
-	    
+
 	selectedElement = component;
 	selectedElement.setSelected(true);
     }
