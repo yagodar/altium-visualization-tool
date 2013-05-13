@@ -83,4 +83,16 @@ public class BrowserableObject implements Browserable {
 	// TODO Auto-generated method stub
 	return null;
     }
+
+    @Override
+    public void setWidth(double width) {
+	// TODO Auto-generated method stub
+	
+    }
+
+    @Override
+    public void setHeight(double height) {
+	// TODO Auto-generated method stub
+	
+    }
 }

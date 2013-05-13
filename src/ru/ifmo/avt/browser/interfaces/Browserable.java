@@ -27,4 +27,8 @@ public interface Browserable {
     public void setLocation(Point point);
 
     public boolean isBoard();
+    
+    public void setWidth(double width);
+    
+    public void setHeight(double height);
 }

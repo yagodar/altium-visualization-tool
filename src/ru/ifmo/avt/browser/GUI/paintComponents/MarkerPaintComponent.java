@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 
+import ru.ifmo.avt.browser.EntryPoint;
+
 public class MarkerPaintComponent extends DraggedPaintComponent {
 
     private static final long serialVersionUID = -5523399180337116086L;
@@ -60,6 +62,10 @@ public class MarkerPaintComponent extends DraggedPaintComponent {
 		    marker.setToolTipText(marker.point.toString());
 		}
 	    }
+	    
+	    elementPaintComponent.getBrowserable().setHeight(elementPaintComponent.getBrowserable().getVisualizationShape().getBounds2D().getHeight() / EntryPoint.scale);
+	    elementPaintComponent.getBrowserable().setWidth(elementPaintComponent.getBrowserable().getVisualizationShape().getBounds2D().getWidth() / EntryPoint.scale);
+	    
 	    elementPaintComponent.getBrowserable().setLocation(new Point((int) getLocation().getX() + SIZE / 2, (int) getLocation().getY() + SIZE / 2));
 	}
 
