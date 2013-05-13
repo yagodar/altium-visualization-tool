@@ -6,6 +6,8 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Shape;
 
+import org.eclipse.emf.codegen.ecore.templates.editor.EntryPoint;
+
 import ru.ifmo.avt.browser.interfaces.Browserable;
 
 public class PaintComponent extends DraggedPaintComponent {

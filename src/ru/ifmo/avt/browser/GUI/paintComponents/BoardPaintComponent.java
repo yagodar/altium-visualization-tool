@@ -3,6 +3,7 @@ package ru.ifmo.avt.browser.GUI.paintComponents;
 import java.util.LinkedList;
 import java.util.List;
 
+import ru.ifmo.avt.browser.GUI.components.BrowserPaintPanel;
 import ru.ifmo.avt.browser.interfaces.Browserable;
 
 public class BoardPaintComponent extends PaintComponent {
@@ -14,6 +15,7 @@ public class BoardPaintComponent extends PaintComponent {
 
 	if (getBrowserable().getBrowserableObjects() != null)
 	    for (Browserable element : browserable.getBrowserableObjects()) {
+		BrowserPaintPanel.scale(element);
 		ElementPaintComponent elementComponent = new ElementPaintComponent(element);
 		elementList.add(elementComponent);
 		add(elementComponent);

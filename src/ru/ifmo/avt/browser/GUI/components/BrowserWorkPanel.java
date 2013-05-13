@@ -16,9 +16,16 @@ public class BrowserWorkPanel extends JPanel {
     }
 
     public void setBrowserableObject(Browserable browserableObject) {
+	this.browserable = browserableObject;
 	removeAll();
 	add(new JScrollPane(new PropertyEditorPanel(browserableObject), JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.WEST);
 	add(new JScrollPane(new BrowserPaintPanel(browserableObject), JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS), BorderLayout.CENTER);
 	revalidate();
     }
+
+    public void rescale() {
+	setBrowserableObject(browserable);
+    }
+    
+    private Browserable browserable;
 }
