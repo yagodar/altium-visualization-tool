@@ -5,7 +5,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Shape;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import ru.ifmo.avt.browser.EntryPoint;
 import ru.ifmo.avt.browser.interfaces.Browserable;
 
 public class PaintComponent extends DraggedPaintComponent {
@@ -20,6 +23,14 @@ public class PaintComponent extends DraggedPaintComponent {
 	setSize(getBrowserable().getDimension());
 	setPreferredSize(getBrowserable().getDimension());
 	setToolTipText(getBrowserable().getDescription());
+
+	addMouseListener(new MouseAdapter() {
+	    @Override
+	    public void mousePressed(MouseEvent e) {
+		EntryPoint.browser.getBrowserWorkPanel().setPropertyEditorPanel(getBrowserable());
+		super.mousePressed(e);
+	    }
+	});
     }
 
     @Override

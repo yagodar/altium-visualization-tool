@@ -12,8 +12,8 @@ public class TextFieldViewComponent extends JTextField {
     private static final long serialVersionUID = -1128546906819296840L;
 
     public TextFieldViewComponent(Propertiable property) {
-	super(property.getValue().toString());
-
+	super(property.getValue().toString(), 15);
+	
 	this.property = property;
 
 	addFocusListener(new FocusListener() {

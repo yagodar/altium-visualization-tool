@@ -19,7 +19,7 @@ public class BrowserScaleSpinner extends JSpinner {
 		    if ((double) arg0 != scale) {
 			EntryPoint.scale = (double) arg0 / scale;
 			if (EntryPoint.browser != null)
-			    EntryPoint.browser.getBrowserWorkPanel().rescale();
+			    EntryPoint.browser.getBrowserWorkPanel().rebuild();
 		    }
 		    scale = (double) arg0;
 		    fireStateChanged();

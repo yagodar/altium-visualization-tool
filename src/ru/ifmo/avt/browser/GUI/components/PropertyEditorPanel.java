@@ -2,11 +2,15 @@ package ru.ifmo.avt.browser.GUI.components;
 
 import java.awt.Component;
 import java.awt.GridBagLayout;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
+import ru.ifmo.avt.browser.EntryPoint;
 import ru.ifmo.avt.browser.helper.GBC;
 import ru.ifmo.avt.browser.interfaces.Browserable;
 import ru.ifmo.avt.browser.interfaces.Propertiable;
@@ -25,17 +29,23 @@ public class PropertyEditorPanel extends JPanel {
 		String name = property.getName();
 		Component component = property.getViewComponent();
 		if (component == null)
+		{
 		    component = new TextFieldViewComponent(property);
+		}
 
-		/*
-		 * component.addFocusListener(new FocusAdapter() {
-		 * 
-		 * @Override public void focusLost(FocusEvent event) {
-		 * event.getComponent().getParent(.getParent()).repaint(); } });
-		 */
+		component.addFocusListener(new FocusAdapter() {
+
+		    @Override
+		    public void focusLost(FocusEvent event) {
+			EntryPoint.browser.getBrowserWorkPanel().getBrowserPaintPanel().repaint();
+		    }
+		});
+
 		int index = properties.indexOf(property);
 
-		add(new JLabel(name), new GBC(0, index).setAnchor(GBC.FIRST_LINE_START).setFill(GBC.BOTH).setInsets(0, 5, 0, 5));
+		JTextField nameField = new JTextField(name, 20);
+		nameField.setEnabled(false);
+		add(nameField, new GBC(0, index).setAnchor(GBC.FIRST_LINE_START).setFill(GBC.BOTH).setInsets(0, 5, 0, 5));
 		add(component, new GBC(1, index).setAnchor(GBC.FIRST_LINE_START).setFill(GBC.BOTH).setWeight(100, 0));
 	    }
 
