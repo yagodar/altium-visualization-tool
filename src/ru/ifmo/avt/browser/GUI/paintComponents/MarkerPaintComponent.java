@@ -53,16 +53,27 @@ public class MarkerPaintComponent extends DraggedPaintComponent {
 	    point.x = 0;
 	    point.y = 0;
 
-	    for (MarkerPaintComponent c : elementPaintComponent.getMarkerList()) {
-		if (c != this) {
-		    c.point.x -= dx;
-		    c.point.y -= dy;
+	    for (MarkerPaintComponent marker : elementPaintComponent.getMarkerList()) {
+		if (marker != this) {
+		    marker.point.x -= dx;
+		    marker.point.y -= dy;
+		    marker.setToolTipText(marker.point.toString());
 		}
 	    }
 	    elementPaintComponent.getBrowserable().setLocation(new Point((int) getLocation().getX() + SIZE / 2, (int) getLocation().getY() + SIZE / 2));
 	}
 
 	setToolTipText(point.toString());
+    }
+    
+    public ElementPaintComponent getElementPaintComponent()
+    {
+	return elementPaintComponent;
+    }
+    
+    public Point getPoint()
+    {
+	return point;
     }
 
     private static Color boardColor = Color.GRAY;
