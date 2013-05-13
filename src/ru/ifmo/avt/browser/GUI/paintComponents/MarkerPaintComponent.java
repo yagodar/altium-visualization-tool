@@ -45,22 +45,22 @@ public class MarkerPaintComponent extends DraggedPaintComponent {
     public void setLocation(Point p) {
 	super.setLocation(p);
 
-	//Point epoint = new Point((int)( p.getX() - elementPaintComponent.getLocation().getX()) + SIZE / 2, (int) (p.getY() - elementPaintComponent.getLocation().getY()) + SIZE / 2);
 	point.setLocation((int)( p.getX() - elementPaintComponent.getLocation().getX()) + SIZE / 2, (int) (p.getY() - elementPaintComponent.getLocation().getY()) + SIZE / 2);
 	if(point.getX() <= elementPaintComponent.getBrowserable().getVisualizationShape().getBounds2D().getMinX())
 	{
 	    int dx = (int)getLocation().getX() + SIZE / 2 -  (int)elementPaintComponent.getBrowserable().getLocation().getX();
-	    int dy = (int)getLocation().getY() + SIZE / 2 - (int)elementPaintComponent.getBrowserable().getLocation().getY() ;
+	    int dy = (int)getLocation().getY() + SIZE / 2 - (int)elementPaintComponent.getBrowserable().getLocation().getY();
+	    
+	    point.x = 0;
+	    point.y = 0;
+	    
 	    for(MarkerPaintComponent c : elementPaintComponent.getMarkerList())
 	    {
 		if(c != this)
 		{
 		    c.point.x -= dx;
 		    c.point.y -= dy;
-		    c.relocation();
 		}
-		else
-		    System.out.println("");
 	    }
 	    elementPaintComponent.getBrowserable().setLocation(new Point((int)getLocation().getX() + SIZE / 2, (int)getLocation().getY() + SIZE / 2));
 	}
