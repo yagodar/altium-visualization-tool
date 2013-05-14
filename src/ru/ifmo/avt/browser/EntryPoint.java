@@ -20,6 +20,7 @@ public class EntryPoint {
 	});
     }
 
+    public static int fixing;
     public static int frequency;
     public static double acceleration;
     public static BrowserFrame browser;
