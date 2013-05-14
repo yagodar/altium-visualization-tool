@@ -33,19 +33,19 @@ public class BrowserToolBar extends JToolBar {
 	scalePanel.add(scaleSpinner, new GBC(1, 0));
 	
 	JLabel frequencyLabel = new JLabel("  F max [Hz]: ");
-	scalePanel.add(frequencyLabel, new GBC(2, 0));
+	scalePanel.add(frequencyLabel, new GBC(0, 1));
 	
 	BrowserFrequencySpinner frequencySpinner = new BrowserFrequencySpinner();
-	scalePanel.add(frequencySpinner, new GBC(3, 0));
+	scalePanel.add(frequencySpinner, new GBC(1, 1));
 	
 	JLabel accelerationLabel = new JLabel("  Ao [m/s^2]: ");
-	scalePanel.add(accelerationLabel, new GBC(4, 0));
+	scalePanel.add(accelerationLabel, new GBC(0, 2).setAnchor(GBC.NORTHWEST));
 	
 	BrowserAccelerationSpinner accelerationSpinner = new BrowserAccelerationSpinner();
-	scalePanel.add(accelerationSpinner, new GBC(5, 0));
+	scalePanel.add(accelerationSpinner, new GBC(1, 2).setAnchor(GBC.NORTHWEST));
 	
 	JLabel fixingLabel = new JLabel("  Fixing: ");
-	scalePanel.add(fixingLabel, new GBC(6, 0));
+	scalePanel.add(fixingLabel, new GBC(2, 0, 1, 3));
 	
 	File file = new File(".\\res");
 
@@ -65,9 +65,9 @@ public class BrowserToolBar extends JToolBar {
 		}
 	
 	BrowserFixingList fixingList = new BrowserFixingList(icons);
-	scalePanel.add(fixingList, new GBC(7, 0));
+	scalePanel.add(fixingList, new GBC(3, 0, 1, 3));
 	
-	scalePanel.add(new JPanel(), new GBC(8, 0).setFill(GBC.HORIZONTAL).setWeight(100, 100));
+	scalePanel.add(new JPanel(), new GBC(4, 0, 1, 3).setFill(GBC.HORIZONTAL).setWeight(100, 100));
 	
 	add(scalePanel);
 	
