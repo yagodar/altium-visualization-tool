@@ -59,11 +59,11 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 		int colorDiffFromNormal = 0;
 		double tempDiffFromNormal = (getTemperature() - AbstractPcbObject.DEFAULT_TEMPERATURE);
 		if(tempDiffFromNormal > 0.0) {
-			colorDiffFromNormal = (int) (tempDiffFromNormal / 3.0);
+			colorDiffFromNormal = (int) (10.0 * (tempDiffFromNormal / 2.5));
 	    }
 		
-		if(colorDiffFromNormal > 255) {
-			colorDiffFromNormal = 255;
+		if(DEFAULT_COLOR.getRed() + colorDiffFromNormal > 255) {
+			colorDiffFromNormal = 255 - DEFAULT_COLOR.getRed();
 		}
 		
 		return new Color(DEFAULT_COLOR.getRed() + colorDiffFromNormal, DEFAULT_COLOR.getGreen(), DEFAULT_COLOR.getBlue());
