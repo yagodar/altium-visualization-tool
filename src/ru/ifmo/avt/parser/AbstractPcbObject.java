@@ -38,25 +38,16 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	
 	@Override
 	public void setSrcLocation(Point srcLocation) {
-		if(this instanceof PcbElementModel && ((PcbElementModel) this).getId() == 0) {
-			System.out.println("0");
-		}
 		this.srcLocation = srcLocation;
 	}
 	
 	@Override
 	public Point getLocation() {
-		if(this instanceof PcbElementModel && ((PcbElementModel) this).getId() == 0) {
-			System.out.println("0");
-		}
 		return location;
 	}
 	
 	@Override
     public void setLocation(Point location) {
-		if(this instanceof PcbElementModel && ((PcbElementModel) this).getId() == 0) {
-			System.out.println("0");
-		}
 		this.location = location;
     }
 	
