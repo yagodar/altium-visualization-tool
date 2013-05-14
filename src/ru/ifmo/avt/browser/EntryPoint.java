@@ -20,6 +20,8 @@ public class EntryPoint {
 	});
     }
 
+    public static int frequency;
+    public static double acceleration;
     public static BrowserFrame browser;
     public static double relativScale = 1;
     public static double scale = 1;

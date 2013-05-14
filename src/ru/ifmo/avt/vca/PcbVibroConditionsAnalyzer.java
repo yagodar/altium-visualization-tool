@@ -13,7 +13,7 @@ public class PcbVibroConditionsAnalyzer {
 		return INSTANCE;
 	}
 
-	public void analyzePcbModel(IPcbModelForVca pcbModel) {
+	public void analyzePcbModel(IPcbModelForVca pcbModel, double frequency, double acceleration) {
 		if (pcbModel != null) {
 			
 		} else {
