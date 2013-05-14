@@ -15,11 +15,16 @@ public class PcbVibroConditionsAnalyzer {
 
 	public void analyzePcbModel(IPcbModelForVca pcbModel, double frequency, double acceleration, int fixing) {
 		if (pcbModel != null) {
-			
+			double koefAlfa = getKoefAlfa(fixing);
 		} else {
 			System.out.println(PcbVibroConditionsAnalyzer.class.getSimpleName()
 					+ " Error! pcbModel is null!");
 		}
+	}
+
+	private double getKoefAlfa(int fixing) {
+		
+		return 0;
 	}
 
 	private static PcbVibroConditionsAnalyzer INSTANCE;
