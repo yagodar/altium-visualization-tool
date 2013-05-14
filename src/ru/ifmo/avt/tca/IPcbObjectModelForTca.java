@@ -15,5 +15,5 @@ public interface IPcbObjectModelForTca {
 	
 	public double getDepth();
 	
-	public Point getLocation();
+	public Point getSrcLocation();
 }

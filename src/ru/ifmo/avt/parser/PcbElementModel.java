@@ -11,7 +11,7 @@ import ru.ifmo.avt.tca.IPcbElementModelForTca;
 class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTca {
 	@Override
 	public String toString() {
-		return PcbElementModel.class.getSimpleName() + " [id:" + getId() + "]" + " [x:" + getLocation().getX() + "] [y:" + getLocation().getY() + "] [w:" + getDimension().width + "] [h:" + getDimension().height + "] [d:" + getDepth() + "] [designtr:" + getDesignatorName() + "]" + " [libRef:" + getLibraryReference() + "]"  + " [descr:" + getSrcDescription() + "]";
+		return PcbElementModel.class.getSimpleName() + " [id:" + getId() + "]" + " [x:" + getSrcLocation().getX() + "] [y:" + getSrcLocation().getY() + "] [w:" + getWidth() + "] [h:" + getHeight() + "] [d:" + getDepth() + "] [designtr:" + getDesignatorName() + "]" + " [libRef:" + getLibraryReference() + "]"  + " [descr:" + getSrcDescription() + "]";
 	}
 	
 	@Override
@@ -21,7 +21,7 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	
 	@Override
 	public String getDescription() {
-		return "<html>" + getSrcDescription() + "<br />x:[" + getLocation().getX() + "] y:[" + getLocation().getY() + "]<br />w:[" + getDimension().width + "] h:[" + getDimension().height + "] d:[" + getDepth() + "] </html>";
+		return "<html>" + getSrcDescription() + "<br />x:[" + getSrcLocation().getX() + "] y:[" + getSrcLocation().getY() + "]<br />w:[" + getWidth() + "] h:[" + getHeight() + "] d:[" + getDepth() + "] </html>";
 	}
 	
 	@Override
@@ -176,28 +176,9 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 		return value;
 	}
 	
-	protected double getSrcLocX() {
-		return srcLocX;
-	}
-
-	protected void setSrcLocX(double srcLocX) {
-		this.srcLocX = srcLocX;
-	}
-
-	protected double getSrcLocY() {
-		return srcLocY;
-	}
-
-	protected void setSrcLocY(double srcLocY) {
-		this.srcLocY = srcLocY;
-	}
-
 	protected int getId() {
 		return id;
 	}
-	
-	private double srcLocX;
-	private double srcLocY;
 	
 	private final int id;
 	

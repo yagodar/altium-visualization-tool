@@ -349,9 +349,11 @@ public class AltiumPcbDocParser {
 			newPcbModel.getTemperature();
 			newPcbModel.getEnvThermalConduct();
 			newPcbModel.getEnvTemperature();
+		
+			newPcbModel.setSrcLocation(new Point());
 			
 			Point boardLocation = new Point();
-			boardLocation.setLocation(PcbModel.DEFAULT_LOC_X, PcbModel.DEFAULT_LOC_Y);
+			boardLocation.setLocation(PcbModel.DEFAULT_VIEW_LOC_X, PcbModel.DEFAULT_VIEW_LOC_Y);
 			newPcbModel.setLocation(boardLocation);
 			
 			for (PcbElementModel element : newPcbModel.getAllElements()) {
@@ -382,6 +384,10 @@ public class AltiumPcbDocParser {
 				}
 				
 				element.setLocation(elementLocation);
+				
+				Point elementSrcLocation = new Point();
+				elementSrcLocation.setLocation(elementLocation.getX(),elementLocation.getY());
+				element.setSrcLocation(elementSrcLocation);
 			}
 		} 
 		catch (IOException e) {

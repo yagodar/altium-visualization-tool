@@ -38,7 +38,7 @@ public class PaintComponent extends DraggedPaintComponent {
 	getBrowserable().setLocation(point);
 	Point srcLocation = new Point();
 	srcLocation.setLocation(point.getX() / EntryPoint.scale, point.getY() / EntryPoint.scale);
-	getBrowserable().setSrcLocation(point);
+	getBrowserable().setSrcLocation(srcLocation);
 	super.setLocation(point);
     }
 

@@ -94,7 +94,7 @@ public class PcbThermalConditionsAnalyzer {
 				}
 				else if(triangleMatrixBegan) {
 					sectionalArea = ((Math.sqrt(Math.pow(poweredElements.get(i).getHeight(), 2.0) + Math.pow(poweredElements.get(i).getWidth(), 2.0)) + Math.sqrt(Math.pow(poweredElements.get(j).getHeight(), 2.0) + Math.pow(poweredElements.get(j).getWidth(), 2.0))) / 2.0) * (poweredElements.get(i).getDepth() + poweredElements.get(j).getDepth() / 2.0);
-					lengthOfArea = Math.sqrt(Math.pow(poweredElements.get(j).getLocation().getX() - poweredElements.get(i).getLocation().getX(), 2.0) + Math.pow(poweredElements.get(j).getLocation().getY() - poweredElements.get(i).getLocation().getY(), 2.0));
+					lengthOfArea = Math.sqrt(Math.pow(poweredElements.get(j).getSrcLocation().getX() - poweredElements.get(i).getSrcLocation().getX(), 2.0) + Math.pow(poweredElements.get(j).getSrcLocation().getY() - poweredElements.get(i).getSrcLocation().getY(), 2.0));
 					result[i][j] = (envThermalConduct * sectionalArea) / lengthOfArea;
 					result[j][i] = result[i][j];
 				}
@@ -131,9 +131,9 @@ public class PcbThermalConditionsAnalyzer {
 			elementHeight = poweredElements.get(i).getHeight();
 			elementDepth = poweredElements.get(i).getDepth();
 
-			if(poweredElements.get(i).getLocation() != null) {
-				elementLocX = poweredElements.get(i).getLocation().getX();
-				elementLocY = poweredElements.get(i).getLocation().getY();
+			if(poweredElements.get(i).getSrcLocation() != null) {
+				elementLocX = poweredElements.get(i).getSrcLocation().getX();
+				elementLocY = poweredElements.get(i).getSrcLocation().getY();
 			}
 
 			sectionalArea = elementWidth * elementHeight;

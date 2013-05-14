@@ -32,12 +32,31 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	}
 	
 	@Override
+	public Point getSrcLocation() {
+		return srcLocation;
+	}
+	
+	@Override
+	public void setSrcLocation(Point srcLocation) {
+		if(this instanceof PcbElementModel && ((PcbElementModel) this).getId() == 0) {
+			System.out.println("0");
+		}
+		this.srcLocation = srcLocation;
+	}
+	
+	@Override
 	public Point getLocation() {
+		if(this instanceof PcbElementModel && ((PcbElementModel) this).getId() == 0) {
+			System.out.println("0");
+		}
 		return location;
 	}
 	
 	@Override
     public void setLocation(Point location) {
+		if(this instanceof PcbElementModel && ((PcbElementModel) this).getId() == 0) {
+			System.out.println("0");
+		}
 		this.location = location;
     }
 	
@@ -98,6 +117,11 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	}
 	
 	@Override
+	public void setWidth(double width) {
+		setProperty(PcbObjectPropertyMark.WIDTH, width);
+	}
+	
+	@Override
 	public double getHeight() {
 		double height = 0.0;
 
@@ -113,16 +137,13 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 		return height;
 	}
 	
-	public void setThermalConduct(double thermalConduct) {
-		setProperty(PcbObjectPropertyMark.OBJ_TERMAL_CONDUCT, thermalConduct);
-	}
-	
-	public void setWidth(double width) {
-		setProperty(PcbObjectPropertyMark.WIDTH, width);
-	}
-
+	@Override
 	public void setHeight(double height) {
 		setProperty(PcbObjectPropertyMark.HEIGHT, height);
+	}
+	
+	public void setThermalConduct(double thermalConduct) {
+		setProperty(PcbObjectPropertyMark.OBJ_TERMAL_CONDUCT, thermalConduct);
 	}
 	
 	public void setDepth(double depth) {
@@ -131,10 +152,23 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	
 	protected AbstractPcbObject() {
 		propsByMark = new HashMap<String, Propertiable>();
-		
-		setLocation(getLeftTopPeakPoint());
-		
 		vertices = new HashMap<Integer, PcbObjectVertex>();
+	}
+	
+	protected double getSrcLocX() {
+		return srcLocX;
+	}
+
+	protected void setSrcLocX(double srcLocX) {
+		this.srcLocX = srcLocX;
+	}
+
+	protected double getSrcLocY() {
+		return srcLocY;
+	}
+
+	protected void setSrcLocY(double srcLocY) {
+		this.srcLocY = srcLocY;
 	}
 	
 	protected PcbObjectVertex getVertex(int vertexId) {
@@ -161,7 +195,7 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 		Propertiable property = getPropertyByMark(mark.toString());
 		
 		if(property == null) {
-			property = new PcbObjectProperty(mark.getName(), value);
+			property = new PcbObjectProperty(this, mark.getName(), value);
 			propsByMark.put(mark.toString(), property);
 		}
 		else {
@@ -245,7 +279,7 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 		return maxY;
 	}
 
-	private Point getLeftTopPeakPoint() {
+	protected Point getLeftTopPeakPoint() {
 		if(leftTopPoint == null) {
 			leftTopPoint = new Point(0, 0);
 		}
@@ -253,10 +287,9 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 		return leftTopPoint;
 	}
 	
-	private Point getRightBottomPeakPoint() {
+	protected Point getRightBottomPeakPoint() {
 		if(rightBottomPoint == null) {
 			rightBottomPoint = new Point();
-			rightBottomPoint.setLocation(getWidth(), getHeight());
 		}
 		
 		return rightBottomPoint;
@@ -264,11 +297,13 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	
 	protected static final double DEFAULT_TEMPERATURE = 20;
 	
+	private Point srcLocation;
 	private Point location;
 	Point leftTopPoint;
 	Point rightBottomPoint;
 	private HashMap<String, Propertiable> propsByMark;
-	
+	private double srcLocX;
+	private double srcLocY;
 	private HashMap<Integer, PcbObjectVertex> vertices;
 	
 	private static final double DEFAULT_TERMAL_CONDACT = 150;
