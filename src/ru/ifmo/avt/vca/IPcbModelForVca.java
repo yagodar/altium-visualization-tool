@@ -21,5 +21,5 @@ public interface IPcbModelForVca extends IPcbObjectModelForVca {
 
 	public void setMaxDeflection(double maxDeflection);// допустимый прогиб [м] по умолчанию 0
 
-	public void setDeflection(double deflection);// максимальный прогиб [м] по умолчанию 0
+	public void setDeflection(double deflection);// прогиб [м] по умолчанию 0
 }

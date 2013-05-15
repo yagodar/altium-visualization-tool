@@ -7,37 +7,17 @@ import java.util.HashMap;
 import java.util.List;
 
 import ru.ifmo.avt.browser.interfaces.Browserable;
-import ru.ifmo.avt.browser.interfaces.Propertiable;
 import ru.ifmo.avt.tca.IPcbElementModelForTca;
 import ru.ifmo.avt.tca.IPcbModelForTca;
+import ru.ifmo.avt.vca.IPcbElementModelForVca;
+import ru.ifmo.avt.vca.IPcbModelForVca;
 
-public class PcbModel extends AbstractPcbObject implements IPcbModelForTca {
+public class PcbModel extends AbstractPcbObject implements IPcbModelForTca, IPcbModelForVca {
 	@Override
 	public String toString() {
 		return PcbModel.class.getSimpleName() + " [name:" + getName() + "]" + " [width:" + getWidth() + "mil]" + " [height:" + getHeight() + "mil]" + " [depth:" + getDepth() + "mil]" + " [elementsCount:" + getAllElements().size() + "]";
 	}
 	
-	@Override
-	public double getDepth() {
-		double depth = 0.0;
-
-		Propertiable depthProperty = getPropertyByMark(PcbObjectPropertyMark.DEPTH.toString());
-		if(depthProperty != null) {
-			depth = (double) depthProperty.getValue();
-		}
-		else {
-			for (PcbLayer layer : getAllLayers()) {
-				if(layer.isEnabled()) {
-					depth += layer.getDepth();
-				}
-			}
-
-			setDepth(depth);
-		}
-		
-		return depth;
-	}
-
 	@Override
 	public List<Browserable> getBrowserableObjects() {
 		List<Browserable> browserableObjects = new ArrayList<Browserable>();
@@ -53,38 +33,25 @@ public class PcbModel extends AbstractPcbObject implements IPcbModelForTca {
 	}
 	
 	@Override
+	public List<IPcbElementModelForVca> getElementsForVca() {
+		List<IPcbElementModelForVca> elementsForVca = new ArrayList<IPcbElementModelForVca>();
+		elementsForVca.addAll(getAllElements());
+		return elementsForVca;
+	}
+	
+	@Override
 	public String getDescription() {
 		return "<html>" + getName() + "<br />x:[" + getSrcLocation().getX() + "] y:[" + getSrcLocation().getY() + "]<br />w:[" + getWidth() + "] h:[" + getHeight() + "] d:[" + getDepth() + "] </html>";
 	}
 	
 	@Override
 	public double getEnvThermalConduct() {
-		double envThermalConduct = DEFAULT_ENV_TERMAL_CONDACT;
-		
-		Propertiable envThermalConductProperty = getPropertyByMark(PcbObjectPropertyMark.ENV_TERMAL_CONDUCT.toString());
-		if(envThermalConductProperty != null) {
-			envThermalConduct = (double) envThermalConductProperty.getValue();
-		}
-		else {
-			setEnvThermalConduct(envThermalConduct);
-		}
-		
-		return envThermalConduct;
+		return (double) getProperty(PcbObjectPropertyMark.ENV_TERMAL_CONDUCT);
 	}
 	
 	@Override
 	public double getEnvTemperature() {
-		double envTemperature = DEFAULT_ENV_TEMPERATURE;
-		
-		Propertiable envTemperatureProperty = getPropertyByMark(PcbObjectPropertyMark.ENV_TEMPERATURE.toString());
-		if(envTemperatureProperty != null) {
-			envTemperature = (double) envTemperatureProperty.getValue();
-		}
-		else {
-			setEnvTemperature(envTemperature);
-		}
-		
-		return envTemperature;
+		return (double) getProperty(PcbObjectPropertyMark.ENV_TEMPERATURE);
 	}
 	
 	@Override
@@ -97,30 +64,101 @@ public class PcbModel extends AbstractPcbObject implements IPcbModelForTca {
 	    return true;
 	}
 	
-	public void setEnvThermalConduct(double envThermalConduct) {
-		setProperty(PcbObjectPropertyMark.ENV_TERMAL_CONDUCT, envThermalConduct);
+	@Override
+	public double getModuleElasticity() {
+		return (double) getProperty(PcbObjectPropertyMark.MODULE_ELASTICITY);
 	}
 	
-	public void setEnvTemperature(double envTemperature) {
-		setProperty(PcbObjectPropertyMark.ENV_TEMPERATURE, envTemperature);
+	@Override
+	public double getDensity() {
+		return (double) getProperty(PcbObjectPropertyMark.DENSITY);
+	}
+	
+	@Override
+	public double getPuassonsCoefficient() {
+		return (double) getProperty(PcbObjectPropertyMark.PUASSONS_COEF);
+	}
+	
+	@Override
+	public double getWeightAllElements() {
+		return (double) getProperty(PcbObjectPropertyMark.WEIGHT_ALL_ELEMENTS);
+	}
+	
+	@Override
+	public void setFrequency(double value) {
+		setProperty(PcbObjectPropertyMark.FREQUENCY, value);
+	}
+	
+	@Override
+	public void setDisplacement(double value) {
+		setProperty(PcbObjectPropertyMark.DISPLACEMENT, value);
+	}
+	
+	@Override
+	public void setOwnFrequency(double value) {
+		setProperty(PcbObjectPropertyMark.OWN_FREQUENCY, value);
+	}
+	
+	@Override
+	public void setMaxDeflection(double value) {
+		setProperty(PcbObjectPropertyMark.MAX_DEFLECTION, value);
+	}
+	
+	@Override
+	public void setDeflection(double value) {
+		setProperty(PcbObjectPropertyMark.DEFLECTION, value);
+	}
+	
+	public void setEnvThermalConduct(double value) {
+		setProperty(PcbObjectPropertyMark.ENV_TERMAL_CONDUCT, value);
+	}
+	
+	public void setEnvTemperature(double value) {
+		setProperty(PcbObjectPropertyMark.ENV_TEMPERATURE, value);
+	}
+	
+	public void setModuleElasticity(double value) {
+		setProperty(PcbObjectPropertyMark.MODULE_ELASTICITY, value);
+	}
+	
+	public void setDensity(double value) {
+		setProperty(PcbObjectPropertyMark.DENSITY, value);
+	}
+	
+	public void setPuassonsCoefficient(double value) {
+		setProperty(PcbObjectPropertyMark.PUASSONS_COEF, value);
+	}
+	
+	public void setWeightAllElements(double value) {
+		setProperty(PcbObjectPropertyMark.WEIGHT_ALL_ELEMENTS, value);
+	}
+	
+	public double getFrequency() {
+		return (double) getProperty(PcbObjectPropertyMark.FREQUENCY);
+	}
+	
+	public double getDisplacement() {
+		return (double) getProperty(PcbObjectPropertyMark.DISPLACEMENT);
+	}
+	
+	public double getOwnFrequency() {
+		return (double) getProperty(PcbObjectPropertyMark.OWN_FREQUENCY);
+	}
+	
+	public double getMaxDeflection() {
+		return (double) getProperty(PcbObjectPropertyMark.MAX_DEFLECTION);
+	}
+	
+	public double getDeflection() {
+		return (double) getProperty(PcbObjectPropertyMark.DEFLECTION);
 	}
 	
 	public String getName() {
-		String name = "unknown";
-		
-		Propertiable depthProperty = getPropertyByMark(PcbObjectPropertyMark.NAME.toString());
-		if(depthProperty != null) {
-			name = (String) depthProperty.getValue();
-		}
-		else {
-			setName(name);
-		}
-		
-		return name;
+		return (String) getProperty(PcbObjectPropertyMark.NAME);
 	}
 	
-	public void setName(String name) {
-		setProperty(PcbObjectPropertyMark.NAME, name);
+	public void setName(String value) {
+		setProperty(PcbObjectPropertyMark.NAME, value);
 	}
 	
 	protected PcbModel() {
@@ -165,10 +203,8 @@ public class PcbModel extends AbstractPcbObject implements IPcbModelForTca {
 	private HashMap<String, PcbLayer> layersByMark;
 	private HashMap<Integer, PcbElementModel> elementsById;
 	
-	protected static final double DEFAULT_VIEW_LOC_X = 100;
-	protected static final double DEFAULT_VIEW_LOC_Y = 100;
+	protected static final double DEFAULT_VIEW_LOC_X = 100.0;
+	protected static final double DEFAULT_VIEW_LOC_Y = 100.0;
 	
-	private static final double DEFAULT_ENV_TERMAL_CONDACT = 0.026;
-	private static final double DEFAULT_ENV_TEMPERATURE = 20;
 	private static final Color DEFAULT_COLOR = new Color(5, 95, 14);
 }

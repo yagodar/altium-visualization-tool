@@ -281,7 +281,7 @@ public class AltiumPcbDocParser {
 
 									element.setLibraryReference(props.get("SOURCELIBREFERENCE"));
 
-									element.setDescription(props.get("SOURCEDESCRIPTION"));
+									element.setSrcDescription(props.get("SOURCEDESCRIPTION"));
 
 									element.setFootprintDescription(props.get("FOOTPRINTDESCRIPTION"));
 								}
@@ -342,14 +342,31 @@ public class AltiumPcbDocParser {
 			bufFileReader.close();
 			
 			newPcbModel.getName();
-			newPcbModel.getWidth();
-			newPcbModel.getHeight();
-			newPcbModel.getDepth();
 			newPcbModel.getThermalConduct();
 			newPcbModel.getTemperature();
 			newPcbModel.getEnvThermalConduct();
 			newPcbModel.getEnvTemperature();
-		
+			newPcbModel.getModuleElasticity();
+			newPcbModel.getDensity();
+			newPcbModel.getPuassonsCoefficient();
+			newPcbModel.getWeightAllElements();
+			newPcbModel.getFrequency();
+			newPcbModel.getDisplacement();
+			newPcbModel.getOwnFrequency();
+			newPcbModel.getMaxDeflection();
+			newPcbModel.getDeflection();
+			
+			newPcbModel.setWidth(newPcbModel.getVertecesMaxX() - newPcbModel.getVertecesMinX());
+			newPcbModel.setHeight(newPcbModel.getVertecesMaxY() - newPcbModel.getVertecesMinY());
+			
+			double depth = 0.0;
+			for (PcbLayer layer : newPcbModel.getAllLayers()) {
+				if(layer.isEnabled()) {
+					depth += layer.getDepth();
+				}
+			}
+			newPcbModel.setDepth(depth);
+			
 			newPcbModel.setSrcLocation(new Point());
 			
 			Point boardLocation = new Point();
@@ -357,8 +374,6 @@ public class AltiumPcbDocParser {
 			newPcbModel.setLocation(boardLocation);
 			
 			for (PcbElementModel element : newPcbModel.getAllElements()) {
-				element.getWidth();
-				element.getHeight();
 				element.getDepth();
 				element.getThermalConduct();
 				element.getTemperature();
@@ -368,6 +383,8 @@ public class AltiumPcbDocParser {
 				element.getLibraryReference();
 				element.getSrcDescription();
 				element.getFootprintDescription();
+				element.getPermissibleLoad();
+				element.getVibroAcceleration();
 				
 				Point elementLocation = new Point();
 				
@@ -376,6 +393,8 @@ public class AltiumPcbDocParser {
 				
 				if(elementMinX != 0.0 && elementMaxY != 0.0) {
 					elementLocation.setLocation(elementMinX - newPcbModel.getVertecesMinX(), newPcbModel.getVertecesMaxY() - elementMaxY);
+					element.setWidth(element.getVertecesMaxX() - elementMinX);
+					element.setHeight(elementMaxY - element.getVertecesMinY());
 				}
 				else {
 					elementLocation.setLocation(element.getSrcLocX() - PcbElementModel.DEFAULT_WIDTH / 2.0 - newPcbModel.getVertecesMinX(), newPcbModel.getVertecesMaxY() - element.getSrcLocY() - PcbElementModel.DEFAULT_HEIGHT / 2.0);
@@ -386,7 +405,7 @@ public class AltiumPcbDocParser {
 				element.setLocation(elementLocation);
 				
 				Point elementSrcLocation = new Point();
-				elementSrcLocation.setLocation(elementLocation.getX(),elementLocation.getY());
+				elementSrcLocation.setLocation(elementLocation.getX(), elementLocation.getY());
 				element.setSrcLocation(elementSrcLocation);
 			}
 		} 

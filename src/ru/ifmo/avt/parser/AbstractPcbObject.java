@@ -12,8 +12,9 @@ import java.util.List;
 import ru.ifmo.avt.browser.interfaces.Browserable;
 import ru.ifmo.avt.browser.interfaces.Propertiable;
 import ru.ifmo.avt.tca.IPcbObjectModelForTca;
+import ru.ifmo.avt.vca.IPcbObjectModelForVca;
 
-abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
+abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca, IPcbObjectModelForVca {
 	@Override
 	public Point[] getPeak() {
 		return new Point[] { getLeftTopPeakPoint(), getRightBottomPeakPoint() };
@@ -58,32 +59,12 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	
 	@Override
 	public double getThermalConduct() {
-		double thermalConduct = DEFAULT_TERMAL_CONDACT;
-		
-		Propertiable thermalConductProperty = getPropertyByMark(PcbObjectPropertyMark.OBJ_TERMAL_CONDUCT.toString());
-		if(thermalConductProperty != null) {
-			thermalConduct = (double) thermalConductProperty.getValue();
-		}
-		else {
-			setThermalConduct(thermalConduct);
-		}
-		
-		return thermalConduct;
+		return (double) getProperty(PcbObjectPropertyMark.OBJ_TERMAL_CONDUCT);
 	}
 	
 	@Override
 	public double getTemperature() {
-		double value = DEFAULT_TEMPERATURE;
-		
-		Propertiable valueProperty = getPropertyByMark(PcbObjectPropertyMark.OBJ_TEMPERATURE.toString());
-		if(valueProperty != null) {
-			value = (double) valueProperty.getValue();
-		}
-		else {
-			setTemperature(value);
-		}
-		
-		return value;
+		return (double) getProperty(PcbObjectPropertyMark.OBJ_TEMPERATURE);
 	}
 	
 	@Override
@@ -93,52 +74,35 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	
 	@Override
 	public double getWidth() {
-		double width = 0.0;
-		
-		Propertiable widthProperty = getPropertyByMark(PcbObjectPropertyMark.WIDTH.toString());
-		if(widthProperty != null) {
-			width = (double) widthProperty.getValue();
-		}
-		else {
-			width = getVertecesMaxX() - getVertecesMinX();
-			setWidth(width);
-		}
-		
-		return width;
+		return (double) getProperty(PcbObjectPropertyMark.WIDTH);
 	}
 	
 	@Override
-	public void setWidth(double width) {
-		setProperty(PcbObjectPropertyMark.WIDTH, width);
+	public void setWidth(double value) {
+		setProperty(PcbObjectPropertyMark.WIDTH, value);
 	}
 	
 	@Override
 	public double getHeight() {
-		double height = 0.0;
-
-		Propertiable absHeightProperty = getPropertyByMark(PcbObjectPropertyMark.HEIGHT.toString());
-		if(absHeightProperty != null) {
-			height = (double) absHeightProperty.getValue();
-		}
-		else {
-			height = getVertecesMaxY() - getVertecesMinY();
-			setHeight(height);
-		}
-		
-		return height;
+		return (double) getProperty(PcbObjectPropertyMark.HEIGHT);
 	}
 	
 	@Override
-	public void setHeight(double height) {
-		setProperty(PcbObjectPropertyMark.HEIGHT, height);
+	public void setHeight(double value) {
+		setProperty(PcbObjectPropertyMark.HEIGHT, value);
+	}
+	
+	@Override
+	public double getDepth() {
+		return (double) getProperty(PcbObjectPropertyMark.DEPTH);
 	}
 	
 	public void setThermalConduct(double thermalConduct) {
 		setProperty(PcbObjectPropertyMark.OBJ_TERMAL_CONDUCT, thermalConduct);
 	}
 	
-	public void setDepth(double depth) {
-		setProperty(PcbObjectPropertyMark.DEPTH, depth);
+	public void setDepth(double value) {
+		setProperty(PcbObjectPropertyMark.DEPTH, value);
 	}
 	
 	protected AbstractPcbObject() {
@@ -180,6 +144,20 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	
 	protected HashMap<String, Propertiable> getAllPropertiesByMarks() {
 		return propsByMark;
+	}
+	
+	protected Object getProperty(PcbObjectPropertyMark mark) {
+		Object value = mark.getDefaultValue();
+
+		Propertiable property = getPropertyByMark(mark.toString());
+		if(property != null) {
+			value = property.getValue();
+		}
+		else {
+			setProperty(mark, value);
+		}
+		
+		return value;
 	}
 	
 	protected void setProperty(PcbObjectPropertyMark mark, Object value) {
@@ -286,8 +264,6 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 		return rightBottomPoint;
 	}
 	
-	protected static final double DEFAULT_TEMPERATURE = 20;
-	
 	private Point srcLocation;
 	private Point location;
 	Point leftTopPoint;
@@ -296,6 +272,4 @@ abstract class AbstractPcbObject implements Browserable, IPcbObjectModelForTca {
 	private double srcLocX;
 	private double srcLocY;
 	private HashMap<Integer, PcbObjectVertex> vertices;
-	
-	private static final double DEFAULT_TERMAL_CONDACT = 150;
 }

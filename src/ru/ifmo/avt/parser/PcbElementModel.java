@@ -5,10 +5,10 @@ import java.util.Collections;
 import java.util.List;
 
 import ru.ifmo.avt.browser.interfaces.Browserable;
-import ru.ifmo.avt.browser.interfaces.Propertiable;
 import ru.ifmo.avt.tca.IPcbElementModelForTca;
+import ru.ifmo.avt.vca.IPcbElementModelForVca;
 
-class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTca {
+class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTca, IPcbElementModelForVca {
 	@Override
 	public String toString() {
 		return PcbElementModel.class.getSimpleName() + " [id:" + getId() + "]" + " [x:" + getSrcLocation().getX() + "] [y:" + getSrcLocation().getY() + "] [w:" + getWidth() + "] [h:" + getHeight() + "] [d:" + getDepth() + "] [designtr:" + getDesignatorName() + "]" + " [libRef:" + getLibraryReference() + "]"  + " [descr:" + getSrcDescription() + "]";
@@ -25,39 +25,14 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	}
 	
 	@Override
-	public double getDepth() {
-		double depth = 0.0;
-		
-		Propertiable depthProperty = getPropertyByMark(PcbObjectPropertyMark.DEPTH.toString());
-		if(depthProperty != null) {
-			depth = (double) depthProperty.getValue();
-		}
-		else {
-			setDepth(depth);
-		}
-		
-		return depth;
-	}
-	
-	@Override
 	public double getPower() {
-		double power = 0.0;
-		
-		Propertiable powerProperty = getPropertyByMark(PcbObjectPropertyMark.POWER.toString());
-		if(powerProperty != null) {
-			power = (double) powerProperty.getValue();
-		}
-		else {
-			setPower(power);
-		}
-		
-		return power;
+		return (double) getProperty(PcbObjectPropertyMark.POWER);
 	}
 	
 	@Override
 	public Color getColor() {
 		int colorDiffFromNormal = 0;
-		double tempDiffFromNormal = (getTemperature() - AbstractPcbObject.DEFAULT_TEMPERATURE);
+		double tempDiffFromNormal = (getTemperature() - (double) PcbObjectPropertyMark.OBJ_TEMPERATURE.getDefaultValue());
 		if(tempDiffFromNormal > 0.0) {
 			colorDiffFromNormal = (int) (10.0 * (tempDiffFromNormal / 2.5));
 	    }
@@ -74,26 +49,30 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	    return false;
 	}
 	
-	public void setDescription(String description) {
-		setProperty(PcbObjectPropertyMark.DESCRIPTION, description);
+	@Override
+	public double getPermissibleLoad() {
+		return (double) getProperty(PcbObjectPropertyMark.PERMISSIBLE_LOAD);
 	}
 	
-	public void setPower(double power) {
-		setProperty(PcbObjectPropertyMark.POWER, power);
+	@Override
+	public void setVibroAcceleration(double value) {
+		setProperty(PcbObjectPropertyMark.VIBRO_ACCELERAION, value);
+	}
+	
+	public void setPower(double value) {
+		setProperty(PcbObjectPropertyMark.POWER, value);
+	}
+	
+	public double getVibroAcceleration() {
+		return (double) getProperty(PcbObjectPropertyMark.VIBRO_ACCELERAION);
 	}
 
+	public void setPermissibleLoad(double value) {
+		setProperty(PcbObjectPropertyMark.PERMISSIBLE_LOAD, value);
+	}
+	
 	public String getPatternName() {
-		String value = "unknown";
-		
-		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.PATTERN.toString());
-		if(property != null) {
-			value = (String) property.getValue();
-		}
-		else {
-			setPatternName(value);
-		}
-		
-		return value;
+		return (String) getProperty(PcbObjectPropertyMark.PATTERN);
 	}
 
 	public void setPatternName(String patternName) {
@@ -101,17 +80,7 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	}
 
 	public String getDesignatorName() {
-		String value = "unknown";
-		
-		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.DESIGNATOR.toString());
-		if(property != null) {
-			value = (String) property.getValue();
-		}
-		else {
-			setDesignatorName(value);
-		}
-		
-		return value;
+		return (String) getProperty(PcbObjectPropertyMark.DESIGNATOR);
 	}
 
 	public void setDesignatorName(String designatorName) {
@@ -119,17 +88,7 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	}
 
 	public String getLibraryReference() {
-		String value = "unknown";
-		
-		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.LIBRARY_REFERENCE.toString());
-		if(property != null) {
-			value = (String) property.getValue();
-		}
-		else {
-			setLibraryReference(value);
-		}
-		
-		return value;
+		return (String) getProperty(PcbObjectPropertyMark.LIBRARY_REFERENCE);
 	}
 
 	public void setLibraryReference(String libraryReference) {
@@ -137,17 +96,7 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	}
 
 	public String getFootprintDescription() {
-		String value = "unknown";
-		
-		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.FOOTPRINT_DESCRIPTION.toString());
-		if(property != null) {
-			value = (String) property.getValue();
-		}
-		else {
-			setFootprintDescription(value);
-		}
-		
-		return value;
+		return (String) getProperty(PcbObjectPropertyMark.FOOTPRINT_DESCRIPTION);
 	}
 
 	public void setFootprintDescription(String footprintDescription) {
@@ -162,18 +111,12 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 		setSrcLocY(0.0);
 	}
 	
+	protected void setSrcDescription(String description) {
+		setProperty(PcbObjectPropertyMark.SRC_DESCRIPTION, description);
+	}
+	
 	protected String getSrcDescription() {
-		String value = "unknown";
-		
-		Propertiable property = getPropertyByMark(PcbObjectPropertyMark.DESCRIPTION.toString());
-		if(property != null) {
-			value = (String) property.getValue();
-		}
-		else {
-			setDescription(value);
-		}
-		
-		return value;
+		return (String) getProperty(PcbObjectPropertyMark.SRC_DESCRIPTION);
 	}
 	
 	protected int getId() {
@@ -182,8 +125,8 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	
 	private final int id;
 	
-	protected static final double DEFAULT_WIDTH = 100;
-	protected static final double DEFAULT_HEIGHT = 100;
+	protected static final double DEFAULT_WIDTH = 100.0;
+	protected static final double DEFAULT_HEIGHT = 100.0;
 	
 	private static final Color DEFAULT_COLOR = new Color(55, 55, 55);
 }
