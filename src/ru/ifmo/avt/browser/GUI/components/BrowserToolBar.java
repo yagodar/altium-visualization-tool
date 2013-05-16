@@ -32,7 +32,7 @@ public class BrowserToolBar extends JToolBar {
 	BrowserScaleSpinner scaleSpinner = new BrowserScaleSpinner();
 	scalePanel.add(scaleSpinner, new GBC(1, 0));
 	
-	/*JLabel frequencyLabel = new JLabel("  F max [Hz]: ");
+	JLabel frequencyLabel = new JLabel("  F max [Hz]: ");
 	scalePanel.add(frequencyLabel, new GBC(2, 0));
 	
 	BrowserFrequencySpinner frequencySpinner = new BrowserFrequencySpinner();
@@ -65,9 +65,9 @@ public class BrowserToolBar extends JToolBar {
 		}
 	
 	BrowserFixingList fixingList = new BrowserFixingList(icons);
-	scalePanel.add(fixingList, new GBC(7, 0));*/
+	scalePanel.add(fixingList, new GBC(7, 0));
 	
-	scalePanel.add(new JPanel(), new GBC(2, 0).setFill(GBC.HORIZONTAL).setWeight(100, 100));
+	scalePanel.add(new JPanel(), new GBC(8, 0).setFill(GBC.HORIZONTAL).setWeight(100, 100));
 	
 	add(scalePanel);
 	
