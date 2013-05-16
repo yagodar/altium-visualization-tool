@@ -34,7 +34,7 @@ public class PcbVibroConditionsAnalyzer {
 	    double F0 = getF0(pcbModel, fixing);
 	    
 	    pcbModel.setFrequency(frequency);
-	    pcbModel.setOwnFrequency(frequency);
+	    pcbModel.setOwnFrequency(F0);
 
 	    double S0 = getS0(pcbModel, frequency, acceleration);
 	    
@@ -109,7 +109,7 @@ public class PcbVibroConditionsAnalyzer {
     }
 
     private double getKm(IPcbModelForVca pcbModel) {
-	return 0;
+	return sqrt((pcbModel.getModuleElasticity() * 7820)/(22 * pow(10, 10) *pcbModel.getDensity() ));
     }
 
     private double getM(IPcbModelForVca pcbModel) {
@@ -117,11 +117,11 @@ public class PcbVibroConditionsAnalyzer {
     }
 
     private double getMpp(IPcbModelForVca pcbModel) {
-	return pcbModel.getDensity() * max * min * pcbModel.getDepth();
+	return pcbModel.getDensity() * max * min * pcbModel.getDepth() / 1000;
     }
 
     private double getD(IPcbModelForVca pcbModel) {
-	return (pcbModel.getModuleElasticity() * pow(pcbModel.getDepth(), 3)) / (12 * (1 - pcbModel.getPuassonsCoefficient()));
+	return (pcbModel.getModuleElasticity() * pow(pcbModel.getDepth() / 1000, 3)) / (12 * (1 - pow(pcbModel.getPuassonsCoefficient(), 2)));
     }
 
     private double getKoefAlfa(int fixing) {

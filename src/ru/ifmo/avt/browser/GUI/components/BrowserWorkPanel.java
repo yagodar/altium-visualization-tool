@@ -48,6 +48,11 @@ public class BrowserWorkPanel extends JPanel {
 	return browserPaintPanel;
     }
 
+    public Browserable getBrowserable()
+    {
+	return browserable;
+    }
+    
     private JScrollPane propertyEditorPanel;
     private JScrollPane browserPaintPanel;
     private Browserable browserable;

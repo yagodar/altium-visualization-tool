@@ -55,11 +55,57 @@
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_FeX3kL1nEeKMRq2m1MZIOQ" name="JFrame"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_45r9EL1oEeKMRq2m1MZIOQ" name="BrowserMenuBar"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_45r9EL1oEeKMRq2m1MZIOQ" name="BrowserMenuBar">
+    <generalization xmi:id="_WMINQL42EeKY0_xx1ItpcA" general="_OPLk0L42EeKY0_xx1ItpcA"/>
+  </packagedElement>
   <packagedElement xmi:type="uml:InformationItem" xmi:id="_BWTkEL1pEeKMRq2m1MZIOQ" name="InformationItem1"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_LK8t8L1pEeKMRq2m1MZIOQ" name="BrowserToolBar"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LK8t8L1pEeKMRq2m1MZIOQ" name="BrowserToolBar">
+    <generalization xmi:id="_ffi5YL42EeKY0_xx1ItpcA" general="_aisk4L42EeKY0_xx1ItpcA"/>
+  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_NUZGsL1pEeKMRq2m1MZIOQ" name="BrowserWorkPanel">
     <generalization xmi:id="_-W-IUL1sEeKMRq2m1MZIOQ" general="_4Fh_cL1sEeKMRq2m1MZIOQ"/>
+    <ownedAttribute xmi:id="_wp0J0L4yEeKY0_xx1ItpcA" name="propertyEditorPanel" visibility="private" type="_FMYg8L1tEeKMRq2m1MZIOQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_w0H8YL4yEeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_w0JKgL4yEeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_w0LmwL4yEeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_w8ToAL4yEeKY0_xx1ItpcA" name="browserPaintPanel" visibility="private" type="_FdmMwL1tEeKMRq2m1MZIOQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xGrE8L4yEeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xGrsAL4yEeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_xGs6IL4yEeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_xP55cL4yEeKY0_xx1ItpcA" name="browserable" visibility="private" type="_G6GVAL4zEeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_x_rJgL4yEeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_x_rwkL4yEeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_x_s-sL4yEeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_uiVf8L4yEeKY0_xx1ItpcA" name="setBrowserableObject">
+      <ownedParameter xmi:id="_cyzGoL4zEeKY0_xx1ItpcA" name="in" type="_G6GVAL4zEeKY0_xx1ItpcA"/>
+      <ownedParameter xmi:id="_iKT94L4zEeKY0_xx1ItpcA" name="" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_uziksL4yEeKY0_xx1ItpcA" name="rebuild">
+      <ownedParameter xmi:id="_tNdiQL4zEeKY0_xx1ItpcA" name="retuirn" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_vCltUL4yEeKY0_xx1ItpcA" name="setPropertyEditorPanel">
+      <ownedParameter xmi:id="_zlHn4L4zEeKY0_xx1ItpcA" name="in" type="_G6GVAL4zEeKY0_xx1ItpcA"/>
+      <ownedParameter xmi:id="_17g3gL4zEeKY0_xx1ItpcA" name="re" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_vRnAwL4yEeKY0_xx1ItpcA" name="setBrowserPaintPanel">
+      <ownedParameter xmi:id="_9Pc_ML4zEeKY0_xx1ItpcA" name="in" type="_G6GVAL4zEeKY0_xx1ItpcA"/>
+      <ownedParameter xmi:id="_-oICUL4zEeKY0_xx1ItpcA" name="re" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_vptXsL4yEeKY0_xx1ItpcA" name="getBrowserPaintPanel">
+      <ownedParameter xmi:id="_O9tJoL40EeKY0_xx1ItpcA" name="out" type="_FdmMwL1tEeKMRq2m1MZIOQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_v6p9wL4yEeKY0_xx1ItpcA" name="getBrowserable">
+      <ownedParameter xmi:id="_VW7VgL40EeKY0_xx1ItpcA" name="" type="_G6GVAL4zEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_kGjP4L1pEeKMRq2m1MZIOQ" name="" visibility="private" memberEnd="_kGjP4b1pEeKMRq2m1MZIOQ _kGio0L1pEeKMRq2m1MZIOQ">
     <ownedEnd xmi:id="_kGjP4b1pEeKMRq2m1MZIOQ" name="" type="_NUZGsL1pEeKMRq2m1MZIOQ" aggregation="composite" association="_kGjP4L1pEeKMRq2m1MZIOQ">
@@ -94,9 +140,30 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_C6DucL1sEeKMRq2m1MZIOQ" name="Action"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_EZ3UUL1sEeKMRq2m1MZIOQ" name="OpenFileAction">
     <generalization xmi:id="_T-gG4L1sEeKMRq2m1MZIOQ" general="_C6DucL1sEeKMRq2m1MZIOQ"/>
+    <ownedAttribute xmi:id="_BsaeQL4qEeKY0_xx1ItpcA" name="openFileDialog" visibility="private" type="_GQS5IL4qEeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CEsbYL4qEeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CEtCcL4qEeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_CEuQkL4qEeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_FsPUYL4rEeKY0_xx1ItpcA" name="actionPerformed" visibility="public">
+      <ownedParameter xmi:id="_onsxsL4rEeKY0_xx1ItpcA" name="java.awt.event.ActionEvent" type="_cbqSoL4rEeKY0_xx1ItpcA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_giS7YL4sEeKY0_xx1ItpcA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_giUJgL4sEeKY0_xx1ItpcA" value="1"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_Ws_DIL4sEeKY0_xx1ItpcA" name="return" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_Ev51wL1sEeKMRq2m1MZIOQ" name="StartAnalysisAction">
+    <ownedComment xmi:id="_cVrUgL4tEeKY0_xx1ItpcA">
+      <body>java.awt.event.ActionEvent</body>
+    </ownedComment>
     <generalization xmi:id="_TZKlML1sEeKMRq2m1MZIOQ" general="_C6DucL1sEeKMRq2m1MZIOQ"/>
+    <ownedOperation xmi:id="_egPHkL4tEeKY0_xx1ItpcA" name="actionPerformed">
+      <ownedParameter xmi:id="_pxzicL4tEeKY0_xx1ItpcA" name="in" type="_cbqSoL4rEeKY0_xx1ItpcA"/>
+      <ownedParameter xmi:id="_wG41ML4tEeKY0_xx1ItpcA" name="return" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_cLrjsL1sEeKMRq2m1MZIOQ" name="" memberEnd="_cLrjsb1sEeKMRq2m1MZIOQ _cLq8oL1sEeKMRq2m1MZIOQ">
     <ownedEnd xmi:id="_cLrjsb1sEeKMRq2m1MZIOQ" name="" type="_Ev51wL1sEeKMRq2m1MZIOQ" aggregation="composite" association="_cLrjsL1sEeKMRq2m1MZIOQ">
@@ -146,6 +213,17 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_FdmMwL1tEeKMRq2m1MZIOQ" name="BrowserPaintPanel">
     <generalization xmi:id="_k24HUL1uEeKMRq2m1MZIOQ" general="_4Fh_cL1sEeKMRq2m1MZIOQ"/>
+    <ownedAttribute xmi:id="_xfhtAL42EeKY0_xx1ItpcA" name="bgColor" visibility="private" isStatic="true" type="_0KLVYL42EeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xzqJ8L42EeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xzqJ8b42EeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_xzrYEL42EeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_IAKBUL43EeKY0_xx1ItpcA" name="scale" isStatic="true">
+      <ownedParameter xmi:id="_M2uusL43EeKY0_xx1ItpcA" type="_G6GVAL4zEeKY0_xx1ItpcA"/>
+      <ownedParameter xmi:id="_PXQKsL43EeKY0_xx1ItpcA" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_Rn_GAL1tEeKMRq2m1MZIOQ" name="" memberEnd="_Rn_GAb1tEeKMRq2m1MZIOQ _Rn934L1tEeKMRq2m1MZIOQ">
     <ownedEnd xmi:id="_Rn_GAb1tEeKMRq2m1MZIOQ" name="" type="_FMYg8L1tEeKMRq2m1MZIOQ" aggregation="composite" association="_Rn_GAL1tEeKMRq2m1MZIOQ">
@@ -169,6 +247,28 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_0DDzEL1tEeKMRq2m1MZIOQ" name="BoardPaintComponent">
     <generalization xmi:id="_fx-DAL1uEeKMRq2m1MZIOQ" general="_Xh1_4L1uEeKMRq2m1MZIOQ"/>
+    <ownedAttribute xmi:id="_oyI0ML44EeKY0_xx1ItpcA" name="elementList" visibility="private" type="_rA3VkL44EeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_o7_60L44EeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_o7_60b44EeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_o8BI8L44EeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_pDgRAL44EeKY0_xx1ItpcA" name="selectedElement" visibility="private" type="_EqnbML1uEeKMRq2m1MZIOQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pQpVIL44EeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pQp8ML44EeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_pQqjQL44EeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_oNcLsL44EeKY0_xx1ItpcA" name="add">
+      <ownedParameter xmi:id="_EpumIL45EeKY0_xx1ItpcA" type="_EqnbML1uEeKMRq2m1MZIOQ"/>
+      <ownedParameter xmi:id="_IH6kQL45EeKY0_xx1ItpcA" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_oeNLkL44EeKY0_xx1ItpcA" name="setSelectedElement">
+      <ownedParameter xmi:id="_QREcsL45EeKY0_xx1ItpcA" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+      <ownedParameter xmi:id="_SPZxoL45EeKY0_xx1ItpcA" type="_EqnbML1uEeKMRq2m1MZIOQ"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_7UxGIL1tEeKMRq2m1MZIOQ" name="" memberEnd="_7UxGIb1tEeKMRq2m1MZIOQ _7UwfEL1tEeKMRq2m1MZIOQ">
     <ownedEnd xmi:id="_7UxGIb1tEeKMRq2m1MZIOQ" name="" type="_0DDzEL1tEeKMRq2m1MZIOQ" aggregation="composite" association="_7UxGIL1tEeKMRq2m1MZIOQ">
@@ -182,15 +282,115 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_EqnbML1uEeKMRq2m1MZIOQ" name="ElementPaintComponent">
     <generalization xmi:id="_fPvfsL1uEeKMRq2m1MZIOQ" general="_Xh1_4L1uEeKMRq2m1MZIOQ"/>
+    <ownedAttribute xmi:id="_4ahB0L45EeKY0_xx1ItpcA" name="markerList" visibility="private" type="_rA3VkL44EeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4v2_sL45EeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4v2_sb45EeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_4v4N0L45EeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_3ldCEL45EeKY0_xx1ItpcA" name="setLocation">
+      <ownedParameter xmi:id="_MKWCcL46EeKY0_xx1ItpcA" type="_AxbCYL46EeKY0_xx1ItpcA"/>
+      <ownedParameter xmi:id="_NmVfUL46EeKY0_xx1ItpcA" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_31heYL45EeKY0_xx1ItpcA" name="setSelected">
+      <ownedParameter xmi:id="_ztNvwL46EeKY0_xx1ItpcA" type="_sulwwL46EeKY0_xx1ItpcA"/>
+      <ownedParameter xmi:id="_1MiNcL46EeKY0_xx1ItpcA" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_4FHZkL45EeKY0_xx1ItpcA" name="getMarkerList">
+      <ownedParameter xmi:id="_88kbQL46EeKY0_xx1ItpcA" type="_rA3VkL44EeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_OUmNML1uEeKMRq2m1MZIOQ" name="DraggedPaintComponent">
     <generalization xmi:id="_dN_qYL1uEeKMRq2m1MZIOQ" general="_bTUtcL1uEeKMRq2m1MZIOQ"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_TtngUL1uEeKMRq2m1MZIOQ" name="MarkerPaintComponent">
     <generalization xmi:id="_eAQ00L1uEeKMRq2m1MZIOQ" general="_OUmNML1uEeKMRq2m1MZIOQ"/>
+    <ownedAttribute xmi:id="_SOcoAL48EeKY0_xx1ItpcA" name="borderColor" visibility="private" isStatic="true" type="_0KLVYL42EeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SYAzsL48EeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SYBawL48EeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_SYCo4L48EeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_SgHm0L48EeKY0_xx1ItpcA" name="bgColor" visibility="private" isStatic="true" type="_0KLVYL42EeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SnD8UL48EeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SnEjYL48EeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_SnFxgL48EeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_St8ncL48EeKY0_xx1ItpcA" name="SIZE" visibility="private" isStatic="true" type="_AJNhAL14EeKMRq2m1MZIOQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_S25IEL48EeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_S25vIL48EeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_S269QL48EeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UIerwL48EeKY0_xx1ItpcA" name="elementPaintComponent" visibility="private" type="_EqnbML1uEeKMRq2m1MZIOQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_URSCcL48EeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_URSpgL48EeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_URT3oL48EeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UYWTwL48EeKY0_xx1ItpcA" name="point" visibility="public" type="_AxbCYL46EeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UjXQ8L48EeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UjX4AL48EeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UjZGIL48EeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_Q0w4QL48EeKY0_xx1ItpcA" name="paintComponent">
+      <ownedParameter xmi:id="_ByeS4L4-EeKY0_xx1ItpcA" type="_i0GBEL47EeKY0_xx1ItpcA"/>
+      <ownedParameter xmi:id="_D03ocL4-EeKY0_xx1ItpcA" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_RHaugL48EeKY0_xx1ItpcA" name="relocation">
+      <ownedParameter xmi:id="_Mqas0L4-EeKY0_xx1ItpcA" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_Rav6ML48EeKY0_xx1ItpcA" name="setLocation">
+      <ownedParameter xmi:id="_QDVwcL4-EeKY0_xx1ItpcA" type="_AxbCYL46EeKY0_xx1ItpcA"/>
+      <ownedParameter xmi:id="_RDJnoL4-EeKY0_xx1ItpcA" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_RtvHoL48EeKY0_xx1ItpcA" name="getElementPaintComponent">
+      <ownedParameter xmi:id="_XqPQYL4-EeKY0_xx1ItpcA" type="_EqnbML1uEeKMRq2m1MZIOQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_R9L44L48EeKY0_xx1ItpcA" name="getPoint">
+      <ownedParameter xmi:id="_bgJK8L4-EeKY0_xx1ItpcA" type="_AxbCYL46EeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_Xh1_4L1uEeKMRq2m1MZIOQ" name="PaintComponent">
     <generalization xmi:id="_es5RUL1uEeKMRq2m1MZIOQ" general="_OUmNML1uEeKMRq2m1MZIOQ"/>
+    <ownedAttribute xmi:id="_IJY5AL47EeKY0_xx1ItpcA" name="browserable" visibility="private" type="_G6GVAL4zEeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IQUncL47EeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IQV1kL47EeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_IQWcoL47EeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_IVur4L47EeKY0_xx1ItpcA" name="borderColor" visibility="private" type="_0KLVYL42EeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Igd8QL47EeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IgejUL47EeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_IgfxcL47EeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_JqlmAL47EeKY0_xx1ItpcA" name="setLocation">
+      <ownedParameter xmi:id="_cdg5gL47EeKY0_xx1ItpcA" type="_AxbCYL46EeKY0_xx1ItpcA"/>
+      <ownedParameter xmi:id="_dkP4EL47EeKY0_xx1ItpcA" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_J-v4IL47EeKY0_xx1ItpcA" name="paintComponent">
+      <ownedParameter xmi:id="_sNxGML47EeKY0_xx1ItpcA" type="_i0GBEL47EeKY0_xx1ItpcA"/>
+      <ownedParameter xmi:id="_tksc4L47EeKY0_xx1ItpcA" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_KR_kQL47EeKY0_xx1ItpcA" name="getBrowserable">
+      <ownedParameter xmi:id="_4bSL8L47EeKY0_xx1ItpcA" type="_G6GVAL4zEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_Kgvx8L47EeKY0_xx1ItpcA" name="setBrowserable">
+      <ownedParameter xmi:id="_7z0OAL47EeKY0_xx1ItpcA" type="_G6GVAL4zEeKY0_xx1ItpcA"/>
+      <ownedParameter xmi:id="_80JpoL47EeKY0_xx1ItpcA" type="_FORwkL4sEeKY0_xx1ItpcA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_KucPsL47EeKY0_xx1ItpcA" name="getPeak"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_bTUtcL1uEeKMRq2m1MZIOQ" name="JComponent"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_m-RRoL1uEeKMRq2m1MZIOQ" name="" memberEnd="_m-RRob1uEeKMRq2m1MZIOQ _m-QDgL1uEeKMRq2m1MZIOQ">
@@ -213,7 +413,25 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4gt0sr1uEeKMRq2m1MZIOQ" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_RI2gsL1yEeKMRq2m1MZIOQ" name="BrowserAction"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_RI2gsL1yEeKMRq2m1MZIOQ" name="BrowserAction">
+    <ownedAttribute xmi:id="_EAhrYL4pEeKY0_xx1ItpcA" name="START_ANALYSIS" visibility="private" isStatic="true" type="_Ev51wL1sEeKMRq2m1MZIOQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EXGYUL4pEeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EXHmcL4pEeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_EXKCsL4pEeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_FL7HgL4pEeKY0_xx1ItpcA" name="OPEN_FILE" visibility="private" isStatic="true" type="_EZ3UUL1sEeKMRq2m1MZIOQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FdYq8L4pEeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FdZ5EL4pEeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_FdbHML4pEeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_Af3BAL4pEeKY0_xx1ItpcA" name="getAction" visibility="public" isStatic="true">
+      <ownedParameter xmi:id="_rrVzwL4pEeKY0_xx1ItpcA" name="Action" type="_C6DucL1sEeKMRq2m1MZIOQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_s9noIL1yEeKMRq2m1MZIOQ" name="broeserAction_browserMenuBar_1" memberEnd="_s9noIb1yEeKMRq2m1MZIOQ _s9maAL1yEeKMRq2m1MZIOQ">
     <ownedEnd xmi:id="_s9noIb1yEeKMRq2m1MZIOQ" name="broeserAction" type="_RI2gsL1yEeKMRq2m1MZIOQ" aggregation="shared" association="_s9noIL1yEeKMRq2m1MZIOQ">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_s9noIr1yEeKMRq2m1MZIOQ"/>
@@ -237,4 +455,53 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_AJNhAL14EeKMRq2m1MZIOQ" name="java.lang.Integer"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_m2dN4L14EeKMRq2m1MZIOQ" name="java.lang.String"/>
   <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_AtC78L16EeKMRq2m1MZIOQ" name="PrimitiveType1"/>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_a76egL4oEeKY0_xx1ItpcA" name="BrowserAction"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_GQS5IL4qEeKY0_xx1ItpcA" name="OpenFileDialog">
+    <generalization xmi:id="_Wh2cEL4qEeKY0_xx1ItpcA" general="_QOoKgL4qEeKY0_xx1ItpcA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_QOoKgL4qEeKY0_xx1ItpcA" name="JFileChooser"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ZiUjcL4qEeKY0_xx1ItpcA" name="" memberEnd="_ZiUjcb4qEeKY0_xx1ItpcA _ZiT8YL4qEeKY0_xx1ItpcA">
+    <ownedEnd xmi:id="_ZiUjcb4qEeKY0_xx1ItpcA" name="" type="_EZ3UUL1sEeKMRq2m1MZIOQ" association="_ZiUjcL4qEeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZiUjcr4qEeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZiUjc74qEeKY0_xx1ItpcA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_ZiT8YL4qEeKY0_xx1ItpcA" name="" type="_GQS5IL4qEeKY0_xx1ItpcA" aggregation="composite" association="_ZiUjcL4qEeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZiT8Yb4qEeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZiT8Yr4qEeKY0_xx1ItpcA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_cbqSoL4rEeKY0_xx1ItpcA" name="java.awt.event.ActionEvent"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_FORwkL4sEeKY0_xx1ItpcA" name="java.lang.Void"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_FYMdYL4zEeKY0_xx1ItpcA" name="Class1"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_G6GVAL4zEeKY0_xx1ItpcA" name="Browserable"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_6k_HkL40EeKY0_xx1ItpcA" name="TextFieldViewComponent">
+    <generalization xmi:id="_Ejk3oL41EeKY0_xx1ItpcA" general="_AEW6UL41EeKY0_xx1ItpcA"/>
+    <ownedAttribute xmi:id="_ZHQXEL41EeKY0_xx1ItpcA" name="property" visibility="private" type="_e6wmwL41EeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZlPTkL41EeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZlP6oL41EeKY0_xx1ItpcA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_ZlRv0L41EeKY0_xx1ItpcA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_AEW6UL41EeKY0_xx1ItpcA" name="JTextField"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_GYOsIL41EeKY0_xx1ItpcA" name="" memberEnd="_GYOsIb41EeKY0_xx1ItpcA _GYOFEL41EeKY0_xx1ItpcA">
+    <ownedEnd xmi:id="_GYOsIb41EeKY0_xx1ItpcA" name="" type="_FMYg8L1tEeKMRq2m1MZIOQ" association="_GYOsIL41EeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GYOsIr41EeKY0_xx1ItpcA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GYOsI741EeKY0_xx1ItpcA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_GYOFEL41EeKY0_xx1ItpcA" name="" type="_6k_HkL40EeKY0_xx1ItpcA" aggregation="composite" association="_GYOsIL41EeKY0_xx1ItpcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GYOFEb41EeKY0_xx1ItpcA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GYOFEr41EeKY0_xx1ItpcA" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_e6wmwL41EeKY0_xx1ItpcA" name="Propertable"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_OPLk0L42EeKY0_xx1ItpcA" name="JMenuBar"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_aisk4L42EeKY0_xx1ItpcA" name="JToolBar"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_0KLVYL42EeKY0_xx1ItpcA" name="java.awt.Color"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_p1knIL44EeKY0_xx1ItpcA" name="Class2"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_rA3VkL44EeKY0_xx1ItpcA" name="java.util.List"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_AxbCYL46EeKY0_xx1ItpcA" name="java.awt.Point"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_sulwwL46EeKY0_xx1ItpcA" name="java.lang.Boolean"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_i0GBEL47EeKY0_xx1ItpcA" name="java.awt.Graphics"/>
 </uml:Model>
