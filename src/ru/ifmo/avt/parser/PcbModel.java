@@ -41,7 +41,7 @@ public class PcbModel extends AbstractPcbObject implements IPcbModelForTca, IPcb
 	
 	@Override
 	public String getDescription() {
-		return "<html>" + getName() + "<br />x:[" + getSrcLocation().getX() + "] y:[" + getSrcLocation().getY() + "]<br />w:[" + getWidth() + "] h:[" + getHeight() + "] d:[" + getDepth() + "] </html>";
+		return "<html>" + getName() + "<br />x:[" + getSrcLocation().getX() + "] y:[" + getSrcLocation().getY() + "]<br />w:[" + getWidth() + "] h:[" + getHeight() + "] d:[" + getDepth() + "] " + (getFrequency() * 2 > getOwnFrequency() ? "<br />Не выполняется правило октавы" : "") + (getMaxDeflection() < getDeflection() ? "<br />Прогиб превысил допустимый" : "") + "</html>";
 	}
 	
 	@Override
@@ -56,6 +56,9 @@ public class PcbModel extends AbstractPcbObject implements IPcbModelForTca, IPcb
 	
 	@Override
 	public Color getColor() {
+	    if(getFrequency() * 2 > getOwnFrequency() || getMaxDeflection() < getDeflection())
+		return Color.RED;
+	    
 	    return DEFAULT_COLOR;
 	}
 

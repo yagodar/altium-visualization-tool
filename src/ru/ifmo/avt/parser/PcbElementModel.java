@@ -21,7 +21,7 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	
 	@Override
 	public String getDescription() {
-		return "<html>" + getSrcDescription() + "<br />x:[" + getSrcLocation().getX() + "] y:[" + getSrcLocation().getY() + "]<br />w:[" + getWidth() + "] h:[" + getHeight() + "] d:[" + getDepth() + "] </html>";
+		return "<html>" + getSrcDescription() + "<br />x:[" + getSrcLocation().getX() + "] y:[" + getSrcLocation().getY() + "]<br />w:[" + getWidth() + "] h:[" + getHeight() + "] d:[" + getDepth() + "]" + ( getPermissibleLoad() < getVibroAcceleration() / 9.81 ? "<br />Превышена допустимая нагрузка" : "" ) + "</html>";
 	}
 	
 	@Override
@@ -31,17 +31,10 @@ class PcbElementModel extends AbstractPcbObject implements IPcbElementModelForTc
 	
 	@Override
 	public Color getColor() {
-		int colorDiffFromNormal = 0;
-		double tempDiffFromNormal = (getTemperature() - (double) PcbObjectPropertyMark.OBJ_TEMPERATURE.getDefaultValue());
-		if(tempDiffFromNormal > 0.0) {
-			colorDiffFromNormal = (int) (10.0 * (tempDiffFromNormal / 2.5));
-	    }
+		if(getPermissibleLoad() < getVibroAcceleration() / 9.81)
+		    return Color.RED;
 		
-		if(DEFAULT_COLOR.getRed() + colorDiffFromNormal > 255) {
-			colorDiffFromNormal = 255 - DEFAULT_COLOR.getRed();
-		}
-		
-		return new Color(DEFAULT_COLOR.getRed() + colorDiffFromNormal, DEFAULT_COLOR.getGreen(), DEFAULT_COLOR.getBlue());
+		return new Color(DEFAULT_COLOR.getRed(), DEFAULT_COLOR.getGreen(), DEFAULT_COLOR.getBlue());
 	}
 
 	@Override
