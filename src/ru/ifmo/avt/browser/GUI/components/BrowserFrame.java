@@ -33,7 +33,7 @@ public class BrowserFrame extends JFrame {
     private BrowserMenuBar browserMenuBar;
     private BrowserToolBar browserToolBar;
     private BrowserWorkPanel browserWorkPanel;
-    private static String NAME = "VibroMode";
+    private static String NAME = "AVT: TCA";
     private static int WIDTH = 800;
     private static int HEIGHT = 600;
 }
